@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://podiumracing-me.vercel.app/sitemap.xml
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow all other content
+Allow: /src/
+Allow: /components/
+Allow: /assets/
+
+# Crawl delay (optional)
+Crawl-delay: 1
