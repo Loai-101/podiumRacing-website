@@ -1,0 +1,814 @@
+/* Coaches Page Styles - Clean Dark Theme */
+
+.coaches-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  filter: brightness(0.8);
+  box-shadow: none;
+}
+
+.hero-overlay {
+  display: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 0 4rem 0;
+  margin-top: -2rem;
+}
+
+.hero-text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coaches-hero .hero-title {
+  color: #ffffff !important;
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  position: relative;
+}
+
+/* Force white color for hero title */
+.hero-title {
+  color: #ffffff !important;
+}
+
+/* Additional force for coaches hero title */
+.coaches-hero .hero-title,
+.coaches-hero h1,
+.coaches-hero .hero-text .hero-title {
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: unset !important;
+}
+
+/* Force white for hero subtitle */
+.coaches-hero .hero-subtitle,
+.coaches-hero .hero-text .hero-subtitle {
+  color: #ffffff !important;
+}
+
+.coaches-hero .hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  animation: lineSlideIn 1.5s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes lineSlideIn {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+.coaches-hero .hero-subtitle {
+  color: #ffffff !important;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-text {
+  color: #0a0a0a;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.coaches-content {
+  background: #ffffff;
+  padding: 0.5rem 0;
+}
+
+/* Coaches Grid */
+.coaches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0.25rem 0;
+}
+
+/* Enhanced Coach Cards */
+.coach-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+  border: 2px solid rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  animation: cardEntrance 1s ease-out forwards;
+  overflow: hidden;
+}
+
+.coach-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.coach-card:hover::before {
+  transform: scaleX(1);
+}
+
+.coach-card:nth-child(1) { animation-delay: 0s; }
+.coach-card:nth-child(2) { animation-delay: 0.3s; }
+.coach-card:nth-child(3) { animation-delay: 0.6s; }
+.coach-card:nth-child(4) { animation-delay: 0.9s; }
+
+.coach-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(255, 193, 7, 0.4);
+  border-color: rgba(255, 193, 7, 0.3);
+  background: #ffffff;
+}
+
+.coach-image-container {
+  margin-bottom: 1rem;
+}
+
+.coach-image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.coach-image-placeholder::after {
+  content: "Image";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+}
+
+.coach-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 193, 7, 0.2);
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.coach-card:hover .coach-image {
+  border-color: rgba(255, 193, 7, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+}
+
+.coach-info {
+  color: #0a0a0a;
+}
+
+.coach-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: #0a0a0a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Enhanced Coach Modal Styles */
+.coach-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: modalFadeIn 0.4s ease-out;
+}
+
+.coach-modal {
+  background: #ffffff;
+  border: 2px solid rgba(255, 193, 7, 0.3);
+  border-radius: 30px;
+  padding: 3rem;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.2),
+    0 0 100px rgba(255, 193, 7, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.coach-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    #ffc107 0%, 
+    #ffeb3b 25%, 
+    #ff6b9d 50%, 
+    #ffeb3b 75%, 
+    #ffc107 100%
+  );
+  border-radius: 30px 30px 0 0;
+  animation: gradientShift 4s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+.coach-modal-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #ffffff;
+  border: 2px solid #ffc107;
+  color: #ffc107;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  z-index: 1001;
+}
+
+.coach-modal-close:hover {
+  background: #ffc107;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+}
+
+.coach-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.coach-modal-image-container {
+  text-align: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.coach-modal-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.5), transparent);
+}
+
+.coach-modal-image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffc107, #ffeb3b, #ff6b9d);
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    0 20px 50px rgba(255, 193, 7, 0.4),
+    0 0 100px rgba(255, 193, 7, 0.2);
+  animation: imageGlow 2s ease-in-out infinite alternate;
+}
+
+.coach-modal-image-placeholder::after {
+  content: "Image";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.coach-modal-info {
+  color: #0a0a0a;
+}
+
+.coach-modal-name {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: #0a0a0a;
+  text-align: center;
+  background: linear-gradient(45deg, #0a0a0a, #ffc107, #ffeb3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.coach-modal-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+  display: block;
+  box-shadow: 
+    0 20px 50px rgba(255, 193, 7, 0.4),
+    0 0 100px rgba(255, 193, 7, 0.2);
+  animation: imageGlow 2s ease-in-out infinite alternate;
+  position: relative;
+}
+
+.coach-modal-title {
+  font-size: 1.4rem;
+  color: #ffc107;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+  letter-spacing: 0.02em;
+}
+
+.coach-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333333;
+  text-align: justify;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(145deg, rgba(255, 193, 7, 0.05), rgba(255, 193, 7, 0.02));
+  border-radius: 20px;
+  border-left: 5px solid #ffc107;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.02em;
+  word-spacing: 0.005em;
+}
+
+.coach-modal-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.coach-modal-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.coach-modal-section:hover::before {
+  left: 100%;
+}
+
+.coach-modal-section:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border-color: rgba(255, 193, 7, 0.4);
+  transform: translateX(8px) translateY(-2px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(255, 193, 7, 0.1);
+}
+
+.coach-modal-section h4 {
+  color: #ffc107;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255, 193, 7, 0.3);
+  padding-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+  position: relative;
+  letter-spacing: 0.02em;
+  word-spacing: 0.005em;
+}
+
+.coach-modal-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffc107, transparent);
+}
+
+.coach-modal-section ul {
+  color: #0a0a0a;
+  margin-left: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  word-spacing: 0.005em;
+}
+
+.coach-modal-section li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  word-spacing: 0.005em;
+}
+
+.coach-modal-section li:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
+}
+
+.bike-icon {
+  color: #ffc107;
+  font-size: 1.1rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+  transition: all 0.3s ease;
+}
+
+.coach-modal-section li:hover .bike-icon {
+  color: #ffc107;
+  transform: scale(1.1);
+  text-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+}
+
+/* Custom scrollbar for modal */
+.coach-modal::-webkit-scrollbar {
+  width: 12px;
+}
+
+.coach-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.coach-modal::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffc107, #ffeb3b);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.coach-modal::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffeb3b, #ffc107);
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes imageGlow {
+  from {
+    box-shadow: 
+      0 20px 50px rgba(255, 193, 7, 0.4),
+      0 0 100px rgba(255, 193, 7, 0.2);
+  }
+  to {
+    box-shadow: 
+      0 25px 60px rgba(255, 193, 7, 0.6),
+      0 0 120px rgba(255, 193, 7, 0.3);
+  }
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes programCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.coaching-programs {
+  background: #ffffff;
+}
+
+.coaching-programs .section-title {
+  color: #0a0a0a;
+  position: relative;
+}
+
+.coaching-programs .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  animation: lineSlideIn 1.5s ease-out forwards;
+  transform-origin: center;
+}
+
+.program-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+  border: 2px solid rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.program-card.animate {
+  animation: programCardEntrance 0.8s ease-out forwards;
+}
+
+.program-card.animate:nth-child(1) { animation-delay: 0.2s; }
+.program-card.animate:nth-child(2) { animation-delay: 0.4s; }
+.program-card.animate:nth-child(3) { animation-delay: 0.6s; }
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover::before {
+  transform: scaleX(1);
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(255, 193, 7, 0.4);
+  border-color: rgba(255, 193, 7, 0.3);
+  background: #ffffff;
+}
+
+.program-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  color: #0a0a0a;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.program-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  animation: lineSlideIn 1.5s ease-out forwards;
+  transform-origin: left;
+}
+
+.program-description {
+  color: #333333;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.program-features {
+  color: #333333;
+  margin-left: 1rem;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.program-features li {
+  margin-bottom: 0.8rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 193, 7, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #ffc107;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+
+
+
+
+.program-features li:hover {
+  background: rgba(255, 193, 7, 0.1);
+  transform: translateX(5px);
+}
+
+.program-features li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .coaches-hero {
+    min-height: 50vh;
+  }
+  
+  .coaches-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .coaches-hero .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-badge {
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .badge-text {
+    font-size: 1rem;
+  }
+  
+  .coaches-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .coach-card,
+  .program-card {
+    padding: 1.5rem;
+  }
+  
+  .coach-name,
+  .program-title {
+    font-size: 1.3rem;
+  }
+
+  .coach-modal {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .coach-modal-name {
+    font-size: 1.5rem;
+  }
+
+  .coach-modal-image-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .coach-image-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,650 @@
+
+/* Athletes Page Styles - Dark Theme */
+
+.athletes-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-background-image-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.athletes-hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.athletes-hero .hero-title {
+  animation: fadeInUp 1s ease-out;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.athletes-hero .hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  animation: lineSlideIn 1.5s ease-out forwards;
+  transform-origin: center;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.athletes-hero .hero-subtitle {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.athletes-intro {
+  background: #0a0a0a;
+}
+
+.intro-content {
+  background: rgba(255, 193, 7, 0.05);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 193, 7, 0.2);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  animation: scaleIn 1s ease-out 0.6s both;
+}
+
+.intro-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.intro-text {
+  color: #ffffff;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.intro-text:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+
+.intro-text:last-child {
+  margin-bottom: 0;
+}
+
+.intro-tagline {
+  color: #ffc107;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+  animation: bounceIn 1s ease-out 1.2s both;
+}
+
+.athletes-content {
+  background: #0a0a0a;
+  padding: 4rem 0;
+}
+
+.athletes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.athlete-card {
+  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.athlete-card:nth-child(2) {
+  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+.athlete-card:nth-child(3) {
+  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+}
+
+.athlete-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 193, 7, 0.2);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.athlete-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.athlete-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.athlete-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.athlete-card:hover .athlete-image {
+  transform: scale(1.1);
+}
+
+.athlete-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #333, #666);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.athlete-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.athlete-name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.athlete-category {
+  color: #ffc107;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  background: rgba(255, 193, 7, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  display: inline-block;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Athlete Modal Styles */
+.athlete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.athlete-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 2px solid rgba(255, 193, 7, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.athlete-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffc107;
+  border: none;
+  color: #0a0a0a;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.athlete-modal-close:hover {
+  background: #ffeb3b;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+.athlete-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.athlete-modal-image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.athlete-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+/* Specific positioning for MALIK ALI's modal image */
+.athlete-modal-image[alt="MALIK ALI"] {
+  object-position: center 5%;
+}
+
+.athlete-modal-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #333, #666);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.athlete-modal-info {
+  padding: 2rem;
+  color: #0a0a0a;
+}
+
+.athlete-modal-name {
+  color: #0a0a0a;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(45deg, #0a0a0a, #ffc107, #ffeb3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.athlete-modal-category {
+  color: #ffc107;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.athlete-modal-section {
+  margin-bottom: 2rem;
+  background: linear-gradient(145deg, rgba(255, 193, 7, 0.05), rgba(255, 193, 7, 0.02));
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-left: 5px solid #ffc107;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.1);
+}
+
+.athlete-modal-section h4 {
+  color: #ffc107;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.athlete-modal-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.athlete-modal-section li {
+  color: #333333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+  font-size: 1rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.athlete-modal-section li:last-child {
+  border-bottom: none;
+}
+
+.athlete-modal-description {
+  color: #333333;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin: 0;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.bike-icon {
+  color: #ffc107;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.join-team-section {
+  background: #0a0a0a;
+  padding: 4rem 0;
+}
+
+.join-content {
+  background: rgba(255, 193, 7, 0.05);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 193, 7, 0.2);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1);
+  text-align: center;
+  animation: slideInRight 1s ease-out 1.4s both;
+}
+
+.card-title {
+  color: #ffffff !important;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: unset !important;
+}
+
+.join-text {
+  color: #ffffff;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.join-benefits {
+  margin-bottom: 2rem;
+}
+
+.join-benefits h3 {
+  color: #ffc107;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.join-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.join-benefits li {
+  color: #ffffff;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.join-benefits li:hover {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.4);
+  transform: translateY(-2px);
+}
+
+.join-button {
+  background: linear-gradient(45deg, #ffc107, #ffeb3b);
+  color: #0a0a0a;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', 'Audiowide', 'Racing Sans One', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+}
+
+.join-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 193, 7, 0.4);
+  background: linear-gradient(45deg, #ffeb3b, #ffc107);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .athletes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .athlete-modal {
+    margin: 20px;
+    max-height: 95vh;
+  }
+  
+  .athlete-modal-content {
+    flex-direction: column;
+  }
+  
+  .athlete-modal-image-container {
+    height: 200px;
+  }
+  
+  .athlete-modal-name {
+    font-size: 2rem;
+  }
+  
+  .join-benefits ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .intro-content,
+  .join-content {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .athlete-modal-info {
+    padding: 1.5rem;
+  }
+  
+  .athlete-modal-name {
+    font-size: 1.8rem;
+  }
+  
+  .card-title {
+    font-size: 2rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineSlideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px) scale(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
