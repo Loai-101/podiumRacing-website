@@ -8,7 +8,7 @@ import About from './components/About/About';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
-import { FaInstagram, FaFacebook, FaTiktok } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -56,6 +56,9 @@ function App() {
           </a>
           <a href="https://www.tiktok.com/@podium_racing_me" target="_blank" rel="noopener noreferrer" className="social-icon-link">
             <FaTiktok className="social-icon" />
+          </a>
+          <a href="https://wa.me/97313676757?text=Hello%20Podium%20Racing%20ME" target="_blank" rel="noopener noreferrer" className="social-icon-link">
+            <FaWhatsapp className="social-icon" />
           </a>
         </div>
         

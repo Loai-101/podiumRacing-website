@@ -387,7 +387,12 @@
 }
 
 .join-section {
-  background: #0a0a0a;
+  background: #ffeb3b;
+}
+
+/* Join section title color on yellow background */
+.join-section .section-title {
+  color: #000000;
 }
 
 .join-section .card {
@@ -752,5 +757,39 @@
 /* Force solid black background for Join section */
 section.join-section,
 .join-section .container {
-  background-color: #000000 !important;
+  background-color: #ffeb3b !important;
+}
+
+/* Join section content card on yellow background */
+.join-section .card {
+  background: rgba(0, 0, 0, 0.85);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.join-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-apply {
+  display: inline-block;
+  padding: 14px 36px;
+  background: linear-gradient(180deg, #ffd000 0%, #fff34a 100%) !important;
+  color: #000000 !important;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px rgba(255, 193, 7, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-apply:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(255, 193, 7, 0.45), 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-apply:active {
+  transform: translateY(0) scale(0.98);
 }

@@ -13,7 +13,7 @@ function Coaches() {
     {
       id: 1,
       name: "Seifeldeen Ismail",
-      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756809009/IMG_2876_fuhh45.jpg",
+      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
       title: "Triathlon Coach & Professional Athlete",
       description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning because progress should be sustainable, not exhausting.",
       asCoach: [
@@ -51,12 +51,12 @@ function Coaches() {
         "Sports Nutrition Specialist",
         "First Aid & CPR certified"
       ],
-      philosophy: "My coaching philosophy centers around sustainable progress, injury prevention, and enjoying the journey. I believe in building strong foundations and gradually increasing intensity to achieve long-term success."
+      philosophy: "My coaching philosophy centers around sustainable progress, injury prevention, and enjoying the journey. I believe in building strong foundations and gradually increasing intensity to achieve long term success."
     },
     {
       id: 2,
       name: "Taher Hesham",
-      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756811956/Screenshot_2025-09-02_141216_phixaj.png",
+      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152258_qepspb.png",
       title: "Elite Triathlon Coach & Former Professional Athlete",
       description: "Specializing in high-performance training and race strategy, I help athletes push their limits while maintaining peak physical condition. My approach combines cutting-edge training methods with proven racing techniques.",
       asCoach: [
@@ -99,7 +99,7 @@ function Coaches() {
     {
       id: 3,
       name: "Rehab Hamdy",
-      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756811955/Screenshot_2025-09-02_141258_v88t3y.png",
+      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152308_wstwqm.png",
       title: "Women's Triathlon Specialist & Endurance Coach",
       description: "Dedicated to empowering women in triathlon, I create supportive training environments that build confidence and strength. My programs focus on building endurance while maintaining balance in life.",
       asCoach: [
@@ -243,7 +243,7 @@ function Coaches() {
                     <img 
                       src={coach.image} 
                       alt={coach.name}
-                      className="coach-image"
+                      className={`coach-image ${coach.name === 'Rehab Hamdy' ? 'offset-down no-white' : coach.name === 'Saif Al-Islam' ? 'offset-saif no-white' : ''}`}
                     />
                   ) : (
                     <div className="coach-image-placeholder">
@@ -320,7 +320,7 @@ function Coaches() {
                   <img 
                     src={selectedCoach.image} 
                     alt={selectedCoach.name}
-                    className="coach-modal-image"
+                    className={`coach-modal-image ${selectedCoach.name === 'Rehab Hamdy' ? 'no-white offset-down' : selectedCoach.name === 'Saif Al-Islam' ? 'no-white offset-saif' : ''}`}
                   />
                 ) : (
                   <div className="coach-modal-image-placeholder">

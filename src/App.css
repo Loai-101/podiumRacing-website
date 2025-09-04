@@ -314,7 +314,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
 /* Social Media Sidebar */
 .social-media-sidebar {
   position: fixed;
-  right: 20px;
+  left: 20px;
   top: 70%;
   transform: translateY(-50%);
   display: flex;
@@ -343,7 +343,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
 .social-icon-link:hover {
   background: #ffc107;
   color: #ffffff;
-  transform: translateX(-5px) scale(1.1);
+  transform: translateX(5px) scale(1.1);
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
@@ -358,7 +358,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
 /* Responsive Design for Social Media Sidebar */
 @media (max-width: 768px) {
   .social-media-sidebar {
-    right: 15px;
+    left: 15px;
     gap: 15px;
   }
   

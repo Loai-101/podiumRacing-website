@@ -181,7 +181,16 @@ function Home() {
               Ready to start your triathlon journey? Join Podium Racing Middle East and become part of a 
               community dedicated to excellence, performance, and continuous improvement.
             </p>
-
+            <div className="join-actions">
+              <a
+                href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-apply"
+              >
+                Apply to Join PRME
+              </a>
+            </div>
           </div>
         </div>
       </section>
