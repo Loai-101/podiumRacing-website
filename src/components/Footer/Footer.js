@@ -28,7 +28,12 @@ function Footer() {
             <div>
               <h4>Contact Info</h4>
               <div>
-                <p>Email: info@podiumracing.com</p>
+                <p>
+                  Email: 
+                  <a className="contact-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=pmiteam@pmi-me.net" target="_blank" rel="noopener noreferrer">
+                    pmiteam@pmi-me.net
+                  </a>
+                </p>
                 <p>Address: Road 4574, Block 745, Building 2486, Sanad 745</p>
                 <p>Phone: 1367 6757</p>
               </div>
