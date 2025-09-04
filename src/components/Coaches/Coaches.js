@@ -15,7 +15,7 @@ function Coaches() {
       name: "Seifeldeen Ismail",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756809009/IMG_2876_fuhh45.jpg",
       title: "Triathlon Coach & Professional Athlete",
-      description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
+      description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning because progress should be sustainable, not exhausting.",
       asCoach: [
         "Coached athletes to qualify for Ironman 70.3 World Championships",
         "Guided a leukemia survivor to complete 4x70.3 races and a full Ironman within two years",
