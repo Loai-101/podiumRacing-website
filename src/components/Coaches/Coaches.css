@@ -425,7 +425,7 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: #333333;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 2.5rem;
   padding: 2rem;
   background: linear-gradient(145deg, rgba(255, 193, 7, 0.05), rgba(255, 193, 7, 0.02));
@@ -434,8 +434,8 @@
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  letter-spacing: 0.02em;
-  word-spacing: 0.005em;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 .coach-modal-section {
