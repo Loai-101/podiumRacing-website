@@ -358,12 +358,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
 /* Responsive Design for Social Media Sidebar */
 @media (max-width: 768px) {
   .social-media-sidebar {
-    position: absolute; /* don't overlay the hero */
-    left: 15px;
-    gap: 15px;
-    top: calc(100vh + 32px); /* appear just below full-viewport hero */
-    bottom: auto;
-    transform: none;
+    display: none !important; /* hide floating icons on mobile; footer provides icons */
   }
   
   .social-icon-link {
