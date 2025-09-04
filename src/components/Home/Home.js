@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Home.css';
 
 function Home() {
+  const heroVideoRef = useRef(null);
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
@@ -38,6 +39,48 @@ function Home() {
     };
   }, []);
 
+  // Ensure hero background video resumes on return to tab/app (mobile Safari/Chrome)
+  useEffect(() => {
+    const videoEl = heroVideoRef.current;
+    if (!videoEl) return;
+
+    const tryPlay = () => {
+      if (videoEl.paused) {
+        const p = videoEl.play();
+        if (p && typeof p.then === 'function') {
+          p.catch(() => {});
+        }
+      }
+    };
+
+    // Initial attempt
+    tryPlay();
+
+    const onVisibility = () => {
+      if (!document.hidden) tryPlay();
+    };
+    const onPageShow = () => tryPlay();
+    const onFocus = () => tryPlay();
+    const onSuspend = () => tryPlay();
+    const onPause = () => setTimeout(tryPlay, 300);
+
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('pageshow', onPageShow);
+    window.addEventListener('focus', onFocus);
+    videoEl.addEventListener('suspend', onSuspend);
+    videoEl.addEventListener('pause', onPause);
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('pageshow', onPageShow);
+      window.removeEventListener('focus', onFocus);
+      if (videoEl) {
+        videoEl.removeEventListener('suspend', onSuspend);
+        videoEl.removeEventListener('pause', onPause);
+      }
+    };
+  }, []);
+
   return (
     <div className="main-content">
       <section className="hero home-hero">
@@ -47,6 +90,8 @@ function Home() {
               muted 
               loop 
               playsInline
+              preload="auto"
+              ref={heroVideoRef}
               className="hero-background-video-element"
             >
               <source src="https://res.cloudinary.com/dvybb2xnc/video/upload/v1756031097/WhatsApp_Video_2025-08-24_at_13.24.28_e40ad13c_zltmdf.mp4" type="video/mp4" />

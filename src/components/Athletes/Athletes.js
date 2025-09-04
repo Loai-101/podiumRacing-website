@@ -131,9 +131,13 @@ function Athletes() {
                 <div className="athlete-image-container">
                   {athlete.image ? (
                     <img 
-                      src={athlete.image} 
+                      src={athlete.image}
                       alt={athlete.name}
+                      loading="lazy"
+                      decoding="async"
                       className="athlete-image"
+                      srcSet={`${athlete.image}?w=300 300w, ${athlete.image}?w=600 600w, ${athlete.image}?w=900 900w`}
+                      sizes="(max-width: 768px) 300px, 400px"
                     />
                   ) : (
                     <div className="athlete-image-placeholder">
