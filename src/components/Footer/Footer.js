@@ -29,8 +29,8 @@ function Footer() {
               <h4>Contact Info</h4>
               <div>
                 <p>Email: info@podiumracing.com</p>
-                <p>Phone: (555) 123-4567</p>
-                <p>Address: 123 Racing Lane, Speed City</p>
+                <p>Address: Road 4574, Block 745, Building 2486, Sanad 745</p>
+                <p>Phone: 1367 6757</p>
               </div>
             </div>
           </div>
