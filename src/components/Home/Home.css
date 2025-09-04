@@ -710,3 +710,9 @@
     transform: translateY(0);
   }
 }
+
+/* Force solid black background for Join section */
+section.join-section,
+.join-section .container {
+  background-color: #000000 !important;
+}
