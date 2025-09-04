@@ -536,12 +536,27 @@
 .vision-section .card-content {
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: justify;
+  text-align: left;
+  text-align: left;
   margin-bottom: 1.5rem;
   position: relative;
   padding-left: 1rem;
   border-left: 3px solid rgba(255, 193, 7, 0.3);
   transition: all 0.3s ease;
+}
+
+/* Normalize spacing in vision text, including mobile */
+.vision-section .card-content {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+@media (max-width: 768px) {
+  .vision-section .card-content {
+    text-align: left;
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
 }
 
 .vision-section .card:hover .card-content {

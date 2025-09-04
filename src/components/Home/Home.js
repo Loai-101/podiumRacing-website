@@ -98,14 +98,14 @@ function Home() {
           <h2 className="section-title">VISION</h2>
           <div className="card">
             <p className="card-content">
-              At Podium Racing Middle East, our vision is to cultivate a team of high-performance athletes on 
-              the level of - junior, amateur, elite and professional throughout the region. By integrating world
-              class training methodologies from Podium Racing US, we strive to elevate the competitive 
+              At Podium Racing Middle East, our vision is to cultivate a team of high-performance athletes on
+              the level of junior, amateur, elite and professional throughout the region. By integrating world
+              class training methodologies from Podium Racing US, we strive to elevate the competitive
               standard in the Middle East, preparing athletes to excel on the international stage.
             </p>
             <p className="card-content">
-              Our commitment extends beyond performance—we aim to foster a culture of excellence, 
-              sportsmanship, and knowledge-sharing, ensuring that every athlete not only reaches their peak 
+              Our commitment extends beyond performance we aim to foster a culture of excellence,
+              sportsmanship, and knowledge sharing, ensuring that every athlete not only reaches their peak
               potential but also contributes to the growth and ethics of sports in the region.
             </p>
             <p className="card-content">
