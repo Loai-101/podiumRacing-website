@@ -1,25 +1,17 @@
 {
   "name": "Podium Racing Middle East",
   "short_name": "Podium Racing ME",
-  "description": "Professional triathlon coaching and training in the Middle East",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
+      "src": "https://res.cloudinary.com/dvybb2xnc/image/upload/v1753552171/ChatGPT_Image_Jul_26_2025_08_41_01_PM_svtphh.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "categories": ["sports", "health", "education"],
-  "lang": "en",
-  "dir": "ltr"
+  ]
 }
+
+
