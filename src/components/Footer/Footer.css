@@ -75,6 +75,30 @@
   flex-wrap: wrap;
 }
 
+/* Mobile-only social icons under pages */
+.footer-social {
+  display: none;
+  margin-top: 1rem;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.footer-social-link {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #ffc107;
+  color: #ffc107;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.footer-social-link:hover { background: #ffc107; color: #0a0a0a; transform: translateY(-2px); }
+
 .footer-link {
   color: #ffc107;
   text-decoration: none;
@@ -180,4 +204,6 @@
   .footer-content h4 {
     font-size: 1rem;
   }
+
+  .mobile-only { display: flex; }
 }

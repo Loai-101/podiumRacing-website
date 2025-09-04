@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp, FaWpforms } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -22,6 +23,24 @@ function Footer() {
                 <Link to="/coaches" className="footer-link">Coaches</Link>
                 <Link to="/athletes" className="footer-link">Athletes</Link>
                 <Link to="/about" className="footer-link">About Us</Link>
+              </div>
+              {/* Mobile-only social icons under pages */}
+              <div className="footer-social mobile-only">
+                <a href="https://www.instagram.com/podium_racing_me/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
+                  <FaInstagram />
+                </a>
+                <a href="https://www.facebook.com/PodiumRacingME" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
+                  <FaFacebook />
+                </a>
+                <a href="https://www.tiktok.com/@podium_racing_me" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
+                  <FaTiktok />
+                </a>
+                <a href="https://wa.me/97313676757?text=Hello%20Podium%20Racing%20ME" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="WhatsApp">
+                  <FaWhatsapp />
+                </a>
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Registration Form">
+                  <FaWpforms />
+                </a>
               </div>
             </div>
             
