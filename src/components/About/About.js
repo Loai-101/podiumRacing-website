@@ -86,6 +86,33 @@ function About() {
         </div>
       </section>
 
+      <section className="section contact-section">
+        <div className="container">
+          <div className="contact-content">
+            <h2 className="card-title">Contact Info</h2>
+            <div className="contact-details">
+              <p className="contact-item">
+                <strong>Email:</strong> 
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@podium-racing.me" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="contact-email"
+                >
+                  info@podium-racing.me
+                </a>
+              </p>
+              <p className="contact-item">
+                <strong>Address:</strong> Road 4574, Block 745, Building 2486, Sanad 745
+              </p>
+              <p className="contact-item">
+                <strong>Phone:</strong> 1367 6757
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

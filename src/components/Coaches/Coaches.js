@@ -15,172 +15,186 @@ function Coaches() {
       name: "Seifeldeen Ismail",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
       title: "Triathlon Coach & Professional Athlete",
-      description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning because progress should be sustainable, not exhausting.",
+      description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
       asCoach: [
         "Coached athletes to qualify for Ironman 70.3 World Championships",
-        "Guided a leukemia survivor to complete 4x70.3 races and a full Ironman within two years",
-        "Work with all levels, from beginners to elites"
+        "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
+        "Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful)"
       ],
       asAthlete: [
-        "Ironman 70.3 World Championship qualifier",
-        "Multiple Ironman 70.3 finishes",
-        "National triathlon champion"
+        "2024 Elite African Games (4th place)",
+        "2024 Elite Asian Triathlon Cup Champion",
+        "2022 Elite Arab Triathlon Champion",
+        "World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2",
+        "2x Ironman 70.3 Age-Group Podiums"
       ],
       achievements: [
-        "10+ years of coaching experience",
-        "Certified by USA Triathlon",
-        "Sports science degree holder"
+        "Elite international competition experience",
+        "Multiple championship titles",
+        "Top world and continental rankings"
       ],
       expertise: [
-        "Ironman training programs",
-        "Injury prevention",
-        "Performance optimization"
+        "Smart training methodologies",
+        "Injury prevention and health-first approach",
+        "Personalized planning and data-informed coaching"
       ],
       coachingExperience: [
         "Head coach at Podium Racing ME",
-        "Personal coach to elite athletes",
-        "Group training programs"
+        "Personal coach to elite athletes including Olympians",
+        "Group training programs for all levels"
       ],
       experience: [
-        "15+ years in triathlon",
-        "Former professional athlete",
-        "International competition experience"
+        "Elite international triathlon competitor",
+        "Multiple championship titles",
+        "World-class ranking achievements"
       ],
       certifications: [
-        "USA Triathlon Level 2 Coach",
-        "Sports Nutrition Specialist",
-        "First Aid & CPR certified"
+        "USA Triathlon Level I & Long Course Certified",
+        "TrainingPeaks Level 1",
+        "Basic Life Support & First Aid"
       ],
-      philosophy: "My coaching philosophy centers around sustainable progress, injury prevention, and enjoying the journey. I believe in building strong foundations and gradually increasing intensity to achieve long term success."
+      philosophy: "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
     },
     {
       id: 2,
       name: "Taher Hesham",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152258_qepspb.png",
-      title: "Elite Triathlon Coach & Former Professional Athlete",
-      description: "Specializing in high-performance training and race strategy, I help athletes push their limits while maintaining peak physical condition. My approach combines cutting-edge training methods with proven racing techniques.",
+      title: "Triathlon Coach",
+      description: "Taher Hesham is a highly skilled triathlon and fitness coach with extensive experience training children, adults, and professional athletes. Since 2020, he has coached at The Trimachine and Fitzone Egypt, guiding athletes to achieve their performance goals through structured training programs, injury prevention strategies, and race preparation.",
       asCoach: [
-        "Coached multiple Ironman finishers",
-        "Specialist in race day strategy",
-        "Expert in high-intensity training"
+        "Coached at The Trimachine and Fitzone Egypt since 2020",
+        "Guides athletes through structured training programs",
+        "Expert in injury prevention strategies and race preparation"
       ],
       asAthlete: [
-        "Former professional triathlete",
-        "Multiple Ironman finishes",
-        "Regional champion"
+        "20-time National Champion",
+        "2-time Arab Champion",
+        "Led team to 1st place in Army Championship"
       ],
       achievements: [
-        "8+ years coaching experience",
-        "Sports medicine background",
-        "Performance analysis expert"
+        "Former elite triathlete with firsthand competition experience",
+        "Expert knowledge of swim, bike, and run performance",
+        "Specialist in endurance training and race strategies"
       ],
       expertise: [
-        "High-intensity training",
-        "Race strategy",
-        "Performance testing"
+        "Structured training programs",
+        "Injury prevention strategies",
+        "Race preparation and endurance training"
       ],
       coachingExperience: [
-        "Senior coach at Podium Racing ME",
-        "Elite athlete development",
-        "Competition preparation"
+        "Coaching experience since 2020",
+        "Training children, adults, and professional athletes",
+        "Building strong endurance training culture"
       ],
       experience: [
-        "12+ years in triathlon",
-        "Professional racing background",
-        "International experience"
+        "Former elite triathlete",
+        "20-time National Champion",
+        "2-time Arab Champion"
       ],
       certifications: [
-        "Advanced coaching certification",
-        "Sports medicine degree",
-        "Performance analysis certified"
+        "Certified through TrainingPeaks",
+        "University-level sports science programs",
+        "Evidence-based coaching approach"
       ],
-      philosophy: "I focus on maximizing performance through intelligent training, proper recovery, and strategic race planning. Every athlete has unique potential that we can unlock together."
+      philosophy: "Combining evidence-based coaching with a passion for athlete development, I play a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential."
     },
     {
       id: 3,
       name: "Rehab Hamdy",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152308_wstwqm.png",
-      title: "Women's Triathlon Specialist & Endurance Coach",
-      description: "Dedicated to empowering women in triathlon, I create supportive training environments that build confidence and strength. My programs focus on building endurance while maintaining balance in life.",
+      title: "Triathlon Coach",
+      description: "Rehab Hamdy is a dedicated triathlon coach and former elite triathlete with extensive experience in both competitive racing and athlete development. Her journey in endurance sports began as a national-level swimmer, later transitioning into triathlon, where she made history as the first Arab woman to qualify for the Youth Olympic Games (2014). She went on to earn multiple podium finishes at the African Games, WTS Grand Final, and African Triathlon Championships.",
       asCoach: [
-        "Women's triathlon specialist",
-        "Beginner-friendly programs",
-        "Endurance building expert"
+        "Founded Root Multisport Academy in 2023",
+        "Coached at Stamina Tri Team, Apollo Sports, and AQUATICS Swimming Academy",
+        "Works with athletes of all levels, from beginners to elite competitors",
+        "Specializes in long-course triathlon coaching for Ironman, national, and international events"
       ],
       asAthlete: [
-        "Ironman 70.3 finisher",
-        "Women's age group champion",
-        "Endurance event specialist"
+        "First Arab woman to qualify for the Youth Olympic Games (2014)",
+        "Multiple podium finishes at African Games",
+        "Podium finishes at WTS Grand Final",
+        "African Triathlon Championships podium finisher",
+        "Former national-level swimmer"
       ],
       achievements: [
-        "6+ years coaching experience",
-        "Women's sports advocate",
-        "Community building expert"
+        "Historic achievement as first Arab woman Youth Olympic Games qualifier",
+        "Multiple international podium finishes",
+        "Successful transition from swimming to triathlon",
+        "Academy founder and team leader"
       ],
       expertise: [
-        "Women's specific training",
-        "Endurance development",
-        "Work-life balance"
+        "Swimming, cycling, and running performance training",
+        "Individualized training plans",
+        "Strategic performance profiling",
+        "Athlete race preparation"
       ],
       coachingExperience: [
-        "Women's program director",
-        "Community coach",
-        "Beginner mentor"
+        "Founded and leads Root Multisport Academy",
+        "Coached at multiple prestigious organizations",
+        "Mentored age-group and professional athletes",
+        "Structured training programs for international events"
       ],
       experience: [
-        "10+ years in triathlon",
-        "Women's sports background",
-        "Community leadership"
+        "Former elite triathlete with international competition experience",
+        "National-level swimming background",
+        "Multiple championship podium finishes",
+        "Academy leadership and team development"
       ],
       certifications: [
-        "Triathlon coaching certification",
-        "Women's fitness specialist",
-        "Community coaching certified"
+        "USAT Level 1 Certified",
+        "Training Peaks Level 2 Certified",
+        "Long-course triathlon coaching specialist"
       ],
-      philosophy: "I believe in creating inclusive, supportive environments where women can discover their strength and achieve their triathlon goals while maintaining balance in all aspects of life."
+      philosophy: "With expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes."
     },
     {
       id: 4,
-              name: "Saif Al-Islam",
+      name: "Saif Al-Islam",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756814471/Screenshot_2025-09-02_150057_ldlbwj.png",
-      title: "Youth Development & Technical Skills Coach",
-      description: "Passionate about developing the next generation of triathletes, I focus on building strong technical foundations and fostering a love for the sport. My programs emphasize skill development and gradual progression.",
+      title: "Triathlon Coach",
+      description: "Saif Al-Islam Al-Hammami is a triathlon coach with strong academic and professional qualifications in sports science. He holds an International Triathlon Coaching Certificate from South Korea, in addition to a specialized certification in athletics, physical preparation, and fitness coach.",
       asCoach: [
-        "Youth development specialist",
-        "Technical skills coach",
-        "Junior program director"
+        "Coach for the Tunisian National Triathlon Team",
+        "Athletics coach for the Military Sports Association",
+        "International triathlon referee",
+        "Extensive experience in coaching and officiating"
       ],
       asAthlete: [
-        "Former junior champion",
-        "Technical skills expert",
-        "Multi-sport athlete"
+        "Multiple national medals in athletics",
+        "Strong background in sports science",
+        "Professional qualifications in athletics and physical preparation"
       ],
       achievements: [
-        "5+ years coaching experience",
-        "Youth sports specialist",
-        "Technical training expert"
+        "International Triathlon Coaching Certificate from South Korea",
+        "Multiple national medals as athletics coach",
+        "International triathlon referee status",
+        "Current coach for Tunisian National Triathlon Team"
       ],
       expertise: [
-        "Youth development",
-        "Technical skills",
-        "Progressive training"
+        "Sports science and academic qualifications",
+        "Athletics coaching and physical preparation",
+        "International triathlon officiating",
+        "National team coaching"
       ],
       coachingExperience: [
-        "Junior program coach",
-        "Technical skills instructor",
-        "Youth mentor"
+        "Current coach for Tunisian National Triathlon Team",
+        "Athletics coach for Military Sports Association",
+        "International triathlon referee",
+        "Extensive coaching and officiating experience"
       ],
       experience: [
-        "8+ years in triathlon",
-        "Youth sports background",
-        "Technical training focus"
+        "Strong academic and professional sports science background",
+        "Multiple national medals in athletics coaching",
+        "International triathlon officiating experience",
+        "National team coaching experience"
       ],
       certifications: [
-        "Youth coaching certification",
-        "Technical skills instructor",
-        "Child safety certified"
+        "International Triathlon Coaching Certificate from South Korea",
+        "Specialized certification in athletics, physical preparation, and fitness coach",
+        "International triathlon referee certification"
       ],
-      philosophy: "I focus on building strong foundations through fun, engaging training that develops both physical skills and a lifelong love for triathlon. Every young athlete deserves to discover their potential."
+      philosophy: "With strong academic and professional qualifications in sports science, Saif brings extensive experience in coaching and officiating to help athletes achieve their goals through evidence-based training methods and international standards."
     }
   ];
 
@@ -274,7 +288,7 @@ function Coaches() {
                 <li><FaBicycle className="bike-icon" />Safety fundamentals</li>
                 <li><FaBicycle className="bike-icon" />Basic racing techniques</li>
                 <li><FaBicycle className="bike-icon" />Equipment familiarization</li>
-                <li><FaBicycle className="bike-icon" />Track etiquette</li>
+                <li><FaBicycle className="bike-icon" />Tips for a better technique</li>
               </ul>
             </div>
 

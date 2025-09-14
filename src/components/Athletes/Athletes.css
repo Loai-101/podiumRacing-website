@@ -486,6 +486,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+  text-decoration: none;
 }
 
 .join-button:hover {

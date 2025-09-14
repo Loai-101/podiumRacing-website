@@ -25,7 +25,7 @@ function Athletes() {
         "Sprint Distance: National record holder"
       ],
       experience: [
-        "10+ years in triathlon",
+        "Started triathlon in 2017",
         "International competition experience",
         "Professional racing background"
       ],
@@ -53,7 +53,7 @@ function Athletes() {
         "Olympic: 2h:04m"
       ],
       experience: [
-        "8+ years in triathlon",
+        "Started triathlon in 2016",
         "Multiple Ironman finishes",
         "Consistent age group performance"
       ],
@@ -192,7 +192,14 @@ function Athletes() {
               </ul>
             </div>
             <div style={{textAlign: 'center'}}>
-              <button className="join-button">Apply to Join PRME</button>
+              <a 
+                href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="join-button"
+              >
+                Apply to Join PRME
+              </a>
             </div>
           </div>
         </div>

@@ -107,7 +107,14 @@ function Home() {
             <span className="tagline-text">Join Our Tribe - We'll Take You from Try to Triathlete</span>
           </p>
           <div className="hero-buttons">
-            <a href="#join" className="btn">Join Our Tribe</a>
+            <a 
+              href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn"
+            >
+              Join Our Tribe
+            </a>
             <a href="/coaches" className="btn btn-secondary">Meet Our Coaches</a>
           </div>
         </div>
@@ -162,7 +169,7 @@ function Home() {
 
       <section className="section mission-section">
         <div className="container">
-          <h2 className="section-title">Our Mission</h2>
+          <h2 className="section-title">Mission</h2>
           <div className="card">
             <p className="card-content">
               At Podium Racing Middle East, our mission is to bridge the gap between athletes and top-tier 

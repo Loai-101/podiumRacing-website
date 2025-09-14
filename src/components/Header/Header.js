@@ -41,7 +41,14 @@ function Header() {
         </nav>
 
         <div className="header-actions">
-          <Link to="/athletes" className="btn">Join Us</Link>
+          <a 
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn"
+          >
+            Join Us
+          </a>
           <button className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
