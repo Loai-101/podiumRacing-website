@@ -9,6 +9,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
 import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp, FaWpforms } from 'react-icons/fa';
+import { Analytics } from '@vercel/analytics/react';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -66,6 +67,7 @@ function App() {
         </div>
         
         <Footer />
+        <Analytics />
       </div>
     </Router>
   );
