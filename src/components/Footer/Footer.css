@@ -13,6 +13,43 @@
   margin-bottom: 2rem;
 }
 
+/* Footer Social Media Icons */
+.footer-social-media {
+  display: none;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ffc107;
+  border-radius: 50%;
+  color: #ffc107;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+.footer-social-link:hover {
+  background: #ffc107;
+  color: #1a1a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+.footer-social-icon {
+  font-size: 1.2rem;
+}
+
 .footer-section h3,
 .footer-section h4 {
   color: #ffc107;
@@ -180,5 +217,19 @@
     width: 20px;
     height: 20px;
     font-size: 0.6rem;
+  }
+  
+  /* Show social media icons on mobile */
+  .footer-social-media {
+    display: flex;
+  }
+  
+  .footer-social-link {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .footer-social-icon {
+    font-size: 1.1rem;
   }
 }

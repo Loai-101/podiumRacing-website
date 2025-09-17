@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp, FaWpforms } from 'react-icons/fa';
 import './Footer.css';
 
 function Footer() {
@@ -24,6 +25,25 @@ function Footer() {
               <li><a href="/about">{getTranslation('footer.aboutUs', language)}</a></li>
             </ul>
           </div>
+        </div>
+        
+        {/* Mobile Social Media Icons */}
+        <div className="footer-social-media">
+          <a href="https://www.instagram.com/podium_racing_me/" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <FaInstagram className="footer-social-icon" />
+          </a>
+          <a href="https://www.facebook.com/PodiumRacingME" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <FaFacebook className="footer-social-icon" />
+          </a>
+          <a href="https://www.tiktok.com/@podium_racing_me" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <FaTiktok className="footer-social-icon" />
+          </a>
+          <a href="https://wa.me/97313676757?text=Hello%20Podium%20Racing%20ME" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <FaWhatsapp className="footer-social-icon" />
+          </a>
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <FaWpforms className="footer-social-icon" />
+          </a>
         </div>
         
         <div className="footer-bottom">

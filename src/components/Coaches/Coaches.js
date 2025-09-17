@@ -61,7 +61,7 @@ function Coaches() {
     {
       id: 4,
       name: getTranslation('coaches.coaches.saif.name', language),
-      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756814471/Screenshot_2025-09-02_150057_ldlbwj.png",
+      image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1758129767/IMG_6650_1_zeimch.jpg",
       title: getTranslation('coaches.coaches.saif.title', language),
       description: getTranslation('coaches.coaches.saif.description', language),
       asCoach: getTranslation('coaches.coaches.saif.asCoach', language),

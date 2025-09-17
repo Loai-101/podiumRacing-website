@@ -237,8 +237,8 @@
 
 .coach-image.offset-down { object-position: center 30%; }
 .coach-modal-image.offset-down { object-position: center 30%; }
-.coach-image.offset-saif { object-position: center 28%; }
-.coach-modal-image.offset-saif { object-position: center 28%; }
+.coach-image.offset-saif { object-position: center 20%; }
+.coach-modal-image.offset-saif { object-position: center 20%; }
 
 /* Remove any white matte by blending with dark bg */
 .no-white { background: transparent; }
