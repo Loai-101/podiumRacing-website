@@ -112,10 +112,6 @@
   position: relative;
 }
 
-/* Hide mobile language toggle on desktop */
-.mobile-language-toggle {
-  display: none;
-}
 
 /* Hide mobile menu language toggle on desktop */
 .mobile-menu-language-toggle {
@@ -232,37 +228,6 @@
     display: none;
   }
   
-  /* Mobile Language Toggle */
-  .mobile-language-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    padding: 0.4rem 0.6rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-right: 0.5rem;
-  }
-  
-  .mobile-language-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-1px);
-  }
-  
-  .mobile-language-icon {
-    font-size: 0.9rem;
-  }
-  
-  .mobile-language-text {
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
   
   /* Mobile Menu Language Toggle */
   .mobile-menu-language-toggle {

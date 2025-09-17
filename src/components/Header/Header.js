@@ -141,15 +141,6 @@ function Header() {
             )}
           </div>
           
-          {/* Mobile Language Toggle */}
-          <button 
-            className="mobile-language-toggle" 
-            onClick={toggleLanguageMenu}
-            aria-label="Toggle Language"
-          >
-            <FaGlobe className="mobile-language-icon" />
-            <span className="mobile-language-text">{language.toUpperCase()}</span>
-          </button>
           
           <button className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <span className="hamburger-line"></span>
