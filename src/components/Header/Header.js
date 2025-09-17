@@ -8,7 +8,7 @@ import './Header.css';
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
-  const { language, toggleLanguage, isRTL } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
   const languageToggleRef = useRef(null);
 
   const toggleMenu = () => {
@@ -75,6 +75,29 @@ function Header() {
               <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                 {getTranslation('nav.about', language)}
               </Link>
+            </li>
+            
+            {/* Mobile Language Toggle at Bottom of Menu */}
+            <li className="mobile-menu-language-toggle">
+              <div className="mobile-menu-language-section">
+                <span className="mobile-menu-language-label">
+                  {language === 'en' ? 'Language' : 'اللغة'}
+                </span>
+                <div className="mobile-menu-language-options">
+                  <button 
+                    className={`mobile-menu-language-btn ${language === 'en' ? 'active' : ''}`}
+                    onClick={() => handleLanguageChange('en')}
+                  >
+                    EN
+                  </button>
+                  <button 
+                    className={`mobile-menu-language-btn ${language === 'ar' ? 'active' : ''}`}
+                    onClick={() => handleLanguageChange('ar')}
+                  >
+                    AR
+                  </button>
+                </div>
+              </div>
             </li>
           </ul>
         </nav>
