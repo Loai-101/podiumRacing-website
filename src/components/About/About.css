@@ -22,7 +22,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 35%;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   filter: brightness(0.8);
   box-shadow: none;
@@ -252,6 +252,12 @@
   text-decoration: none;
 }
 
+.phone-number {
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+
 /* Section Titles Styling */
 .card-title {
   color: #0a0a0a;
@@ -387,6 +393,28 @@
   100% {
     transform: scale(1);
   }
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .hero-content {
+  text-align: center;
+}
+
+.rtl .card-title {
+  text-align: center;
+}
+
+.rtl .contact-content {
+  text-align: center;
+}
+
+.rtl .stat-item {
+  text-align: center;
 }
 
 /* Responsive Design */

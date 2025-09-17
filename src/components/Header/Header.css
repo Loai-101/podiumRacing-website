@@ -107,6 +107,80 @@
   gap: 1rem;
 }
 
+/* Language Toggle Styles */
+.language-toggle {
+  position: relative;
+}
+
+.language-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.language-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.language-icon {
+  font-size: 1rem;
+}
+
+.current-language {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 80px;
+  z-index: 1002;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.language-option {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.language-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.language-option.active {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  font-weight: 600;
+}
+
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
   .mobile-menu-toggle {
@@ -141,6 +215,10 @@
   }
   
   .header-actions .btn {
+    display: none;
+  }
+  
+  .language-toggle {
     display: none;
   }
   

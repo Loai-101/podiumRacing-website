@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { getTranslation } from '../../translations/translations';
 import './Home.css';
 
 function Home() {
+  const { language, isRTL } = useLanguage();
   const heroVideoRef = useRef(null);
   useEffect(() => {
     const observerOptions = {
@@ -82,7 +85,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
       <section className="hero home-hero">
         <div className="hero-background-video">
                       <video 
@@ -101,10 +104,10 @@ function Home() {
         <div className="hero-overlay"></div>
         <div className="container">
           <h1 className="hero-title">
-            PODIUM RACING <span className="middle-east-text">MIDDLE EAST</span>
+            {getTranslation('home.heroTitle', language)}
           </h1>
           <p className="hero-subtitle">
-            <span className="tagline-text">Join Our Tribe - We'll Take You from Try to Triathlete</span>
+            <span className="tagline-text">{getTranslation('home.heroSubtitle', language)}</span>
           </p>
           <div className="hero-buttons">
             <a 
@@ -113,55 +116,42 @@ function Home() {
               rel="noopener noreferrer" 
               className="btn"
             >
-              Join Our Tribe
+              {getTranslation('home.joinOurTribe', language)}
             </a>
-            <a href="/coaches" className="btn btn-secondary">Meet Our Coaches</a>
+            <a href="/coaches" className="btn btn-secondary">{getTranslation('home.meetOurCoaches', language)}</a>
           </div>
         </div>
       </section>
 
       <div className="moving-bar">
         <div className="moving-content">
-          <span>Push Your Limits – Own Every Mile</span>
-          <span>Train Hard – Shine Strong</span>
-          <span>One Step Today – A Giant Leap Tomorrow</span>
-          <span>From Sweat to Success – We've Got You</span>
-          <span>Dream Big – Race Bigger</span>
-          <span>Stronger Every Session – Closer Every Goal</span>
-          <span>Rise. Ride. Run. Repeat.</span>
-          <span>Turn Effort into Endurance</span>
-          <span>Your Journey – Our Mission</span>
-          <span>Built for Athletes – Driven by Passion</span>
-          <span>Push Your Limits – Own Every Mile</span>
-          <span>Train Hard – Shine Strong</span>
-          <span>One Step Today – A Giant Leap Tomorrow</span>
-          <span>From Sweat to Success – We've Got You</span>
-          <span>Dream Big – Race Bigger</span>
-          <span>Stronger Every Session – Closer Every Goal</span>
-          <span>Rise. Ride. Run. Repeat.</span>
-          <span>Turn Effort into Endurance</span>
-          <span>Your Journey – Our Mission</span>
-          <span>Built for Athletes – Driven by Passion</span>
+          {getTranslation('home.movingBar', language).map((text, index) => (
+            <span key={index}>{text}</span>
+          ))}
+          {getTranslation('home.movingBar', language).map((text, index) => (
+            <span key={`repeat-1-${index}`}>{text}</span>
+          ))}
+          {getTranslation('home.movingBar', language).map((text, index) => (
+            <span key={`repeat-2-${index}`}>{text}</span>
+          ))}
+          {getTranslation('home.movingBar', language).map((text, index) => (
+            <span key={`repeat-3-${index}`}>{text}</span>
+          ))}
         </div>
       </div>
 
       <section className="section vision-section">
         <div className="container">
-          <h2 className="section-title">VISION</h2>
+          <h2 className="section-title">{getTranslation('home.vision', language)}</h2>
           <div className="card">
             <p className="card-content">
-              At Podium Racing Middle East, our vision is to cultivate a team of high-performance athletes on
-              the level of junior, amateur, elite and professional throughout the region. By integrating world
-              class training methodologies from Podium Racing US, we strive to elevate the competitive
-              standard in the Middle East, preparing athletes to excel on the international stage.
+              {getTranslation('home.visionContent1', language)}
             </p>
             <p className="card-content">
-              Our commitment extends beyond performance we aim to foster a culture of excellence,
-              sportsmanship, and knowledge sharing, ensuring that every athlete not only reaches their peak
-              potential but also contributes to the growth and ethics of sports in the region.
+              {getTranslation('home.visionContent2', language)}
             </p>
             <p className="card-content">
-              <strong>Raising the bar. Shaping champions. Inspiring the future!</strong>
+              <strong>{getTranslation('home.visionContent3', language)}</strong>
             </p>
           </div>
         </div>
@@ -169,21 +159,16 @@ function Home() {
 
       <section className="section mission-section">
         <div className="container">
-          <h2 className="section-title">Mission</h2>
+          <h2 className="section-title">{getTranslation('home.mission', language)}</h2>
           <div className="card">
             <p className="card-content">
-              At Podium Racing Middle East, our mission is to bridge the gap between athletes and top-tier 
-              coaches across the Middle East. Whether you're seeking guidance in multi-sport disciplines or 
-              specialized training in swimming, cycling, or running, we connect you with the most qualified 
-              coaches to elevate your performance.
+              {getTranslation('home.missionContent1', language)}
             </p>
             <p className="card-content">
-              By partnering with expert coaches who follow the highest standards in sports science and training 
-              methodologies, we ensure that every athlete receives the tailored support they need to reach peak 
-              performance.
+              {getTranslation('home.missionContent2', language)}
             </p>
             <p className="card-content">
-              Our goal is simple: to empower you to become a high-performance athlete!
+              {getTranslation('home.missionContent3', language)}
             </p>
           </div>
         </div>
@@ -191,23 +176,23 @@ function Home() {
 
       <section className="section services-section">
         <div className="container">
-          <h2 className="section-title">What We Offer</h2>
+          <h2 className="section-title">{getTranslation('home.whatWeOffer', language)}</h2>
           <div className="grid grid-2">
             <div className="card">
-              <h3 className="card-title">Swim</h3>
-              <p className="card-content">Master the art of swimming with expert coaching</p>
+              <h3 className="card-title">{getTranslation('home.swim', language)}</h3>
+              <p className="card-content">{getTranslation('home.swimDesc', language)}</p>
             </div>
             <div className="card">
-              <h3 className="card-title">Bike</h3>
-              <p className="card-content">Develop cycling skills and endurance</p>
+              <h3 className="card-title">{getTranslation('home.bike', language)}</h3>
+              <p className="card-content">{getTranslation('home.bikeDesc', language)}</p>
             </div>
             <div className="card">
-              <h3 className="card-title">Run</h3>
-              <p className="card-content">Improve running technique and performance</p>
+              <h3 className="card-title">{getTranslation('home.run', language)}</h3>
+              <p className="card-content">{getTranslation('home.runDesc', language)}</p>
             </div>
             <div className="card">
-              <h3 className="card-title">Triathlon</h3>
-              <p className="card-content">Complete triathlon training and racing</p>
+              <h3 className="card-title">{getTranslation('home.triathlon', language)}</h3>
+              <p className="card-content">{getTranslation('home.triathlonDesc', language)}</p>
             </div>
           </div>
         </div>
@@ -217,21 +202,19 @@ function Home() {
         <div className="container">
           <div className="card">
             <blockquote className="inspiration-quote">
-              "Triathlon teaches us to challenge ourselves. It teaches us to push beyond where we thought we could go. 
-              It helps us to find out what we are made of. This is what we do. This is what it's all about."
+              "{getTranslation('home.quote', language)}"
             </blockquote>
-            <p className="quote-author">- Podium Racing Middle East</p>
+            <p className="quote-author">- {getTranslation('home.quoteAuthor', language)}</p>
           </div>
         </div>
       </section>
 
       <section className="section join-section" id="join">
         <div className="container">
-          <h2 className="section-title">Join Our Tribe</h2>
+          <h2 className="section-title">{getTranslation('home.joinOurTribeTitle', language)}</h2>
           <div className="card">
             <p className="card-content">
-              Ready to start your triathlon journey? Join Podium Racing Middle East and become part of a 
-              community dedicated to excellence, performance, and continuous improvement.
+              {getTranslation('home.joinContent', language)}
             </p>
             <div className="join-actions">
               <a
@@ -240,7 +223,7 @@ function Home() {
                 rel="noopener noreferrer"
                 className="btn btn-apply"
               >
-                Apply to Join PRME
+                {getTranslation('home.applyToJoin', language)}
               </a>
             </div>
           </div>

@@ -146,7 +146,7 @@
 .coach-card {
   background: #ffffff;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
   border: 2px solid rgba(255, 193, 7, 0.1);
   transition: all 0.3s ease;
@@ -156,6 +156,10 @@
   opacity: 0;
   animation: cardEntrance 1s ease-out forwards;
   overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .coach-card::before {
@@ -187,16 +191,17 @@
 }
 
 .coach-image-container {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
   display: flex;
   justify-content: center;
-  height: 220px; /* lock height so spacing below is consistent */
   align-items: center;
+  flex-shrink: 0;
 }
 
 .coach-image-placeholder {
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -218,8 +223,8 @@
 }
 
 .coach-image {
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
@@ -230,10 +235,10 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.coach-image.offset-down { transform: scale(1.1); object-position: center 30%; }
-.coach-modal-image.offset-down { transform: scale(1.1); object-position: center 30%; }
-.coach-image.offset-saif { transform: scale(1.08); object-position: center 28%; }
-.coach-modal-image.offset-saif { transform: scale(1.08); object-position: center 28%; }
+.coach-image.offset-down { object-position: center 30%; }
+.coach-modal-image.offset-down { object-position: center 30%; }
+.coach-image.offset-saif { object-position: center 28%; }
+.coach-modal-image.offset-saif { object-position: center 28%; }
 
 /* Remove any white matte by blending with dark bg */
 .no-white { background: transparent; }
@@ -246,12 +251,17 @@
 
 .coach-info {
   color: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .coach-name {
   font-size: 1.4rem;
   font-weight: 700;
-  margin: 0.9rem 0 0 0; /* space between image and name */
+  margin: 0;
   color: #0a0a0a;
   text-align: center;
   letter-spacing: 0.02em;
@@ -812,12 +822,28 @@
 
   .coach-card,
   .program-card {
-    padding: 1.5rem;
+    padding: 0.5rem;
+    min-height: 320px;
   }
   
   .coach-name,
   .program-title {
     font-size: 1.3rem;
+  }
+  
+  .coach-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .coach-image-placeholder {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .coach-image-container {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
   }
 
   .coach-modal {
@@ -835,7 +861,64 @@
   }
 
   .coach-image-placeholder {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .hero-content {
+  text-align: center;
+}
+
+.rtl .section-title {
+  text-align: center;
+}
+
+.rtl .program-title {
+  text-align: center;
+}
+
+.rtl .program-description {
+  text-align: right;
+}
+
+.rtl .coach-modal-section h4 {
+  text-align: right;
+}
+
+.rtl .coach-modal-section ul {
+  text-align: right;
+}
+
+.rtl .coach-modal-section li {
+  text-align: right;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.rtl .bike-icon {
+  order: 2;
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.rtl .coach-modal-section li {
+  unicode-bidi: isolate;
+  direction: ltr;
+  text-align: right;
+}
+
+.rtl .coach-modal-section li * {
+  unicode-bidi: normal;
+  direction: ltr;
+}
+
+.rtl .coach-modal-description {
+  text-align: right;
 }

@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
 /* Main Content */
 .main-content {
   margin-top: 80px;
-  min-height: calc(100vh - 80px);
+  background: #0a0a0a;
 }
 
 /* Section Styles */

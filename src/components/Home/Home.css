@@ -43,6 +43,16 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  background: linear-gradient(45deg, #ffc107, #ffeb3b, #ff6b9d, #ffeb3b, #ffc107);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out, gradientShift 4s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
@@ -799,4 +809,72 @@ section.join-section,
 
 .btn-apply:active {
   transform: translateY(0) scale(0.98);
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .hero-title {
+  text-align: center;
+}
+
+.rtl .hero-subtitle {
+  text-align: center;
+}
+
+.rtl .section-title {
+  text-align: center;
+}
+
+.rtl .card-title {
+  text-align: center;
+}
+
+.rtl .card-content {
+  text-align: right;
+}
+
+.rtl .inspiration-quote {
+  text-align: center;
+}
+
+.rtl .quote-author {
+  text-align: center;
+}
+
+.rtl .join-actions {
+  text-align: center;
+}
+
+.rtl .hero-buttons {
+  text-align: center;
+}
+
+/* RTL Moving Bar Animation */
+.rtl .moving-content {
+  animation: moveRight 45s linear infinite;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

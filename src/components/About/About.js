@@ -1,13 +1,17 @@
 import React from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { getTranslation } from '../../translations/translations';
 import './About.css';
 
 function About() {
+  const { language, isRTL } = useLanguage();
+
   return (
-    <div className="main-content">
+    <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
       <section className="hero about-hero">
         <div className="hero-background">
           <img 
-            src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1756978986/Screenshot_2025-09-04_124254_ln9v82.png" 
+            src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1758128388/00_4_lxpotu.png" 
             alt="About Podium Racing Middle East" 
             className="hero-image"
           />
@@ -15,9 +19,9 @@ function About() {
         </div>
         <div className="container hero-content">
           <div className="hero-text">
-            <h1 className="hero-title">About PRME</h1>
+            <h1 className="hero-title">{getTranslation('about.heroTitle', language)}</h1>
             <p className="hero-subtitle">
-              Connecting athletes with expert coaches across the Middle East
+              {getTranslation('about.heroSubtitle', language)}
             </p>
           </div>
         </div>
@@ -26,36 +30,30 @@ function About() {
       <section className="section about-content">
         <div className="container">
           <div className="about-text-section">
-            <h2 className="card-title">Our Story</h2>
+            <h2 className="card-title">{getTranslation('about.ourStory', language)}</h2>
             <p className="card-content">
-              Podium Racing Team is an international professional triathlon team, featuring seven 
-              Olympians including Leo Bergere (who took bronze in Paris), incredible young talent and raw 
-              power to fire them to the Teams title.
+              {getTranslation('about.ourStoryContent1', language)}
             </p>
             <p className="card-content">
-              Podium Racing Founder, John Anthony, said: "This international roster is composed of the best 
-              athletes in our sport while also giving next generation athletes like Fanni Szalai and John Reed 
-              the opportunity to compete at the highest level. With Tim Don's leadership, we're bullish about 
-              this season."
+              {getTranslation('about.ourStoryContent2', language)}
             </p>
             <p className="card-content">
-              From that, it came the idea to expand this work in the middle east but in a different way 
-              fulfilling the need of the middle east sport industry.
+              {getTranslation('about.ourStoryContent3', language)}
             </p>
           </div>
           
           <div className="about-stats">
             <div className="stat-item">
               <h3 className="stat-number">7</h3>
-              <p className="stat-label">Olympians</p>
+              <p className="stat-label">{getTranslation('about.olympians', language)}</p>
             </div>
             <div className="stat-item">
-              <h3 className="stat-number">International</h3>
-              <p className="stat-label">Professional Team</p>
+              <h3 className="stat-number">{getTranslation('about.international', language)}</h3>
+              <p className="stat-label">{getTranslation('about.professionalTeam', language)}</p>
             </div>
             <div className="stat-item">
-              <h3 className="stat-number">Middle East</h3>
-              <p className="stat-label">Expansion</p>
+              <h3 className="stat-number">{getTranslation('about.middleEast', language)}</h3>
+              <p className="stat-label">{getTranslation('about.expansion', language)}</p>
             </div>
           </div>
         </div>
@@ -64,23 +62,18 @@ function About() {
       <section className="section platform-section">
         <div className="container">
           <div className="platform-content">
-            <h2 className="card-title">Our Platform</h2>
+            <h2 className="card-title">{getTranslation('about.ourPlatform', language)}</h2>
             <p className="card-content">
-              Podium Racing Middle East is an online coaching platform that connects athletes to expert 
-              coaches in the sports of <strong>SWIM, BIKE, RUN and Triathlon</strong>.
+              {getTranslation('about.platformContent1', language)}
             </p>
             <p className="card-content">
-              As it's one of the main challenges that facing the athletes in the middle east, 
-              supporting the athletes by this idea is the main part of our mission.
+              {getTranslation('about.platformContent2', language)}
             </p>
             <p className="card-content">
-              Inspired by years of experience in the sport of triathlon of our team in Podium Racing Middle 
-              East, we will have the most expert sports coaches that you can choose and be connected with to let 
-              them guide you in your Sports journey.
+              {getTranslation('about.platformContent3', language)}
             </p>
             <p className="card-content">
-              As an age grouper or elite or even professional, we will keep expanding in the ME till we reach 
-              a high level of support to all the athletes we can reach!!!
+              {getTranslation('about.platformContent4', language)}
             </p>
           </div>
         </div>
@@ -89,10 +82,10 @@ function About() {
       <section className="section contact-section">
         <div className="container">
           <div className="contact-content">
-            <h2 className="card-title">Contact Info</h2>
+            <h2 className="card-title">{getTranslation('about.contactInfo', language)}</h2>
             <div className="contact-details">
               <p className="contact-item">
-                <strong>Email:</strong> 
+                <strong>{getTranslation('about.email', language)}</strong> 
                 <a 
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=info@podium-racing.me" 
                   target="_blank" 
@@ -103,10 +96,10 @@ function About() {
                 </a>
               </p>
               <p className="contact-item">
-                <strong>Address:</strong> Road 4574, Block 745, Building 2486, Sanad 745
+                <strong>{getTranslation('about.address', language)}</strong> {getTranslation('about.addressValue', language)}
               </p>
               <p className="contact-item">
-                <strong>Phone:</strong> 1367 6757
+                <strong>{getTranslation('about.phone', language)}</strong> <span className="phone-number">1367 6757</span>
               </p>
             </div>
           </div>

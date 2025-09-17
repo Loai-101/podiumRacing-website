@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { getTranslation } from '../../translations/translations';
 import './Coaches.css';
 import { FaBicycle } from 'react-icons/fa';
 
 function Coaches() {
+  const { language, isRTL } = useLanguage();
   const [selectedCoach, setSelectedCoach] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [animatedCards, setAnimatedCards] = useState(false);
@@ -12,189 +15,63 @@ function Coaches() {
   const coaches = [
     {
       id: 1,
-      name: "Seifeldeen Ismail",
+      name: getTranslation('coaches.coaches.seifeldeen.name', language),
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
-      title: "Triathlon Coach & Professional Athlete",
-      description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
-      asCoach: [
-        "Coached athletes to qualify for Ironman 70.3 World Championships",
-        "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
-        "Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful)"
-      ],
-      asAthlete: [
-        "2024 Elite African Games (4th place)",
-        "2024 Elite Asian Triathlon Cup Champion",
-        "2022 Elite Arab Triathlon Champion",
-        "World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2",
-        "2x Ironman 70.3 Age-Group Podiums"
-      ],
-      achievements: [
-        "Elite international competition experience",
-        "Multiple championship titles",
-        "Top world and continental rankings"
-      ],
-      expertise: [
-        "Smart training methodologies",
-        "Injury prevention and health-first approach",
-        "Personalized planning and data-informed coaching"
-      ],
-      coachingExperience: [
-        "Head coach at Podium Racing ME",
-        "Personal coach to elite athletes including Olympians",
-        "Group training programs for all levels"
-      ],
-      experience: [
-        "Elite international triathlon competitor",
-        "Multiple championship titles",
-        "World-class ranking achievements"
-      ],
-      certifications: [
-        "USA Triathlon Level I & Long Course Certified",
-        "TrainingPeaks Level 1",
-        "Basic Life Support & First Aid"
-      ],
-      philosophy: "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
+      title: getTranslation('coaches.coaches.seifeldeen.title', language),
+      description: getTranslation('coaches.coaches.seifeldeen.description', language),
+      asCoach: getTranslation('coaches.coaches.seifeldeen.asCoach', language),
+      asAthlete: getTranslation('coaches.coaches.seifeldeen.asAthlete', language),
+      achievements: getTranslation('coaches.coaches.seifeldeen.achievements', language),
+      expertise: getTranslation('coaches.coaches.seifeldeen.expertise', language),
+      coachingExperience: getTranslation('coaches.coaches.seifeldeen.coachingExperience', language),
+      experience: getTranslation('coaches.coaches.seifeldeen.experience', language),
+      certifications: getTranslation('coaches.coaches.seifeldeen.certifications', language),
+      philosophy: getTranslation('coaches.coaches.seifeldeen.philosophy', language)
     },
     {
       id: 2,
-      name: "Taher Hesham",
+      name: getTranslation('coaches.coaches.taher.name', language),
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152258_qepspb.png",
-      title: "Triathlon Coach",
-      description: "Taher Hesham is a highly skilled triathlon and fitness coach with extensive experience training children, adults, and professional athletes. Since 2020, he has coached at The Trimachine and Fitzone Egypt, guiding athletes to achieve their performance goals through structured training programs, injury prevention strategies, and race preparation.",
-      asCoach: [
-        "Coached at The Trimachine and Fitzone Egypt since 2020",
-        "Guides athletes through structured training programs",
-        "Expert in injury prevention strategies and race preparation"
-      ],
-      asAthlete: [
-        "20-time National Champion",
-        "2-time Arab Champion",
-        "Led team to 1st place in Army Championship"
-      ],
-      achievements: [
-        "Former elite triathlete with firsthand competition experience",
-        "Expert knowledge of swim, bike, and run performance",
-        "Specialist in endurance training and race strategies"
-      ],
-      expertise: [
-        "Structured training programs",
-        "Injury prevention strategies",
-        "Race preparation and endurance training"
-      ],
-      coachingExperience: [
-        "Coaching experience since 2020",
-        "Training children, adults, and professional athletes",
-        "Building strong endurance training culture"
-      ],
-      experience: [
-        "Former elite triathlete",
-        "20-time National Champion",
-        "2-time Arab Champion"
-      ],
-      certifications: [
-        "Certified through TrainingPeaks",
-        "University-level sports science programs",
-        "Evidence-based coaching approach"
-      ],
-      philosophy: "Combining evidence-based coaching with a passion for athlete development, I play a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential."
+      title: getTranslation('coaches.coaches.taher.title', language),
+      description: getTranslation('coaches.coaches.taher.description', language),
+      asCoach: getTranslation('coaches.coaches.taher.asCoach', language),
+      asAthlete: getTranslation('coaches.coaches.taher.asAthlete', language),
+      achievements: getTranslation('coaches.coaches.taher.achievements', language),
+      expertise: getTranslation('coaches.coaches.taher.expertise', language),
+      coachingExperience: getTranslation('coaches.coaches.taher.coachingExperience', language),
+      experience: getTranslation('coaches.coaches.taher.experience', language),
+      certifications: getTranslation('coaches.coaches.taher.certifications', language),
+      philosophy: getTranslation('coaches.coaches.taher.philosophy', language)
     },
     {
       id: 3,
-      name: "Rehab Hamdy",
+      name: getTranslation('coaches.coaches.rehab.name', language),
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152308_wstwqm.png",
-      title: "Triathlon Coach",
-      description: "Rehab Hamdy is a dedicated triathlon coach and former elite triathlete with extensive experience in both competitive racing and athlete development. Her journey in endurance sports began as a national-level swimmer, later transitioning into triathlon, where she made history as the first Arab woman to qualify for the Youth Olympic Games (2014). She went on to earn multiple podium finishes at the African Games, WTS Grand Final, and African Triathlon Championships.",
-      asCoach: [
-        "Founded Root Multisport Academy in 2023",
-        "Coached at Stamina Tri Team, Apollo Sports, and AQUATICS Swimming Academy",
-        "Works with athletes of all levels, from beginners to elite competitors",
-        "Specializes in long-course triathlon coaching for Ironman, national, and international events"
-      ],
-      asAthlete: [
-        "First Arab woman to qualify for the Youth Olympic Games (2014)",
-        "Multiple podium finishes at African Games",
-        "Podium finishes at WTS Grand Final",
-        "African Triathlon Championships podium finisher",
-        "Former national-level swimmer"
-      ],
-      achievements: [
-        "Historic achievement as first Arab woman Youth Olympic Games qualifier",
-        "Multiple international podium finishes",
-        "Successful transition from swimming to triathlon",
-        "Academy founder and team leader"
-      ],
-      expertise: [
-        "Swimming, cycling, and running performance training",
-        "Individualized training plans",
-        "Strategic performance profiling",
-        "Athlete race preparation"
-      ],
-      coachingExperience: [
-        "Founded and leads Root Multisport Academy",
-        "Coached at multiple prestigious organizations",
-        "Mentored age-group and professional athletes",
-        "Structured training programs for international events"
-      ],
-      experience: [
-        "Former elite triathlete with international competition experience",
-        "National-level swimming background",
-        "Multiple championship podium finishes",
-        "Academy leadership and team development"
-      ],
-      certifications: [
-        "USAT Level 1 Certified",
-        "Training Peaks Level 2 Certified",
-        "Long-course triathlon coaching specialist"
-      ],
-      philosophy: "With expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes."
+      title: getTranslation('coaches.coaches.rehab.title', language),
+      description: getTranslation('coaches.coaches.rehab.description', language),
+      asCoach: getTranslation('coaches.coaches.rehab.asCoach', language),
+      asAthlete: getTranslation('coaches.coaches.rehab.asAthlete', language),
+      achievements: getTranslation('coaches.coaches.rehab.achievements', language),
+      expertise: getTranslation('coaches.coaches.rehab.expertise', language),
+      coachingExperience: getTranslation('coaches.coaches.rehab.coachingExperience', language),
+      experience: getTranslation('coaches.coaches.rehab.experience', language),
+      certifications: getTranslation('coaches.coaches.rehab.certifications', language),
+      philosophy: getTranslation('coaches.coaches.rehab.philosophy', language)
     },
     {
       id: 4,
-      name: "Saif Al-Islam",
+      name: getTranslation('coaches.coaches.saif.name', language),
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756814471/Screenshot_2025-09-02_150057_ldlbwj.png",
-      title: "Triathlon Coach",
-      description: "Saif Al-Islam Al-Hammami is a triathlon coach with strong academic and professional qualifications in sports science. He holds an International Triathlon Coaching Certificate from South Korea, in addition to a specialized certification in athletics, physical preparation, and fitness coach.",
-      asCoach: [
-        "Coach for the Tunisian National Triathlon Team",
-        "Athletics coach for the Military Sports Association",
-        "International triathlon referee",
-        "Extensive experience in coaching and officiating"
-      ],
-      asAthlete: [
-        "Multiple national medals in athletics",
-        "Strong background in sports science",
-        "Professional qualifications in athletics and physical preparation"
-      ],
-      achievements: [
-        "International Triathlon Coaching Certificate from South Korea",
-        "Multiple national medals as athletics coach",
-        "International triathlon referee status",
-        "Current coach for Tunisian National Triathlon Team"
-      ],
-      expertise: [
-        "Sports science and academic qualifications",
-        "Athletics coaching and physical preparation",
-        "International triathlon officiating",
-        "National team coaching"
-      ],
-      coachingExperience: [
-        "Current coach for Tunisian National Triathlon Team",
-        "Athletics coach for Military Sports Association",
-        "International triathlon referee",
-        "Extensive coaching and officiating experience"
-      ],
-      experience: [
-        "Strong academic and professional sports science background",
-        "Multiple national medals in athletics coaching",
-        "International triathlon officiating experience",
-        "National team coaching experience"
-      ],
-      certifications: [
-        "International Triathlon Coaching Certificate from South Korea",
-        "Specialized certification in athletics, physical preparation, and fitness coach",
-        "International triathlon referee certification"
-      ],
-      philosophy: "With strong academic and professional qualifications in sports science, Saif brings extensive experience in coaching and officiating to help athletes achieve their goals through evidence-based training methods and international standards."
+      title: getTranslation('coaches.coaches.saif.title', language),
+      description: getTranslation('coaches.coaches.saif.description', language),
+      asCoach: getTranslation('coaches.coaches.saif.asCoach', language),
+      asAthlete: getTranslation('coaches.coaches.saif.asAthlete', language),
+      achievements: getTranslation('coaches.coaches.saif.achievements', language),
+      expertise: getTranslation('coaches.coaches.saif.expertise', language),
+      coachingExperience: getTranslation('coaches.coaches.saif.coachingExperience', language),
+      experience: getTranslation('coaches.coaches.saif.experience', language),
+      certifications: getTranslation('coaches.coaches.saif.certifications', language),
+      philosophy: getTranslation('coaches.coaches.saif.philosophy', language)
     }
   ];
 
@@ -227,11 +104,11 @@ function Coaches() {
   }, [animatedCards]);
 
   return (
-    <div className="main-content">
+    <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
       <section className="hero coaches-hero">
         <div className="hero-background">
           <img 
-            src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1756975044/Screenshot_2025-09-04_113709_yp8tkj.png" 
+            src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1758128388/00_9_yde3rj.png" 
             alt="Podium Racing ME 2025 Team" 
             className="hero-image"
           />
@@ -239,9 +116,9 @@ function Coaches() {
         </div>
         <div className="container hero-content">
           <div className="hero-text">
-            <h1 className="hero-title">Our Coaches</h1>
+            <h1 className="hero-title">{getTranslation('coaches.heroTitle', language)}</h1>
             <p className="hero-subtitle">
-              Meet our world-class coaching team dedicated to your triathlon success
+              {getTranslation('coaches.heroSubtitle', language)}
             </p>
           </div>
         </div>
@@ -257,7 +134,7 @@ function Coaches() {
                     <img 
                       src={coach.image} 
                       alt={coach.name}
-                      className={`coach-image ${coach.name === 'Rehab Hamdy' ? 'offset-down no-white' : coach.name === 'Saif Al-Islam' ? 'offset-saif no-white' : ''}`}
+                      className={`coach-image ${coach.id === 3 ? 'offset-down no-white' : coach.id === 4 ? 'offset-saif no-white' : ''}`}
                     />
                   ) : (
                     <div className="coach-image-placeholder">
@@ -276,47 +153,44 @@ function Coaches() {
 
       <section className="section coaching-programs" ref={programsRef}>
         <div className="container">
-          <h2 className="section-title">Coaching Programs</h2>
+          <h2 className="section-title">{getTranslation('coaches.coachingPrograms', language)}</h2>
           <div className="grid grid-3">
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">Beginner Program</h3>
+              <h3 className="program-title">{getTranslation('coaches.beginnerProgram', language)}</h3>
               <p className="program-description">
-                Perfect for those new to racing. Learn fundamentals, safety protocols, 
-                and basic racing techniques.
+                {getTranslation('coaches.beginnerDescription', language)}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />Safety fundamentals</li>
-                <li><FaBicycle className="bike-icon" />Basic racing techniques</li>
-                <li><FaBicycle className="bike-icon" />Equipment familiarization</li>
-                <li><FaBicycle className="bike-icon" />Tips for a better technique</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.safetyFundamentals', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.basicRacingTechniques', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.equipmentFamiliarization', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.tipsForBetterTechnique', language)}</li>
               </ul>
             </div>
 
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">Intermediate Program</h3>
+              <h3 className="program-title">{getTranslation('coaches.intermediateProgram', language)}</h3>
               <p className="program-description">
-                For experienced racers looking to improve skills and performance 
-                on the track.
+                {getTranslation('coaches.intermediateDescription', language)}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />Advanced techniques</li>
-                <li><FaBicycle className="bike-icon" />Performance optimization</li>
-                <li><FaBicycle className="bike-icon" />Strategy development</li>
-                <li><FaBicycle className="bike-icon" />Competition preparation</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedTechniques', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.performanceOptimization', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.strategyDevelopment', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.competitionPreparation', language)}</li>
               </ul>
             </div>
 
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">Elite Program</h3>
+              <h3 className="program-title">{getTranslation('coaches.eliteProgram', language)}</h3>
               <p className="program-description">
-                Intensive training for competitive racers aiming for professional 
-                racing careers.
+                {getTranslation('coaches.eliteDescription', language)}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />Professional techniques</li>
-                <li><FaBicycle className="bike-icon" />Mental conditioning</li>
-                <li><FaBicycle className="bike-icon" />Advanced strategy</li>
-                <li><FaBicycle className="bike-icon" />Career development</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.professionalTechniques', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.mentalConditioning', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedStrategy', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.careerDevelopment', language)}</li>
               </ul>
             </div>
           </div>
@@ -334,7 +208,7 @@ function Coaches() {
                   <img 
                     src={selectedCoach.image} 
                     alt={selectedCoach.name}
-                    className={`coach-modal-image ${selectedCoach.name === 'Rehab Hamdy' ? 'no-white offset-down' : selectedCoach.name === 'Saif Al-Islam' ? 'no-white offset-saif' : ''}`}
+                    className={`coach-modal-image ${selectedCoach.id === 3 ? 'no-white offset-down' : selectedCoach.id === 4 ? 'no-white offset-saif' : ''}`}
                   />
                 ) : (
                   <div className="coach-modal-image-placeholder">
@@ -349,7 +223,7 @@ function Coaches() {
                 
                 {selectedCoach.asCoach && (
                   <div className="coach-modal-section">
-                    <h4>As a Coach:</h4>
+                    <h4>{getTranslation('coaches.asACoach', language)}</h4>
                     <ul>
                       {selectedCoach.asCoach.map((item, index) => (
                         <li key={index}>
@@ -363,7 +237,7 @@ function Coaches() {
 
                 {selectedCoach.asAthlete && (
                   <div className="coach-modal-section">
-                    <h4>As an Athlete:</h4>
+                    <h4>{getTranslation('coaches.asAnAthlete', language)}</h4>
                     <ul>
                       {selectedCoach.asAthlete.map((item, index) => (
                         <li key={index}>
@@ -377,7 +251,7 @@ function Coaches() {
 
                 {selectedCoach.achievements && (
                   <div className="coach-modal-section">
-                    <h4>Achievements:</h4>
+                    <h4>{getTranslation('coaches.achievements', language)}</h4>
                     <ul>
                       {selectedCoach.achievements.map((item, index) => (
                         <li key={index}>
@@ -391,7 +265,7 @@ function Coaches() {
 
                 {selectedCoach.expertise && (
                   <div className="coach-modal-section">
-                    <h4>Expertise:</h4>
+                    <h4>{getTranslation('coaches.expertise', language)}</h4>
                     <ul>
                       {selectedCoach.expertise.map((item, index) => (
                         <li key={index}>
@@ -405,7 +279,7 @@ function Coaches() {
 
                 {selectedCoach.coachingExperience && (
                   <div className="coach-modal-section">
-                    <h4>Coaching Experience:</h4>
+                    <h4>{getTranslation('coaches.coachingExperience', language)}</h4>
                     <ul>
                       {selectedCoach.coachingExperience.map((item, index) => (
                         <li key={index}>
@@ -419,7 +293,7 @@ function Coaches() {
 
                 {selectedCoach.experience && (
                   <div className="coach-modal-section">
-                    <h4>Experience:</h4>
+                    <h4>{getTranslation('coaches.experience', language)}</h4>
                     <ul>
                       {selectedCoach.experience.map((item, index) => (
                         <li key={index}>
@@ -433,7 +307,7 @@ function Coaches() {
 
                 {selectedCoach.certifications && (
                   <div className="coach-modal-section">
-                    <h4>Certifications:</h4>
+                    <h4>{getTranslation('coaches.certifications', language)}</h4>
                     <ul>
                       {selectedCoach.certifications.map((item, index) => (
                         <li key={index}>
@@ -447,7 +321,7 @@ function Coaches() {
 
                 {selectedCoach.philosophy && (
                   <div className="coach-modal-section">
-                    <h4>My Philosophy:</h4>
+                    <h4>{getTranslation('coaches.myPhilosophy', language)}</h4>
                     <p className="coach-modal-description">{selectedCoach.philosophy}</p>
                   </div>
                 )}

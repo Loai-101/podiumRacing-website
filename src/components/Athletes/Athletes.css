@@ -1,6 +1,45 @@
 
 /* Athletes Page Styles - Dark Theme */
 
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .athlete-modal-section {
+  border-left: none;
+  border-right: 5px solid #ffc107;
+  text-align: right;
+}
+
+.rtl .athlete-modal-section h4 {
+  text-align: right;
+}
+
+.rtl .athlete-modal-section li {
+  flex-direction: row-reverse;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.rtl .bike-icon {
+  order: 2;
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.rtl .athlete-modal-section li {
+  unicode-bidi: isolate;
+  direction: ltr;
+  text-align: right;
+}
+
+.rtl .athlete-modal-section li * {
+  unicode-bidi: normal;
+  direction: ltr;
+}
+
 .athletes-hero {
   position: relative;
   overflow: hidden;
@@ -301,9 +340,9 @@
   object-position: center 50%;
 }
 
-/* Specific positioning for MALIK ALI's modal image */
-.athlete-modal-image[alt="MALIK ALI"] {
-  object-position: center 5%;
+/* Specific positioning for MALIK ALI's modal image - using class selector for stability */
+.malik-ali-image {
+  object-position: center 5% !important;
 }
 
 .athlete-modal-image-placeholder {
