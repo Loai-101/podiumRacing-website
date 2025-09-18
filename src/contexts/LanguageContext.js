@@ -14,7 +14,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // Check localStorage for saved language preference
     const savedLanguage = localStorage.getItem('podium-racing-language');
-    return savedLanguage || 'en';
+    return savedLanguage || 'ar';
   });
 
   const [isRTL, setIsRTL] = useState(language === 'ar');
