@@ -1,4 +1,4 @@
-import { getTranslation } from '../../translations/translations';
+// import { getTranslation } from '../../translations/translations';
 
 export const getSEOConfig = (page, language = 'en') => {
   const baseUrl = 'https://podiumracing-me.vercel.app';
