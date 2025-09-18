@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
-import SEO from '../SEO/SEO';
-import { getSEOConfig } from '../SEO/seoConfig';
+// import SEO from '../SEO/SEO';
+// import { getSEOConfig } from '../SEO/seoConfig';
 import './Coaches.css';
 import { FaBicycle } from 'react-icons/fa';
 
 function Coaches() {
   const { language, isRTL } = useLanguage();
   const [selectedCoach, setSelectedCoach] = useState(null);
-  const seoConfig = getSEOConfig('coaches', language);
+  // const seoConfig = getSEOConfig('coaches', language);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [animatedCards, setAnimatedCards] = useState(false);
   const programsRef = useRef(null);
@@ -108,7 +108,7 @@ function Coaches() {
 
   return (
     <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
-      <SEO {...seoConfig} />
+      {/* <SEO {...seoConfig} /> */}
       <section className="hero coaches-hero">
         <div className="hero-background">
           <img 

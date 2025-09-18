@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
+// eslint-disable-next-line no-unused-vars
 const SEO = ({ 
   title, 
   description, 
