@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
+import SEO from '../SEO/SEO';
+import { getSEOConfig } from '../SEO/seoConfig';
 import './Home.css';
 
 function Home() {
   const { language, isRTL } = useLanguage();
   const heroVideoRef = useRef(null);
+  const seoConfig = getSEOConfig('home', language);
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
@@ -86,6 +89,7 @@ function Home() {
 
   return (
     <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
+      <SEO {...seoConfig} />
       <section className="hero home-hero">
         <div className="hero-background-video">
                       <video 

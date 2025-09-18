@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
+import SEO from '../SEO/SEO';
+import { getSEOConfig } from '../SEO/seoConfig';
 import './Athletes.css';
 import { FaBicycle } from 'react-icons/fa';
 
 function Athletes() {
   const { language, isRTL } = useLanguage();
   const [selectedAthlete, setSelectedAthlete] = useState(null);
+  const seoConfig = getSEOConfig('athletes', language);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Athlete data with all details
@@ -61,6 +64,7 @@ function Athletes() {
 
   return (
     <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
+      <SEO {...seoConfig} />
       <section className="hero athletes-hero">
         <div className="hero-background-image">
           <img 

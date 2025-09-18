@@ -1,13 +1,17 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
+import SEO from '../SEO/SEO';
+import { getSEOConfig } from '../SEO/seoConfig';
 import './About.css';
 
 function About() {
   const { language, isRTL } = useLanguage();
+  const seoConfig = getSEOConfig('about', language);
 
   return (
     <div className={`main-content ${isRTL ? 'rtl' : 'ltr'}`}>
+      <SEO {...seoConfig} />
       <section className="hero about-hero">
         <div className="hero-background">
           <img 
