@@ -100,10 +100,10 @@ function About() {
                 </a>
               </p>
               <p className="contact-item">
-                <strong>{getTranslation('about.address', language)}</strong> {getTranslation('about.addressValue', language)}
+                <strong>{getTranslation('about.address', language)}</strong> Road 4574, Block 745, Building 2486, Sanad 745
               </p>
               <p className="contact-item">
-                <strong>{getTranslation('about.phone', language)}</strong> <span className="phone-number">1367 6757</span>
+                <strong>{getTranslation('about.phone', language)}</strong> <span className="phone-number">00973 1367 6757</span>
               </p>
             </div>
           </div>
