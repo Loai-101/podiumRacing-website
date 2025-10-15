@@ -161,8 +161,117 @@ function Subscription() {
 
     try {
       // Organize form data by sections for better email formatting
-      const organizedData = {
-        // Section 1: Personal & Contact Information
+      const organizedData = language === 'ar' ? {
+        // Section 1: Personal & Contact Information (Arabic)
+        '=== المعلومات الشخصية ===': '',
+        'الاسم بالكامل': formData.fullName,
+        'تاريخ الميلاد': formData.dateOfBirth,
+        'الطول (سم)': formData.height,
+        'الوزن (كج)': formData.weight,
+        'الوزن المثالي (كج)': formData.idealWeight,
+        'رقم الهاتف': formData.phoneNumber,
+        'البريد الإلكتروني': formData.emailAddress,
+        'المدينة والبلد': formData.cityCountry,
+        'الحالة الاجتماعية': formData.maritalStatus,
+        'هل لديك أطفال': formData.haveChildren,
+        '': '',
+        
+        // Section 2: Athletic Goals (Arabic)
+        '=== الأهداف الرياضية ===': '',
+        'الهدف النهائي (3-5 سنوات)': formData.ultimateGoal,
+        'أهم 3 أهداف هذا الموسم': formData.top3Goals,
+        'هدف الموسم الماضي': formData.lastSeasonGoal,
+        'مقياس الأهمية (1-10)': formData.importanceScale,
+        'ما الذي ستجنيه': formData.whatToGain,
+        '': '',
+        
+        // Section 3: Training Availability & Lifestyle (Arabic)
+        '=== توفر التدريب ونمط الحياة ===': '',
+        'ما الذي يمنعك': formData.whatLimiting,
+        'عامل مقيد آخر': formData.otherSpecify,
+        'ساعات العمل/الدراسة أسبوعياً': formData.workStudyHours,
+        'مستوى توتر العمل (1-10)': formData.workStressLevel,
+        'الأوقات المتاحة للتدريب': formData.availableTrainingSlots,
+        'جدول النوم': formData.sleepSchedule,
+        '': '',
+        
+        // Section 4: Current Skill & Experience (Arabic)
+        '=== المهارات الحالية والخبرة ===': '',
+        'المستوى العام (1-5)': formData.overallSkillLevel,
+        'مستوى السباحة': formData.swimmingSkillLevel,
+        'تاريخ السباحة': formData.swimmingHistory,
+        'مستوى ركوب الدراجات': formData.cyclingSkillLevel,
+        'تاريخ ركوب الدراجات': formData.cyclingHistory,
+        'مستوى الجري': formData.runningSkillLevel,
+        'تاريخ الجري': formData.runningHistory,
+        '': '',
+        
+        // Section 5: Training Equipment & Technology (Arabic)
+        '=== معدات التدريب والتكنولوجيا ===': '',
+        'تدريب باور ميتر': formData.powerMeter,
+        'تفاصيل باور ميتر': formData.powerMeterYes,
+        'مراقب نبضات القلب': formData.heartRateMonitor,
+        'تفاصيل مراقب نبضات القلب': formData.heartRateMonitorYes,
+        'معدات التدريب': formData.trainingEquipment,
+        '': '',
+        
+        // Section 6: Performance & Past Races (Arabic)
+        '=== الأداء والسباقات السابقة ===': '',
+        'أطول المسافات (6 شهور)': formData.longestDistances,
+        'وقت 5K': formData.run5K,
+        'وقت 10K': formData.run10K,
+        'وقت نصف الماراثون': formData.halfMarathon,
+        'وقت الماراثون': formData.marathon,
+        'وقت 100م سباحة': formData.swim100m,
+        'وقت 200م سباحة': formData.swim200m,
+        'وقت 400م سباحة': formData.swim400m,
+        'وقت 1K سباحة': formData.swim1K,
+        'وقت المسافة القصيرة': formData.sprintDistance,
+        'وقت المسافة الأولمبية': formData.olympicDistance,
+        'وقت نصف الحديد': formData.halfIronman,
+        'وقت الحديد الكامل': formData.fullIronman,
+        'تفاصيل اختبار VO2 Max/FTP': formData.vo2MaxTest,
+        '': '',
+        
+        // Section 7: Challenges & Limiters (Arabic)
+        '=== التحديات والمعوقات ===': '',
+        'أقوى نقطتين': formData.twoGreatestStrengths,
+        'أكبر نقطتي ضعف': formData.twoBiggestLimiters,
+        'أكبر تحد': formData.biggestChallenge,
+        'تحد آخر': formData.otherChallenge,
+        '': '',
+        
+        // Section 8: Medical & Injury History (Arabic)
+        '=== السجل الطبي والإصابات ===': '',
+        'إصابات سابقة/حالية': formData.pastCurrentInjuries,
+        'تفاصيل الإصابات': formData.injuryDetails,
+        'زيارة معالج طبيعي': formData.seePhysicalTherapist,
+        'إصابات/حالات مزمنة': formData.chronicInjuriesConditions,
+        'تفاصيل مزمنة': formData.chronicDetails,
+        'أدوية/مكملات': formData.medicationsSupplements,
+        'قائمة الأدوية': formData.medicationsList,
+        '': '',
+        
+        // Section 9: Nutrition & Recovery Habits (Arabic)
+        '=== العادات الغذائية والتعافي ===': '',
+        'الأكل المعتاد': formData.typicalDayEating,
+        'استهلاك الماء اليومي': formData.dailyWaterIntake,
+        'ترطيب التمرين': formData.exerciseHydration,
+        'حساسية/قيود غذائية': formData.foodAllergiesRestrictions,
+        '': '',
+        
+        // Section 10: Final Notes & Expectations (Arabic)
+        '=== الملاحظات والتوقعات النهائية ===': '',
+        'ما تريده من التدريب': formData.whatWantFromCoaching,
+        'ما يحفزك كرياضي': formData.whatMotivatesAthlete,
+        'أكبر التحديات التقنية/البدنية': formData.biggestTechnicalPhysicalChallenges,
+        'التعامل مع الضغط في السباقات': formData.handlePressureRaces,
+        'الإنجازات المفتخر بها': formData.proudAccomplishments,
+        'المدرب المهتم به': formData.interestedCoach,
+        'حاجة لمكالمة مع المدرب الرئيسي': formData.needCallHeadCoach,
+        'أي شيء آخر': formData.anythingElse
+      } : {
+        // Section 1: Personal & Contact Information (English)
         '=== PERSONAL & CONTACT INFORMATION ===': '',
         'Full Name': formData.fullName,
         'Date of Birth': formData.dateOfBirth,
@@ -176,7 +285,7 @@ function Subscription() {
         'Has Children': formData.haveChildren,
         '': '',
         
-        // Section 2: Athletic Goals
+        // Section 2: Athletic Goals (English)
         '=== ATHLETIC GOALS ===': '',
         'Ultimate Goal (3-5 years)': formData.ultimateGoal,
         'Top 3 Goals This Season': formData.top3Goals,
@@ -185,7 +294,7 @@ function Subscription() {
         'What to Gain': formData.whatToGain,
         '': '',
         
-        // Section 3: Training Availability & Lifestyle
+        // Section 3: Training Availability & Lifestyle (English)
         '=== TRAINING AVAILABILITY & LIFESTYLE ===': '',
         'What is Limiting You': formData.whatLimiting,
         'Other Limiting Factor': formData.otherSpecify,
@@ -195,7 +304,7 @@ function Subscription() {
         'Sleep Schedule': formData.sleepSchedule,
         '': '',
         
-        // Section 4: Current Skill & Experience
+        // Section 4: Current Skill & Experience (English)
         '=== CURRENT SKILL & EXPERIENCE ===': '',
         'Overall Skill Level (1-5)': formData.overallSkillLevel,
         'Swimming Skill Level': formData.swimmingSkillLevel,
@@ -206,7 +315,7 @@ function Subscription() {
         'Running History': formData.runningHistory,
         '': '',
         
-        // Section 5: Training Equipment & Technology
+        // Section 5: Training Equipment & Technology (English)
         '=== TRAINING EQUIPMENT & TECHNOLOGY ===': '',
         'Power Meter Training': formData.powerMeter,
         'Power Meter Details': formData.powerMeterYes,
@@ -215,7 +324,7 @@ function Subscription() {
         'Training Equipment': formData.trainingEquipment,
         '': '',
         
-        // Section 6: Performance & Past Races
+        // Section 6: Performance & Past Races (English)
         '=== PERFORMANCE & PAST RACES ===': '',
         'Longest Distances (6 months)': formData.longestDistances,
         '5K Run Time': formData.run5K,
@@ -233,7 +342,7 @@ function Subscription() {
         'VO2 Max/FTP Test Details': formData.vo2MaxTest,
         '': '',
         
-        // Section 7: Challenges & Limiters
+        // Section 7: Challenges & Limiters (English)
         '=== CHALLENGES & LIMITERS ===': '',
         'Two Greatest Strengths': formData.twoGreatestStrengths,
         'Two Biggest Limiters': formData.twoBiggestLimiters,
@@ -241,7 +350,7 @@ function Subscription() {
         'Other Challenge': formData.otherChallenge,
         '': '',
         
-        // Section 8: Medical & Injury History
+        // Section 8: Medical & Injury History (English)
         '=== MEDICAL & INJURY HISTORY ===': '',
         'Past/Current Injuries': formData.pastCurrentInjuries,
         'Injury Details': formData.injuryDetails,
@@ -252,7 +361,7 @@ function Subscription() {
         'Medications List': formData.medicationsList,
         '': '',
         
-        // Section 9: Nutrition & Recovery Habits
+        // Section 9: Nutrition & Recovery Habits (English)
         '=== NUTRITION & RECOVERY HABITS ===': '',
         'Typical Day Eating': formData.typicalDayEating,
         'Daily Water Intake': formData.dailyWaterIntake,
@@ -260,7 +369,7 @@ function Subscription() {
         'Food Allergies/Restrictions': formData.foodAllergiesRestrictions,
         '': '',
         
-        // Section 10: Final Notes & Expectations
+        // Section 10: Final Notes & Expectations (English)
         '=== FINAL NOTES & EXPECTATIONS ===': '',
         'What Want From Coaching': formData.whatWantFromCoaching,
         'What Motivates Athlete': formData.whatMotivatesAthlete,
@@ -280,10 +389,12 @@ function Subscription() {
         },
         body: JSON.stringify({
           ...organizedData,
-          _subject: 'New Subscription Form Submission - Podium Racing ME',
+          _subject: language === 'ar' ? 'طلب انضمام جديد - Podium Racing الشرق الأوسط' : 'New Subscription Form Submission - Podium Racing ME',
           _template: 'table',
           _captcha: 'false',
-          _next: window.location.href
+          _next: window.location.href,
+          _replyto: formData.emailAddress,
+          _cc: 'q9g8moh@gmail.com'
         })
       });
 
