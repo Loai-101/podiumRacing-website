@@ -1,7 +1,7 @@
 // import { getTranslation } from '../../translations/translations';
 
 export const getSEOConfig = (page, language = 'en') => {
-  const baseUrl = 'https://podiumracing-me.vercel.app';
+  const baseUrl = 'https://podiumracing-me.com';
   const defaultImage = 'https://res.cloudinary.com/dvybb2xnc/image/upload/v1753552171/ChatGPT_Image_Jul_26_2025_08_41_01_PM_svtphh.png';
 
   const seoConfigs = {
@@ -67,6 +67,22 @@ export const getSEOConfig = (page, language = 'en') => {
         keywords: 'حول Podium Racing, منظمة الترايثلون, ترايثلون الشرق الأوسط, منظمة رياضية, مجتمع الترايثلون, التطوير الرياضي, شبكة التدريب الرياضي, رياضات التحمل',
         url: `${baseUrl}/about`,
         image: 'https://res.cloudinary.com/dvybb2xnc/image/upload/v1758128388/00_4_lxpotu.png'
+      }
+    },
+    subscription: {
+      en: {
+        title: 'Join Podium Racing Middle East - Apply for Triathlon Coaching',
+        description: 'Apply to join Podium Racing Middle East triathlon team. Choose your coach and submit your application for world-class triathlon coaching. Expert coaches, personalized training programs, and a supportive community.',
+        keywords: 'join triathlon team, triathlon application, triathlon coaching application, Middle East triathlon, triathlon membership, triathlon training application, join PRME, triathlon team application',
+        url: `${baseUrl}/subscription`,
+        image: 'https://res.cloudinary.com/dvybb2xnc/image/upload/v1758129767/IMG_6650_1_zeimch.jpg'
+      },
+      ar: {
+        title: 'انضم إلى Podium Racing الشرق الأوسط - قدم طلبك للتدريب',
+        description: 'قدم طلبك للانضمام إلى فريق Podium Racing الشرق الأوسط للترايثلون. اختر مدربك وقدم طلبك للحصول على تدريب ترايثلون عالمي المستوى. مدربون خبراء، برامج تدريب مخصصة، ومجتمع داعم.',
+        keywords: 'انضم لفريق الترايثلون, طلب الترايثلون, طلب تدريب الترايثلون, ترايثلون الشرق الأوسط, عضوية الترايثلون, طلب تدريب الترايثلون, انضم لـ PRME, طلب فريق الترايثلون',
+        url: `${baseUrl}/subscription`,
+        image: 'https://res.cloudinary.com/dvybb2xnc/image/upload/v1758129767/IMG_6650_1_zeimch.jpg'
       }
     }
   };

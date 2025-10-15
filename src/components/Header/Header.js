@@ -103,14 +103,12 @@ function Header() {
         </nav>
 
         <div className="header-actions">
-          <a 
-            href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <Link 
+            to="/subscription" 
             className="btn"
           >
             {getTranslation('nav.joinUs', language)}
-          </a>
+          </Link>
           
           {/* Language Toggle */}
           <div className="language-toggle" ref={languageToggleRef}>

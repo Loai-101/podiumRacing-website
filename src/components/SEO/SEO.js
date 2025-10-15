@@ -84,7 +84,7 @@ const SEO = ({
     }
 
     // Update hreflang tags for language versions
-    const baseUrl = 'https://podiumracing-me.vercel.app';
+    const baseUrl = 'https://podiumracing-me.com';
     const currentPath = window.location.pathname;
     
     // Remove existing hreflang tags

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
 // import SEO from '../SEO/SEO';
@@ -114,14 +115,12 @@ function Home() {
             <span className="tagline-text">{getTranslation('home.heroSubtitle', language)}</span>
           </p>
           <div className="hero-buttons">
-            <a 
-              href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/subscription" 
               className="btn"
             >
               {getTranslation('home.joinOurTribe', language)}
-            </a>
+            </Link>
             <a href="/coaches" className="btn btn-secondary">{getTranslation('home.meetOurCoaches', language)}</a>
           </div>
         </div>
@@ -221,14 +220,12 @@ function Home() {
               {getTranslation('home.joinContent', language)}
             </p>
             <div className="join-actions">
-              <a
-                href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/subscription"
                 className="btn btn-apply"
               >
                 {getTranslation('home.applyToJoin', language)}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

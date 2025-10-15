@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Coaches from './components/Coaches/Coaches';
 import Athletes from './components/Athletes/Athletes';
 import About from './components/About/About';
+import Subscription from './components/Subscription/Subscription';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
@@ -46,6 +47,7 @@ function App() {
               <Route path="/coaches" element={<Coaches />} />
               <Route path="/athletes" element={<Athletes />} />
               <Route path="/about" element={<About />} />
+              <Route path="/subscription" element={<Subscription />} />
             </Routes>
           </main>
           

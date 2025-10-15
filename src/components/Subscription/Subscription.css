@@ -1,0 +1,644 @@
+/* Subscription Page Styles */
+.subscription-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.subscription-hero .hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.subscription-hero .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.subscription-hero .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.subscription-hero .hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.subscription-hero .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subscription-hero .hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Coaches Showcase - Exact same as coaches page */
+.coaches-showcase {
+  text-align: center;
+  padding: 0.25rem 0 0 0;
+}
+
+/* Coaches Grid - One line layout */
+.coaches-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 0.25rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Enhanced Coach Cards - Exact same as coaches page */
+.coach-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+  border: 2px solid rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  animation: cardEntrance 1s ease-out forwards;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.coach-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.coach-card:hover::before {
+  transform: scaleX(1);
+}
+
+.coach-card:nth-child(1) { animation-delay: 0s; }
+.coach-card:nth-child(2) { animation-delay: 0.3s; }
+.coach-card:nth-child(3) { animation-delay: 0.6s; }
+.coach-card:nth-child(4) { animation-delay: 0.9s; }
+
+.coach-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(255, 193, 7, 0.4);
+  border-color: rgba(255, 193, 7, 0.3);
+  background: #ffffff;
+}
+
+.coach-image-container {
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.coach-image {
+  width: 240px;
+  height: 240px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 193, 7, 0.2);
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.coach-image.offset-down { object-position: center 30%; }
+.coach-image.offset-saif { object-position: center 20%; }
+
+/* Remove any white matte by blending with dark bg */
+.no-white { background: transparent; }
+
+.coach-card:hover .coach-image {
+  border-color: rgba(255, 193, 7, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+}
+
+.coach-info {
+  color: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.coach-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #0a0a0a;
+  text-align: center;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.coach-name::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.45rem auto 0;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineSlideIn {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments for one-line layout */
+@media (max-width: 1200px) {
+  .coaches-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+  
+  .coach-card {
+    min-height: 350px;
+  }
+  
+  .coach-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coaches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .coach-card {
+    min-height: 320px;
+  }
+  
+  .coach-image {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .coaches-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.subscription-content {
+  padding: 0 0 4rem 0;
+}
+
+.subscription-intro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.subscription-intro .card-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-text .card-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.subscription-form-section {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 0.25rem 2rem 2rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subscription-form-section .card-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #000000 !important;
+  text-align: center;
+  background: none !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-family: inherit !important;
+  position: static !important;
+  animation: none !important;
+}
+
+.subscription-form-section .card-title::after {
+  display: none !important;
+}
+
+/* Additional override for any remaining white text */
+.subscription-form-section h2.card-title {
+  color: #000000 !important;
+  background: transparent !important;
+}
+
+.subscription-content .subscription-form-section .card-title {
+  color: #000000 !important;
+  background: transparent !important;
+}
+
+/* Force black text with maximum specificity */
+.subscription-content .subscription-form-section h2.card-title {
+  color: #000000 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Override any banner or hero styling */
+.main-content .subscription-content .subscription-form-section .card-title {
+  color: #000000 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 2rem 0 !important;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #000000;
+  position: relative;
+  text-align: center;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffeb3b);
+  border-radius: 2px;
+  animation: lineSlideIn 1.5s ease-out forwards;
+  transform-origin: center;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.progress-step:hover {
+  background-color: #f8f9fa;
+}
+
+.progress-step.active {
+  background-color: #e3f2fd;
+  border: 2px solid #3498db;
+}
+
+.progress-step.completed {
+  background-color: #e8f5e8;
+  border: 2px solid #27ae60;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #bdc3c7;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background-color: #3498db;
+}
+
+.progress-step.completed .step-number {
+  background-color: #27ae60;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  color: #7f8c8d;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.progress-step.completed .step-label {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Form Navigation */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #7f8c8d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(149, 165, 166, 0.3);
+}
+
+/* Checkbox Groups */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.75rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.checkbox-label:hover {
+  border-color: #3498db;
+  background-color: #f8f9fa;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #bdc3c7;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ span:not(.checkmark) {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* RTL Support */
+.rtl .subscription-hero .hero-content {
+  text-align: center;
+}
+
+.rtl .subscription-intro {
+  text-align: center;
+}
+
+.rtl .subscription-form-section .card-title {
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .subscription-hero .hero-title {
+    font-size: 2rem;
+  }
+  
+  .subscription-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .subscription-intro .card-title {
+    font-size: 2rem;
+  }
+  
+  .subscription-form-section {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+  
+  .subscription-form-section .card-title {
+    font-size: 1.5rem;
+  }
+}

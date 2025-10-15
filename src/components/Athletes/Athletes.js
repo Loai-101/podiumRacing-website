@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
 // import SEO from '../SEO/SEO';
@@ -145,14 +146,12 @@ function Athletes() {
               </ul>
             </div>
             <div style={{textAlign: 'center'}}>
-              <a 
-                href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <Link 
+                to="/subscription" 
                 className="join-button"
               >
                 {getTranslation('athletes.applyToJoin', language)}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
