@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { getTranslation } from '../../translations/translations';
 import SEO from '../SEO/SEO';
 import { getSEOConfig } from '../SEO/seoConfig';
+import { countries } from '../../data/countries';
 import './Subscription.css';
 
 function Subscription() {
@@ -66,15 +67,123 @@ function Subscription() {
     needCallHeadCoach: '',
     anythingElse: ''
   });
+  const [ageDisplay, setAgeDisplay] = useState('');
+  const [validationErrors, setValidationErrors] = useState({});
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedPhoneCountry, setSelectedPhoneCountry] = useState('');
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [showPhoneCountryDropdown, setShowPhoneCountryDropdown] = useState(false);
+  const [countrySearchTerm, setCountrySearchTerm] = useState('');
+  const [phoneCountrySearchTerm, setPhoneCountrySearchTerm] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Refs for click outside detection
+  const countryDropdownRef = useRef(null);
+  const phoneCountryDropdownRef = useRef(null);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [currentSection, setCurrentSection] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const totalSections = 10; // Will increase as we add more sections
 
+  // Handle click outside to close dropdowns
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target)) {
+        setShowCountryDropdown(false);
+      }
+      if (phoneCountryDropdownRef.current && !phoneCountryDropdownRef.current.contains(event.target)) {
+        setShowPhoneCountryDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Calculate age from date of birth
+  const calculateAge = (dateOfBirth) => {
+    if (!dateOfBirth) return '';
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    return age;
+  };
+
+  // Validate positive numbers
+  const validatePositiveNumber = (value, fieldName) => {
+    const num = parseFloat(value);
+    if (isNaN(num) || num <= 0) {
+      return `${fieldName} must be a positive number`;
+    }
+    return null;
+  };
+
+  // Validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return 'Please enter a valid email address';
+    }
+    return null;
+  };
+
+  // Validate date of birth (minimum 15 years old)
+  const validateDateOfBirth = (dateOfBirth) => {
+    if (!dateOfBirth) return null;
+    const age = calculateAge(dateOfBirth);
+    if (age < 15) {
+      return 'You must be at least 15 years old to apply';
+    }
+    return null;
+  };
+
+  // Filter countries based on search term
+  const getFilteredCountries = (searchTerm) => {
+    return countries.filter(country => 
+      country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      country.code.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  // Handle country selection for city/country
+  const handleCountrySelect = (country) => {
+    setSelectedCountry(country);
+    setFormData(prev => ({
+      ...prev,
+      cityCountry: country.name
+    }));
+    setShowCountryDropdown(false);
+    setCountrySearchTerm('');
+  };
+
+  // Handle phone country selection
+  const handlePhoneCountrySelect = (country) => {
+    setSelectedPhoneCountry(country);
+    setFormData(prev => ({
+      ...prev,
+      phoneNumber: country.phone + ' '
+    }));
+    setShowPhoneCountryDropdown(false);
+    setPhoneCountrySearchTerm('');
+  };
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+    
+    // Clear validation errors for this field
+    setValidationErrors(prev => ({
+      ...prev,
+      [name]: null
+    }));
     
     if (type === 'checkbox') {
       setFormData(prev => ({
@@ -88,6 +197,37 @@ function Subscription() {
         ...prev,
         [name]: value
       }));
+
+      // Handle special validations
+      if (name === 'dateOfBirth') {
+        const age = calculateAge(value);
+        setAgeDisplay(age > 0 ? `Age: ${age} years old` : '');
+        
+        const error = validateDateOfBirth(value);
+        if (error) {
+          setValidationErrors(prev => ({
+            ...prev,
+            [name]: error
+          }));
+        }
+      } else if (name === 'height' || name === 'weight' || name === 'idealWeight') {
+        const fieldName = name === 'height' ? 'Height' : name === 'weight' ? 'Weight' : 'Ideal Weight';
+        const error = validatePositiveNumber(value, fieldName);
+        if (error) {
+          setValidationErrors(prev => ({
+            ...prev,
+            [name]: error
+          }));
+        }
+      } else if (name === 'emailAddress') {
+        const error = validateEmail(value);
+        if (error) {
+          setValidationErrors(prev => ({
+            ...prev,
+            [name]: error
+          }));
+        }
+      }
     }
   };
 
@@ -106,6 +246,13 @@ function Subscription() {
     };
 
     const currentRequiredFields = requiredFields[currentSection] || [];
+    
+    // Check for validation errors first
+    for (const field in validationErrors) {
+      if (validationErrors[field]) {
+        return false;
+      }
+    }
     
     for (const field of currentRequiredFields) {
       const value = formData[field];
@@ -639,6 +786,25 @@ function Subscription() {
                       onChange={handleInputChange}
                       required
                     />
+                    {ageDisplay && (
+                      <div style={{ 
+                        color: '#27ae60', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem',
+                        fontWeight: '500'
+                      }}>
+                        {ageDisplay}
+                      </div>
+                    )}
+                    {validationErrors.dateOfBirth && (
+                      <div style={{ 
+                        color: '#e74c3c', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem'
+                      }}>
+                        {validationErrors.dateOfBirth}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -650,8 +816,19 @@ function Subscription() {
                       value={formData.height}
                       onChange={handleInputChange}
                       placeholder="cm"
+                      min="1"
+                      step="0.1"
                       required
                     />
+                    {validationErrors.height && (
+                      <div style={{ 
+                        color: '#e74c3c', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem'
+                      }}>
+                        {validationErrors.height}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -663,8 +840,19 @@ function Subscription() {
                       value={formData.weight}
                       onChange={handleInputChange}
                       placeholder="kg"
+                      min="1"
+                      step="0.1"
                       required
                     />
+                    {validationErrors.weight && (
+                      <div style={{ 
+                        color: '#e74c3c', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem'
+                      }}>
+                        {validationErrors.weight}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -676,21 +864,107 @@ function Subscription() {
                       value={formData.idealWeight}
                       onChange={handleInputChange}
                       placeholder="kg"
+                      min="1"
+                      step="0.1"
                       required
                     />
+                    {validationErrors.idealWeight && (
+                      <div style={{ 
+                        color: '#e74c3c', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem'
+                      }}>
+                        {validationErrors.idealWeight}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="phoneNumber">{getTranslation('subscription.phoneNumber', language)}</label>
-                    <input
-                      type="tel"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
-                      onChange={handleInputChange}
-                      placeholder="+973 1234 5678"
-                      required
-                    />
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <div ref={phoneCountryDropdownRef} style={{ position: 'relative', flex: '0 0 auto' }}>
+                        <input
+                          type="text"
+                          placeholder="Search country..."
+                          value={phoneCountrySearchTerm}
+                          onChange={(e) => {
+                            setPhoneCountrySearchTerm(e.target.value);
+                            setShowPhoneCountryDropdown(true);
+                          }}
+                          onFocus={() => setShowPhoneCountryDropdown(true)}
+                          style={{
+                            width: '200px',
+                            padding: '0.75rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            fontSize: '1rem'
+                          }}
+                        />
+                        {showPhoneCountryDropdown && (
+                          <div style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            right: 0,
+                            backgroundColor: 'white',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            maxHeight: '200px',
+                            overflowY: 'auto',
+                            zIndex: 1000,
+                            boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                          }}>
+                            {getFilteredCountries(phoneCountrySearchTerm).map((country, index) => (
+                              <div
+                                key={index}
+                                onClick={() => handlePhoneCountrySelect(country)}
+                                style={{
+                                  padding: '0.5rem',
+                                  cursor: 'pointer',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '0.5rem',
+                                  borderBottom: '1px solid #eee',
+                                  color: '#000000'
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.target.style.backgroundColor = '#f5f5f5';
+                                  e.target.style.color = '#000000';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.target.style.backgroundColor = 'white';
+                                  e.target.style.color = '#000000';
+                                }}
+                              >
+                                <span style={{ color: '#000000' }}>{country.flag}</span>
+                                <span style={{ color: '#000000', fontWeight: '500' }}>{country.name}</span>
+                                <span style={{ marginLeft: 'auto', color: '#000000', fontWeight: '500' }}>{country.phone}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
+                        onChange={handleInputChange}
+                        placeholder="1234 5678"
+                        required
+                        style={{ flex: 1 }}
+                      />
+                    </div>
+                    {selectedPhoneCountry && (
+                      <div style={{ 
+                        color: '#27ae60', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem',
+                        fontWeight: '500'
+                      }}>
+                        Selected: {selectedPhoneCountry.flag} {selectedPhoneCountry.name} ({selectedPhoneCountry.phone})
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -703,19 +977,98 @@ function Subscription() {
                       onChange={handleInputChange}
                       required
                     />
+                    {validationErrors.emailAddress && (
+                      <div style={{ 
+                        color: '#e74c3c', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem'
+                      }}>
+                        {validationErrors.emailAddress}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="cityCountry">{getTranslation('subscription.cityCountry', language)}</label>
-                    <input
-                      type="text"
-                      id="cityCountry"
-                      name="cityCountry"
-                      value={formData.cityCountry}
-                      onChange={handleInputChange}
-                      placeholder="Manama, Bahrain"
-                      required
-                    />
+                    <label htmlFor="cityCountry" className="city-country-label" style={{
+                      color: '#2c3e50 !important',
+                      fontWeight: '600 !important',
+                      fontSize: '1rem !important',
+                      display: 'block !important',
+                      marginBottom: '0.5rem !important',
+                      lineHeight: '1.4 !important',
+                      textShadow: 'none !important',
+                      backgroundColor: 'transparent !important'
+                    }}>
+                      {getTranslation('subscription.cityCountry', language)}
+                    </label>
+                    <div ref={countryDropdownRef} style={{ position: 'relative' }}>
+                      <input
+                        type="text"
+                        id="cityCountry"
+                        name="cityCountry"
+                        value={countrySearchTerm}
+                        onChange={(e) => {
+                          setCountrySearchTerm(e.target.value);
+                          setShowCountryDropdown(true);
+                        }}
+                        onFocus={() => setShowCountryDropdown(true)}
+                        placeholder="Search country..."
+                        required
+                        style={{ width: '100%' }}
+                      />
+                        {showCountryDropdown && (
+                          <div style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            right: 0,
+                            backgroundColor: 'white',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            maxHeight: '200px',
+                            overflowY: 'auto',
+                            zIndex: 1000,
+                            boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                          }}>
+                            {getFilteredCountries(countrySearchTerm).map((country, index) => (
+                              <div
+                                key={index}
+                                onClick={() => handleCountrySelect(country)}
+                                style={{
+                                  padding: '0.5rem',
+                                  cursor: 'pointer',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '0.5rem',
+                                  borderBottom: '1px solid #eee',
+                                  color: '#000000'
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.target.style.backgroundColor = '#f5f5f5';
+                                  e.target.style.color = '#000000';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.target.style.backgroundColor = 'white';
+                                  e.target.style.color = '#000000';
+                                }}
+                              >
+                                <span style={{ color: '#000000' }}>{country.flag}</span>
+                                <span style={{ color: '#000000', fontWeight: '500' }}>{country.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                    </div>
+                    {selectedCountry && (
+                      <div style={{ 
+                        color: '#27ae60', 
+                        fontSize: '0.9rem', 
+                        marginTop: '0.5rem',
+                        fontWeight: '500'
+                      }}>
+                        Selected: {selectedCountry.flag} {selectedCountry.name}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">

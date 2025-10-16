@@ -531,7 +531,23 @@
 .form-group label {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: #2c3e50 !important;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Specific styling for city country label */
+.form-group label[for="cityCountry"],
+.city-country-label {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  display: block !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.4 !important;
+  text-shadow: none !important;
+  background-color: transparent !important;
 }
 
 .form-group input,
