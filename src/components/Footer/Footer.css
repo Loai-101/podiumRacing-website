@@ -16,7 +16,8 @@
 /* Footer Social Media Icons */
 .footer-social-media {
   display: none;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
   margin: 2rem 0;
   padding: 1rem 0;
@@ -180,6 +181,11 @@
   text-align: center;
 }
 
+.rtl .footer-social-media {
+  justify-content: flex-start;
+  direction: ltr;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .footer {
@@ -217,9 +223,10 @@
     font-size: 0.6rem;
   }
   
-  /* Show social media icons on mobile */
+  /* Social media icons on mobile - keep on left */
   .footer-social-media {
     display: flex;
+    justify-content: flex-start;
   }
   
   .footer-social-link {

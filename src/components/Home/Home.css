@@ -43,13 +43,9 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #ffc107, #ffeb3b, #ff6b9d, #ffeb3b, #ffc107);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out, gradientShift 4s ease-in-out infinite;
-  text-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
+  color: #c0c0c0 !important;
+  -webkit-text-fill-color: #c0c0c0 !important;
+  text-shadow: 0 0 30px rgba(192, 192, 192, 0.8), 0 0 60px rgba(192, 192, 192, 0.5), 0 0 90px rgba(192, 192, 192, 0.3);
   font-size: 3.5rem;
   text-align: center;
   margin-bottom: 1rem;
@@ -309,6 +305,15 @@
 
 .services-section {
   background: #0a0a0a;
+}
+
+.services-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff !important;
+  letter-spacing: 0.02em;
 }
 
 .services-section .grid {

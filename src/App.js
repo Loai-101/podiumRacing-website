@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
 import { LanguageProvider } from './contexts/LanguageContext';
-import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp, FaWpforms } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import { Analytics } from '@vercel/analytics/react';
 
 // Component to handle scroll to top on route change
@@ -64,9 +64,6 @@ function App() {
             </a>
             <a href="https://wa.me/97313676757?text=Hello%20Podium%20Racing%20ME" target="_blank" rel="noopener noreferrer" className="social-icon-link">
               <FaWhatsapp className="social-icon" />
-            </a>
-            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAY5ws_hUMVVMNjEySDJTMFlYU0ZBOU9BNTIxUEc2Sy4u&embed=true" target="_blank" rel="noopener noreferrer" className="social-icon-link">
-              <FaWpforms className="social-icon" />
             </a>
           </div>
           
