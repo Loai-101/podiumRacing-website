@@ -321,7 +321,6 @@ function Subscription() {
         'المدينة والبلد': formData.cityCountry,
         'الحالة الاجتماعية': formData.maritalStatus,
         'هل لديك أطفال': formData.haveChildren,
-        '': '',
         
         // Section 2: Athletic Goals (Arabic)
         '=== الأهداف الرياضية ===': '',
@@ -330,7 +329,6 @@ function Subscription() {
         'هدف الموسم الماضي': formData.lastSeasonGoal,
         'مقياس الأهمية (1-10)': formData.importanceScale,
         'ما الذي ستجنيه': formData.whatToGain,
-        '': '',
         
         // Section 3: Training Availability & Lifestyle (Arabic)
         '=== توفر التدريب ونمط الحياة ===': '',
@@ -340,7 +338,6 @@ function Subscription() {
         'مستوى توتر العمل (1-10)': formData.workStressLevel,
         'الأوقات المتاحة للتدريب': formData.availableTrainingSlots,
         'جدول النوم': formData.sleepSchedule,
-        '': '',
         
         // Section 4: Current Skill & Experience (Arabic)
         '=== المهارات الحالية والخبرة ===': '',
@@ -351,7 +348,6 @@ function Subscription() {
         'تاريخ ركوب الدراجات': formData.cyclingHistory,
         'مستوى الجري': formData.runningSkillLevel,
         'تاريخ الجري': formData.runningHistory,
-        '': '',
         
         // Section 5: Training Equipment & Technology (Arabic)
         '=== معدات التدريب والتكنولوجيا ===': '',
@@ -360,7 +356,6 @@ function Subscription() {
         'مراقب نبضات القلب': formData.heartRateMonitor,
         'تفاصيل مراقب نبضات القلب': formData.heartRateMonitorYes,
         'معدات التدريب': formData.trainingEquipment,
-        '': '',
         
         // Section 6: Performance & Past Races (Arabic)
         '=== الأداء والسباقات السابقة ===': '',
@@ -378,7 +373,6 @@ function Subscription() {
         'وقت نصف الحديد': formData.halfIronman,
         'وقت الحديد الكامل': formData.fullIronman,
         'تفاصيل اختبار VO2 Max/FTP': formData.vo2MaxTest,
-        '': '',
         
         // Section 7: Challenges & Limiters (Arabic)
         '=== التحديات والمعوقات ===': '',
@@ -386,7 +380,6 @@ function Subscription() {
         'أكبر نقطتي ضعف': formData.twoBiggestLimiters,
         'أكبر تحد': formData.biggestChallenge,
         'تحد آخر': formData.otherChallenge,
-        '': '',
         
         // Section 8: Medical & Injury History (Arabic)
         '=== السجل الطبي والإصابات ===': '',
@@ -397,7 +390,6 @@ function Subscription() {
         'تفاصيل مزمنة': formData.chronicDetails,
         'أدوية/مكملات': formData.medicationsSupplements,
         'قائمة الأدوية': formData.medicationsList,
-        '': '',
         
         // Section 9: Nutrition & Recovery Habits (Arabic)
         '=== العادات الغذائية والتعافي ===': '',
@@ -405,7 +397,6 @@ function Subscription() {
         'استهلاك الماء اليومي': formData.dailyWaterIntake,
         'ترطيب التمرين': formData.exerciseHydration,
         'حساسية/قيود غذائية': formData.foodAllergiesRestrictions,
-        '': '',
         
         // Section 10: Final Notes & Expectations (Arabic)
         '=== الملاحظات والتوقعات النهائية ===': '',
@@ -430,7 +421,6 @@ function Subscription() {
         'City & Country': formData.cityCountry,
         'Marital Status': formData.maritalStatus,
         'Has Children': formData.haveChildren,
-        '': '',
         
         // Section 2: Athletic Goals (English)
         '=== ATHLETIC GOALS ===': '',
@@ -439,7 +429,6 @@ function Subscription() {
         'Last Season Goal': formData.lastSeasonGoal,
         'Importance Scale (1-10)': formData.importanceScale,
         'What to Gain': formData.whatToGain,
-        '': '',
         
         // Section 3: Training Availability & Lifestyle (English)
         '=== TRAINING AVAILABILITY & LIFESTYLE ===': '',
@@ -449,7 +438,6 @@ function Subscription() {
         'Work Stress Level (1-10)': formData.workStressLevel,
         'Available Training Slots': formData.availableTrainingSlots,
         'Sleep Schedule': formData.sleepSchedule,
-        '': '',
         
         // Section 4: Current Skill & Experience (English)
         '=== CURRENT SKILL & EXPERIENCE ===': '',
@@ -460,7 +448,6 @@ function Subscription() {
         'Cycling History': formData.cyclingHistory,
         'Running Skill Level': formData.runningSkillLevel,
         'Running History': formData.runningHistory,
-        '': '',
         
         // Section 5: Training Equipment & Technology (English)
         '=== TRAINING EQUIPMENT & TECHNOLOGY ===': '',
@@ -469,7 +456,6 @@ function Subscription() {
         'Heart Rate Monitor': formData.heartRateMonitor,
         'Heart Rate Monitor Details': formData.heartRateMonitorYes,
         'Training Equipment': formData.trainingEquipment,
-        '': '',
         
         // Section 6: Performance & Past Races (English)
         '=== PERFORMANCE & PAST RACES ===': '',
@@ -487,7 +473,6 @@ function Subscription() {
         'Half Ironman Time': formData.halfIronman,
         'Full Ironman Time': formData.fullIronman,
         'VO2 Max/FTP Test Details': formData.vo2MaxTest,
-        '': '',
         
         // Section 7: Challenges & Limiters (English)
         '=== CHALLENGES & LIMITERS ===': '',
@@ -495,7 +480,6 @@ function Subscription() {
         'Two Biggest Limiters': formData.twoBiggestLimiters,
         'Biggest Challenge': formData.biggestChallenge,
         'Other Challenge': formData.otherChallenge,
-        '': '',
         
         // Section 8: Medical & Injury History (English)
         '=== MEDICAL & INJURY HISTORY ===': '',
@@ -506,7 +490,6 @@ function Subscription() {
         'Chronic Details': formData.chronicDetails,
         'Medications/Supplements': formData.medicationsSupplements,
         'Medications List': formData.medicationsList,
-        '': '',
         
         // Section 9: Nutrition & Recovery Habits (English)
         '=== NUTRITION & RECOVERY HABITS ===': '',
@@ -514,7 +497,6 @@ function Subscription() {
         'Daily Water Intake': formData.dailyWaterIntake,
         'Exercise Hydration': formData.exerciseHydration,
         'Food Allergies/Restrictions': formData.foodAllergiesRestrictions,
-        '': '',
         
         // Section 10: Final Notes & Expectations (English)
         '=== FINAL NOTES & EXPECTATIONS ===': '',
