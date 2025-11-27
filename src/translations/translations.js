@@ -88,11 +88,11 @@ export const translations = {
         seifeldeen: {
           name: "Seifeldeen Ismail",
           title: "Triathlon Coach & Professional Athlete",
-          description: "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
+          description: "Seifeldeen Ismail – Triathlon Coach & Professional Athlete. I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting. As a Coach: Coached athletes to qualify for Ironman 70.3 World Championships. Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines. Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful). As an Athlete: 2024 Elite African Games (4th place), 2024 Elite Asian Triathlon Cup Champion, 2022 Elite Arab Triathlon Champion, World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2, 2x Ironman 70.3 Age-Group Podiums. Certifications & Expertise: USA Triathlon Level I & Long Course Certified, TrainingPeaks Level 1, Basic Life Support & First Aid. My Philosophy: Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one.",
           asCoach: [
-            "Coached athletes to qualify for Ironman 70.3 World Championships",
+            "Coached athletes to qualify for Ironman 70.3 World Championships.",
             "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
-            "Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful)"
+            "Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful)."
           ],
           asAthlete: [
             "2024 Elite African Games (4th place)",

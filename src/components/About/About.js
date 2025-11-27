@@ -6,7 +6,10 @@ import { getTranslation } from '../../translations/translations';
 import './About.css';
 
 function About() {
-  const { language, isRTL } = useLanguage();
+  const { language: contextLanguage, isRTL: contextIsRTL } = useLanguage();
+  // Force English on this page until Arabic translations are fixed
+  const language = 'en';
+  const isRTL = false;
   // const seoConfig = getSEOConfig('about', language);
 
   return (
@@ -91,12 +94,12 @@ function About() {
               <p className="contact-item">
                 <strong>{getTranslation('about.email', language)}</strong> 
                 <a 
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@podium-racing.me" 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=podiumracing-me@pmigroup.me" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="contact-email"
                 >
-                  info@podium-racing.me
+                  podiumracing-me@pmigroup.me
                 </a>
               </p>
               <p className="contact-item">
