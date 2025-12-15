@@ -929,11 +929,13 @@
 }
 
 .rtl .program-title {
-  text-align: center;
+  text-align: left;
+  direction: ltr;
 }
 
 .rtl .program-description {
-  text-align: right;
+  text-align: left;
+  direction: ltr;
 }
 
 .rtl .coach-modal-section h4 {
@@ -980,4 +982,48 @@
 
 .rtl .coach-info {
   text-align: center;
+}
+
+/* Keep Coaching Programs section in LTR layout */
+.rtl .coaching-programs {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl .coaching-programs .grid.grid-3 {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl .program-card {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl .program-title {
+  text-align: left;
+  direction: ltr;
+}
+
+.rtl .program-description {
+  text-align: left;
+  direction: ltr;
+}
+
+.rtl .program-features {
+  text-align: left;
+  direction: ltr;
+}
+
+.rtl .program-features li {
+  text-align: left;
+  direction: ltr;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.rtl .program-features .bike-icon {
+  order: 0 !important;
+  margin-right: 0.8rem !important;
+  margin-left: 0 !important;
 }
