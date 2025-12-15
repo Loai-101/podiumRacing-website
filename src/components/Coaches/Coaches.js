@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { getTranslation } from '../../translations/translations';
+import { getTranslation, translations } from '../../translations/translations';
 // import SEO from '../SEO/SEO';
 // import { getSEOConfig } from '../SEO/seoConfig';
 import './Coaches.css';
@@ -8,23 +8,29 @@ import { FaBicycle } from 'react-icons/fa';
 
 function Coaches() {
   const { language: contextLanguage, isRTL: contextIsRTL } = useLanguage();
-  // Force English on this page until Arabic translations are fixed
-  const language = 'en';
-  const isRTL = false;
+  const language = contextLanguage;
+  const isRTL = contextIsRTL;
   const [selectedCoach, setSelectedCoach] = useState(null);
   // const seoConfig = getSEOConfig('coaches', language);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [animatedCards, setAnimatedCards] = useState(false);
   const programsRef = useRef(null);
 
-  // Coach data with all details
-  const coaches = [
+  // Get coach data based on language
+  const getCoachData = () => {
+    const coachData = translations[language]?.coaches?.coaches || {};
+    const seifeldeen = coachData.seifeldeen || {};
+    const taher = coachData.taher || {};
+    const rehab = coachData.rehab || {};
+    const saif = coachData.saif || {};
+    
+    return [
     {
       id: 1,
-      name: "Seifeldeen Ismail",
+      name: seifeldeen?.name || "Seifeldeen Ismail",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
-      title: "Triathlon Coach & Professional Athlete",
-      description: "Seifeldeen Ismail – Triathlon Coach & Professional Athlete. I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting. As a Coach: Coached athletes to qualify for Ironman 70.3 World Championships. Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines. Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful). As an Athlete: 2024 Elite African Games (4th place), 2024 Elite Asian Triathlon Cup Champion, 2022 Elite Arab Triathlon Champion, World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2, 2x Ironman 70.3 Age-Group Podiums. Certifications & Expertise: USA Triathlon Level I & Long Course Certified, TrainingPeaks Level 1, Basic Life Support & First Aid. My Philosophy: Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one.",
+      title: seifeldeen?.title || "Triathlon Coach & Professional Athlete",
+      description: seifeldeen?.description || "Seifeldeen Ismail – Triathlon Coach & Professional Athlete. I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting. As a Coach: Coached athletes to qualify for Ironman 70.3 World Championships. Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines. Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful). As an Athlete: 2024 Elite African Games (4th place), 2024 Elite Asian Triathlon Cup Champion, 2022 Elite Arab Triathlon Champion, World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2, 2x Ironman 70.3 Age-Group Podiums. Certifications & Expertise: USA Triathlon Level I & Long Course Certified, TrainingPeaks Level 1, Basic Life Support & First Aid. My Philosophy: Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one.",
       asCoach: [
         "Coached athletes to qualify for Ironman 70.3 World Championships.",
         "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
@@ -62,14 +68,14 @@ function Coaches() {
         "TrainingPeaks Level 1",
         "Basic Life Support & First Aid"
       ],
-      philosophy: "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
+      philosophy: seifeldeen?.philosophy || "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
     },
     {
       id: 2,
-      name: "Taher Hesham",
+      name: taher?.name || "Taher Hesham",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152258_qepspb.png",
-      title: "Triathlon Coach",
-      description: "Taher Hesham – Triathlon Coach. Taher Hesham is a highly skilled triathlon and fitness coach with extensive experience training children, adults, and professional athletes. Since 2020, he has coached at The Trimachine and Fitzone Egypt, guiding athletes to achieve their performance goals through structured training programs, injury prevention strategies, and race preparation. A former elite triathlete, Taher is a 20-time National Champion, 2-time Arab Champion, and led his team to 1st place in the Army Championship. His firsthand experience at the highest levels of competition allows him to mentor athletes with expert knowledge of swim, bike, and run performance, endurance training, and race strategies. Certified through TrainingPeaks and university-level sports science programs, he combines evidence-based coaching with a passion for athlete development. At the academy, he plays a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential.",
+      title: taher?.title || "Triathlon Coach",
+      description: taher?.description || "Taher Hesham – Triathlon Coach\n\nTaher Hesham is a highly skilled triathlon and fitness coach with extensive experience training children, adults, and professional athletes. Since 2020, he has coached at The Trimachine and Fitzone Egypt, guiding athletes to achieve their performance goals through structured training programs, injury prevention strategies, and race preparation.\n\nA former elite triathlete, Taher is a 20-time National Champion, 2-time Arab Champion, and led his team to 1st place in the Army Championship. His firsthand experience at the highest levels of competition allows him to mentor athletes with expert knowledge of swim, bike, and run performance, endurance training, and race strategies.\n\nCertified through TrainingPeaks and university-level sports science programs, he combines evidence-based coaching with a passion for athlete development. At the academy, he plays a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential.",
       asCoach: [
         "Coached at The Trimachine and Fitzone Egypt since 2020",
         "Guides athletes through structured training programs",
@@ -105,14 +111,14 @@ function Coaches() {
         "University-level sports science programs",
         "Evidence-based coaching approach"
       ],
-      philosophy: "Combining evidence-based coaching with a passion for athlete development, I play a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential."
+      philosophy: taher?.philosophy || "Combining evidence-based coaching with a passion for athlete development, I play a key role in building a strong endurance training culture, helping athletes of all levels unlock their full potential."
     },
     {
       id: 3,
-      name: "Rehab Hamdy",
+      name: rehab?.name || "Rehab Hamdy",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152308_wstwqm.png",
-      title: "Triathlon Coach",
-      description: "Rehab Hamdy is a dedicated triathlon coach and former elite triathlete with extensive experience in both competitive racing and athlete development. Her journey in endurance sports began as a national-level swimmer, later transitioning into triathlon, where she made history as the first Arab woman to qualify for the Youth Olympic Games (2014). She went on to earn multiple podium finishes at the African Games, WTS Grand Final, and African Triathlon Championships. As a coach, Rehab brings a wealth of knowledge in swimming, cycling, and running performance training. She has worked with athletes of all levels, from beginners to elite competitors, focusing on technique, endurance, and competition preparation. She has served as a triathlon coach at Stamina Tri Team, Apollo Sports, and AQUATICS Swimming Academy, mentoring age-group and professional athletes alike. In 2023, Rehab founded Root Multisport Academy, where she leads a team of triathletes through structured training programs designed to optimize performance for Ironman, national, and international events. She specializes in long-course triathlon coaching, having earned her USAT Level 1 and Training Peaks Level 2 certifications. With expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes.",
+      title: rehab?.title || "Triathlon Coach",
+      description: rehab?.description || "Rehab Hamdy is a dedicated triathlon coach and former elite triathlete with extensive experience in both competitive racing and athlete development.\n\nHer journey in endurance sports began as a national-level swimmer, later transitioning into triathlon, where she made history as the first Arab woman to qualify for the Youth Olympic Games (2014). She went on to earn multiple podium finishes at the African Games, WTS Grand Final, and African Triathlon Championships.\n\nAs a coach, Rehab brings a wealth of knowledge in swimming, cycling, and running performance training. She has worked with athletes of all levels, from beginners to elite competitors, focusing on technique, endurance, and competition preparation. She has served as a triathlon coach at Stamina Tri Team, Apollo Sports, and AQUATICS Swimming Academy, mentoring age-group and professional athletes alike.\n\nIn 2023, Rehab founded Root Multisport Academy, where she leads a team of triathletes through structured training programs designed to optimize performance for Ironman, national, and international events. She specializes in long-course triathlon coaching, having earned her USAT Level 1 and Training Peaks Level 2 certifications.\n\nWith expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes.",
       asCoach: [
         "Founded Root Multisport Academy in 2023",
         "Coached at Stamina Tri Team, Apollo Sports, and AQUATICS Swimming Academy",
@@ -155,14 +161,14 @@ function Coaches() {
         "Training Peaks Level 2 Certified",
         "Long-course triathlon coaching specialist"
       ],
-      philosophy: "With expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes."
+      philosophy: rehab?.philosophy || "With expertise in individualized training plans, strategic performance profiling, and athlete race preparation, Rehab is committed to helping athletes reach their full potential. Her passion, leadership, and first-hand competitive experience make her an integral part of the academy's coaching team, inspiring the next generation of endurance athletes."
     },
     {
       id: 4,
-      name: "Saif Al-Islam Al-Hammami",
+      name: saif?.name || "Saif Al-Islam Al-Hammami",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1758129767/IMG_6650_1_zeimch.jpg",
-      title: "Certified Triathlon Coach",
-      description: "Saif Al-Islam Al-Hammami – Certified Triathlon Coach. Saif Al-Islam Al-Hammami is a triathlon coach with strong academic and professional qualifications in sports science. He holds an International Triathlon Coaching Certificate from South Korea, in addition to a specialized certification in athletics, physical preparation, and fitness coach. With extensive experience in coaching and officiating, Saif has served as an athletics coach for the Military Sports Association, achieving multiple national medals. He is also an international triathlon referee and currently works as a coach for the Tunisian National Triathlon Team.",
+      title: saif?.title || "Certified Triathlon Coach",
+      description: saif?.description || "Saif Al-Islam Al-Hammami – Certified Triathlon Coach\n\nSaif Al-Islam Al-Hammami is a triathlon coach with strong academic and professional qualifications in sports science. He holds an International Triathlon Coaching Certificate from South Korea, in addition to a specialized certification in athletics, physical preparation, and fitness coach.\n\nWith extensive experience in coaching and officiating, Saif has served as an athletics coach for the Military Sports Association, achieving multiple national medals. He is also an international triathlon referee and currently works as a coach for the Tunisian National Triathlon Team.",
       asCoach: [
         "Coach for the Tunisian National Triathlon Team",
         "Athletics coach for the Military Sports Association",
@@ -203,9 +209,12 @@ function Coaches() {
         "Specialized certification in athletics, physical preparation, and fitness coach",
         "International triathlon referee certification"
       ],
-      philosophy: "With strong academic and professional qualifications in sports science, Saif brings extensive experience in coaching and officiating to help athletes achieve their goals through evidence-based training methods and international standards."
+      philosophy: saif?.philosophy || "With strong academic and professional qualifications in sports science, Saif brings extensive experience in coaching and officiating to help athletes achieve their goals through evidence-based training methods and international standards."
     }
   ];
+  };
+
+  const coaches = getCoachData();
 
   const openCoachModal = (coach) => {
     setSelectedCoach(coach);
@@ -249,7 +258,7 @@ function Coaches() {
         </div>
         <div className="container hero-content">
           <div className="hero-text">
-            <h1 className="hero-title">{getTranslation('coaches.heroTitle', language)}</h1>
+            <h1 className="hero-title">{getTranslation('coaches.heroTitle', 'en')}</h1>
             <p className="hero-subtitle">
               {getTranslation('coaches.heroSubtitle', language)}
             </p>
@@ -277,6 +286,7 @@ function Coaches() {
                 </div>
                 <div className="coach-info">
                   <h3 className="coach-name">{coach.name}</h3>
+                  <p className="coach-title">{coach.title}</p>
                 </div>
               </div>
             ))}
@@ -286,44 +296,44 @@ function Coaches() {
 
       <section className="section coaching-programs" ref={programsRef}>
         <div className="container">
-          <h2 className="section-title">{getTranslation('coaches.coachingPrograms', language)}</h2>
+          <h2 className="section-title">{getTranslation('coaches.coachingPrograms', 'en')}</h2>
           <div className="grid grid-3">
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">{getTranslation('coaches.beginnerProgram', language)}</h3>
+              <h3 className="program-title">{getTranslation('coaches.beginnerProgram', 'en')}</h3>
               <p className="program-description">
-                {getTranslation('coaches.beginnerDescription', language)}
+                {getTranslation('coaches.beginnerDescription', 'en')}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.safetyFundamentals', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.basicRacingTechniques', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.equipmentFamiliarization', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.tipsForBetterTechnique', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.safetyFundamentals', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.basicRacingTechniques', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.equipmentFamiliarization', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.tipsForBetterTechnique', 'en')}</li>
               </ul>
             </div>
 
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">{getTranslation('coaches.intermediateProgram', language)}</h3>
+              <h3 className="program-title">{getTranslation('coaches.intermediateProgram', 'en')}</h3>
               <p className="program-description">
-                {getTranslation('coaches.intermediateDescription', language)}
+                {getTranslation('coaches.intermediateDescription', 'en')}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedTechniques', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.performanceOptimization', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.strategyDevelopment', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.competitionPreparation', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedTechniques', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.performanceOptimization', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.strategyDevelopment', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.competitionPreparation', 'en')}</li>
               </ul>
             </div>
 
             <div className={`program-card ${animatedCards ? 'animate' : ''}`}>
-              <h3 className="program-title">{getTranslation('coaches.eliteProgram', language)}</h3>
+              <h3 className="program-title">{getTranslation('coaches.eliteProgram', 'en')}</h3>
               <p className="program-description">
-                {getTranslation('coaches.eliteDescription', language)}
+                {getTranslation('coaches.eliteDescription', 'en')}
               </p>
               <ul className="program-features">
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.professionalTechniques', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.mentalConditioning', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedStrategy', language)}</li>
-                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.careerDevelopment', language)}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.professionalTechniques', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.mentalConditioning', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.advancedStrategy', 'en')}</li>
+                <li><FaBicycle className="bike-icon" />{getTranslation('coaches.careerDevelopment', 'en')}</li>
               </ul>
             </div>
           </div>

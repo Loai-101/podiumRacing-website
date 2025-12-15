@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { getTranslation } from '../../translations/translations';
+import { getTranslation, translations } from '../../translations/translations';
 // import SEO from '../SEO/SEO';
 // import { getSEOConfig } from '../SEO/seoConfig';
 import './Athletes.css';
@@ -9,64 +9,80 @@ import { FaBicycle } from 'react-icons/fa';
 
 function Athletes() {
   const { language: contextLanguage, isRTL: contextIsRTL } = useLanguage();
-  // Force English on this page until Arabic translations are fixed
-  const language = 'en';
-  const isRTL = false;
+  const language = contextLanguage;
+  const isRTL = contextIsRTL;
   const [selectedAthlete, setSelectedAthlete] = useState(null);
   // const seoConfig = getSEOConfig('athletes', language);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Athlete data with all details
-  const athletes = [
+  // Get athlete data - always in English
+  const getAthleteData = () => {
+    const athleteData = translations['en']?.athletes?.athletes || {};
+    const seifeldeen = athleteData.seifeldeen || {};
+    const mohamed = athleteData.mohamed || {};
+    const malik = athleteData.malik || {};
+    
+    return [
     {
       id: 1,
-      name: "SEIFELDEEN ISMAIL",
+      name: seifeldeen?.name || "SEIFELDEEN ISMAIL",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756808541/192A0268_tmwraw.jpg",
       modalImage: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756809010/IMG_2975_g7f4x2.jpg",
-      category: "Professional Triathlete",
-      achievements: [
+      category: seifeldeen?.category || "Professional Triathlete",
+      achievements: seifeldeen?.achievements || [
         "2x70.3 AG podiums",
         "2022 Arab Champion",
         "2024 Asia Elite Cup Champion"
       ],
-      personalBests: [],
-      experience: [],
-      specialties: [],
-      philosophy: "(separate document to be shared for your reference and additional information)"
+      personalBests: seifeldeen?.personalBests || [],
+      experience: seifeldeen?.experience || [],
+      specialties: seifeldeen?.specialties || [],
+      philosophy: seifeldeen?.philosophy || "(separate document to be shared for your reference and additional information)"
     },
     {
       id: 2,
-      name: "MOHAMED HAMADA",
+      name: mohamed?.name || "MOHAMED HAMADA",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756809241/9357_20230604_095901_287630864_original_pre7pd.jpg",
       modalImage: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756809350/9357_20230604_154030_287786663_original_yi6wht.jpg",
-      category: "Age-Group Triathlete",
-      achievements: [],
-      personalBests: [
-        "Ironman140.6 9h:11m",
-        "Ironman70.3 4h:12m",
-        "Olympic 2h:04m"
+      category: mohamed?.category || "Age-Group Triathlete",
+      achievements: mohamed?.achievements || [],
+      personalBests: mohamed?.personalBests || [
+        "Ironman 140.6: 9h:11m",
+        "Ironman 70.3: 4h:12m",
+        "Olympic: 2h:04m"
       ],
-      experience: [],
-      specialties: [],
-      philosophy: "(separate document to be shared for your reference and additional information)"
+      experience: mohamed?.experience || [
+        "Started triathlon in 2016",
+        "Multiple Ironman finishes",
+        "Consistent age group performance"
+      ],
+      specialties: mohamed?.specialties || [
+        "Long distance racing",
+        "Endurance building",
+        "Age group optimization"
+      ],
+      philosophy: mohamed?.philosophy || "(separate document to be shared for your reference and additional information)"
     },
     {
       id: 3,
-      name: "MALIK ALI",
+      name: malik?.name || "MALIK ALI",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756976841/WhatsApp_Image_2025-09-03_at_10.26.37_f0852a98_h3fz7z.jpg",
       modalImage: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756976998/WhatsApp_Image_2025-09-03_at_10.26.37_edfc61a6_gwjypd.jpg",
-      category: "Age-Group Triathlete",
-      achievements: [
-        "Ironman70.3 (10+)",
-        "Multisport Races in the Arab Region (40+)",
-        "Full & Half Marathons (50+)"
+      category: malik?.category || "Age-Group Triathlete",
+      achievements: malik?.achievements || [],
+      personalBests: malik?.personalBests || [
+        "Ironman 70.3: Multiple finishes",
+        "Multisport events: 40+ races",
+        "Marathons: 50+ finishes"
       ],
-      personalBests: [],
-      experience: [],
-      specialties: [],
-      philosophy: ""
+      experience: malik?.experience || [],
+      specialties: malik?.specialties || [],
+      philosophy: malik?.philosophy || ""
     }
   ];
+  };
+
+  const athletes = getAthleteData();
 
   const openAthleteModal = (athlete) => {
     setSelectedAthlete(athlete);
@@ -91,7 +107,7 @@ function Athletes() {
         </div>
         <div className="hero-overlay"></div>
         <div className="container">
-          <h1 className="hero-title">{getTranslation('athletes.heroTitle', language)}</h1>
+          <h1 className="hero-title">{getTranslation('athletes.heroTitle', 'en')}</h1>
           <p className="hero-subtitle">
             {getTranslation('athletes.heroSubtitle', language)}
           </p>
@@ -147,17 +163,17 @@ function Athletes() {
       <section className="section join-team-section">
         <div className="container">
           <div className="join-content">
-            <h2 className="card-title">{getTranslation('athletes.joinOurTeam', language)}</h2>
+            <h2 className="card-title">{getTranslation('athletes.joinOurTeam', 'en')}</h2>
             <p className="join-text">
-              {getTranslation('athletes.joinText', language)}
+              {getTranslation('athletes.joinText', 'en')}
             </p>
             <div className="join-benefits">
-              <h3>{getTranslation('athletes.benefitsTitle', language)}</h3>
+              <h3>{getTranslation('athletes.benefitsTitle', 'en')}</h3>
               <ul>
-                <li>{getTranslation('athletes.benefit1', language)}</li>
-                <li>{getTranslation('athletes.benefit2', language)}</li>
-                <li>{getTranslation('athletes.benefit3', language)}</li>
-                <li>{getTranslation('athletes.benefit4', language)}</li>
+                <li>{getTranslation('athletes.benefit1', 'en')}</li>
+                <li>{getTranslation('athletes.benefit2', 'en')}</li>
+                <li>{getTranslation('athletes.benefit3', 'en')}</li>
+                <li>{getTranslation('athletes.benefit4', 'en')}</li>
               </ul>
             </div>
             <div style={{textAlign: 'center'}}>
@@ -165,7 +181,7 @@ function Athletes() {
                 to="/subscription" 
                 className="join-button"
               >
-                {getTranslation('athletes.applyToJoin', language)}
+                {getTranslation('athletes.applyToJoin', 'en')}
               </Link>
             </div>
           </div>
@@ -203,7 +219,7 @@ function Athletes() {
                 
                 {selectedAthlete.id !== 2 && selectedAthlete.achievements && selectedAthlete.achievements.length > 0 && (
                   <div className="athlete-modal-section">
-                    <h4>{getTranslation('athletes.keyAchievements', language)}</h4>
+                    <h4>{getTranslation('athletes.keyAchievements', 'en')}</h4>
                     <ul>
                       {selectedAthlete.achievements.map((item, index) => (
                         <li key={index}>
@@ -217,7 +233,7 @@ function Athletes() {
 
                 {selectedAthlete.id !== 1 && selectedAthlete.personalBests && selectedAthlete.personalBests.length > 0 && (
                   <div className="athlete-modal-section">
-                    <h4>{selectedAthlete.id === 2 ? getTranslation('athletes.keyAchievements', language) : getTranslation('athletes.personalBests', language)}</h4>
+                    <h4>{selectedAthlete.id === 2 ? getTranslation('athletes.keyAchievements', 'en') : getTranslation('athletes.personalBests', 'en')}</h4>
                     <ul>
                       {selectedAthlete.personalBests.map((item, index) => (
                         <li key={index}>
@@ -231,7 +247,7 @@ function Athletes() {
 
                 {selectedAthlete.id !== 1 && selectedAthlete.experience && selectedAthlete.experience.length > 0 && (
                   <div className="athlete-modal-section">
-                    <h4>{getTranslation('athletes.experience', language)}</h4>
+                    <h4>{getTranslation('athletes.experience', 'en')}</h4>
                     <ul>
                       {selectedAthlete.experience.map((item, index) => (
                         <li key={index}>
@@ -245,7 +261,7 @@ function Athletes() {
 
                 {selectedAthlete.id !== 1 && selectedAthlete.specialties && selectedAthlete.specialties.length > 0 && (
                   <div className="athlete-modal-section">
-                    <h4>{getTranslation('athletes.specialties', language)}</h4>
+                    <h4>{getTranslation('athletes.specialties', 'en')}</h4>
                     <ul>
                       {selectedAthlete.specialties.map((item, index) => (
                         <li key={index}>

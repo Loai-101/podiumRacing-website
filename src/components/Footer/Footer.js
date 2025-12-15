@@ -12,17 +12,17 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3 className="footer-title">{getTranslation('footer.companyName', language)}</h3>
-            <p className="footer-tagline">{getTranslation('footer.tagline', language)}</p>
+            <h3 className="footer-title">{getTranslation('footer.companyName', 'en')}</h3>
+            <p className="footer-tagline">{getTranslation('footer.tagline', 'en')}</p>
           </div>
           
           <div className="footer-section">
-            <h4 className="footer-subtitle">{getTranslation('footer.quickLinks', language)}</h4>
+            <h4 className="footer-subtitle">{getTranslation('footer.quickLinks', 'en')}</h4>
             <ul className="footer-links">
-              <li><a href="/">{getTranslation('footer.home', language)}</a></li>
-              <li><a href="/coaches">{getTranslation('footer.coaches', language)}</a></li>
-              <li><a href="/athletes">{getTranslation('footer.athletes', language)}</a></li>
-              <li><a href="/about">{getTranslation('footer.aboutUs', language)}</a></li>
+              <li><a href="/">{getTranslation('footer.home', 'en')}</a></li>
+              <li><a href="/coaches">{getTranslation('footer.coaches', 'en')}</a></li>
+              <li><a href="/athletes">{getTranslation('footer.athletes', 'en')}</a></li>
+              <li><a href="/about">{getTranslation('footer.aboutUs', 'en')}</a></li>
             </ul>
           </div>
         </div>
@@ -44,7 +44,7 @@ function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <p className="footer-copyright">{getTranslation('footer.copyright', language)}</p>
+          <p className="footer-copyright">{getTranslation('footer.copyright', 'en')}</p>
           <p className="footer-developed">
             <a 
               href="https://it-solutions.pmi-me.net/" 
@@ -70,7 +70,7 @@ function Footer() {
                 }}
               />
               <span className="pmi-logo-text" style={{display: 'none'}}>PMI</span>
-              {getTranslation('footer.developedBy', language)}
+              {getTranslation('footer.developedBy', 'en')}
             </a>
           </p>
         </div>
