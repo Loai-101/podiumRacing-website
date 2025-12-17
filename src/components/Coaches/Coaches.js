@@ -19,7 +19,10 @@ function Coaches() {
   // Get coach data based on language
   const getCoachData = () => {
     const coachData = translations[language]?.coaches?.coaches || {};
+    // Always get English data for Seifeldeen's structured sections to keep them in English
+    const englishCoachData = translations['en']?.coaches?.coaches || {};
     const seifeldeen = coachData.seifeldeen || {};
+    const seifeldeenEnglish = englishCoachData.seifeldeen || {};
     const taher = coachData.taher || {};
     const rehab = coachData.rehab || {};
     const saif = coachData.saif || {};
@@ -31,12 +34,13 @@ function Coaches() {
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
       title: seifeldeen?.title || "Triathlon Coach & Professional Athlete",
       description: seifeldeen?.description || "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
-      asCoach: [
+      // Always use English content for these sections
+      asCoach: seifeldeenEnglish?.asCoach || [
         "Coached athletes to qualify for Ironman 70.3 World Championships.",
         "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
         "Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful)."
       ],
-      asAthlete: [
+      asAthlete: seifeldeenEnglish?.asAthlete || [
         "2024 Elite African Games (4th place)",
         "2024 Elite Asian Triathlon Cup Champion",
         "2022 Elite Arab Triathlon Champion",
@@ -63,12 +67,13 @@ function Coaches() {
         "Multiple championship titles",
         "World-class ranking achievements"
       ],
-      certifications: [
+      // Always use English content for certifications
+      certifications: seifeldeenEnglish?.certifications || [
         "USA Triathlon Level I & Long Course Certified",
         "TrainingPeaks Level 1",
         "Basic Life Support & First Aid"
       ],
-      philosophy: seifeldeen?.philosophy || "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
+      philosophy: seifeldeenEnglish?.philosophy || seifeldeen?.philosophy || "Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one."
     },
     {
       id: 2,
@@ -365,11 +370,11 @@ function Coaches() {
                 <p className="coach-modal-description">{selectedCoach.description}</p>
                 
                 {selectedCoach.asCoach && selectedCoach.asCoach.length > 0 && (
-                  <div className="coach-modal-section">
-                    <h4>As a Coach:</h4>
-                    <ul>
+                  <div className="coach-modal-section" style={{ direction: 'ltr', textAlign: 'left' }}>
+                    <h4 style={{ direction: 'ltr', textAlign: 'left' }}>As a Coach:</h4>
+                    <ul style={{ direction: 'ltr', textAlign: 'left' }}>
                       {selectedCoach.asCoach.map((item, index) => (
-                        <li key={index}>
+                        <li key={index} style={{ direction: 'ltr', textAlign: 'left' }}>
                           <FaBicycle className="bike-icon" />
                           {item}
                         </li>
@@ -379,11 +384,11 @@ function Coaches() {
                 )}
 
                 {selectedCoach.asAthlete && selectedCoach.asAthlete.length > 0 && (
-                  <div className="coach-modal-section">
-                    <h4>As an Athlete:</h4>
-                    <ul>
+                  <div className="coach-modal-section" style={{ direction: 'ltr', textAlign: 'left' }}>
+                    <h4 style={{ direction: 'ltr', textAlign: 'left' }}>As an Athlete:</h4>
+                    <ul style={{ direction: 'ltr', textAlign: 'left' }}>
                       {selectedCoach.asAthlete.map((item, index) => (
-                        <li key={index}>
+                        <li key={index} style={{ direction: 'ltr', textAlign: 'left' }}>
                           <FaBicycle className="bike-icon" />
                           {item}
                         </li>
@@ -449,11 +454,11 @@ function Coaches() {
                 )}
 
                 {selectedCoach.certifications && selectedCoach.certifications.length > 0 && (
-                  <div className="coach-modal-section">
-                    <h4>Certifications & Expertise:</h4>
-                    <ul>
+                  <div className="coach-modal-section" style={{ direction: 'ltr', textAlign: 'left' }}>
+                    <h4 style={{ direction: 'ltr', textAlign: 'left' }}>Certifications & Expertise:</h4>
+                    <ul style={{ direction: 'ltr', textAlign: 'left' }}>
                       {selectedCoach.certifications.map((item, index) => (
-                        <li key={index}>
+                        <li key={index} style={{ direction: 'ltr', textAlign: 'left' }}>
                           <FaBicycle className="bike-icon" />
                           {item}
                         </li>
