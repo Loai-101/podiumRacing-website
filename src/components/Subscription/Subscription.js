@@ -247,8 +247,8 @@ function Subscription() {
 
     const currentRequiredFields = requiredFields[currentSection] || [];
     
-    // Check for validation errors first
-    for (const field in validationErrors) {
+    // Check for validation errors first - only for current section fields
+    for (const field of currentRequiredFields) {
       if (validationErrors[field]) {
         return false;
       }
@@ -258,14 +258,19 @@ function Subscription() {
       const value = formData[field];
       
       // Check if field is empty or if it's an array and empty
-      if (!value || (Array.isArray(value) && value.length === 0)) {
+      // Also check for whitespace-only strings
+      const isEmpty = !value || 
+                     (typeof value === 'string' && value.trim() === '') || 
+                     (Array.isArray(value) && value.length === 0);
+      
+      if (isEmpty) {
         // Check for conditional fields
         if (field === 'injuryDetails' && formData.pastCurrentInjuries !== 'yes') continue;
         if (field === 'chronicDetails' && formData.chronicInjuriesConditions !== 'yes') continue;
         if (field === 'medicationsList' && formData.medicationsSupplements !== 'yes') continue;
         if (field === 'powerMeterDetails' && formData.powerMeter !== 'yes') continue;
         if (field === 'heartRateMonitorDetails' && formData.heartRateMonitor !== 'yes') continue;
-        if (field === 'otherSpecify' && !formData.whatLimiting.includes('other')) continue;
+        if (field === 'otherSpecify' && (!Array.isArray(formData.whatLimiting) || !formData.whatLimiting.includes('other'))) continue;
         
         return false;
       }
