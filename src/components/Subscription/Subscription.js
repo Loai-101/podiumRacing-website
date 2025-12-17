@@ -554,7 +554,7 @@ function Subscription() {
       };
 
       // Using FormSubmit service to send email
-      const response = await fetch('https://formsubmit.co/q9g8moh@gmail.com', {
+      const response = await fetch('https://formsubmit.co/podiumracing-me@pmigroup.me', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -566,7 +566,7 @@ function Subscription() {
           _captcha: 'false',
           _next: window.location.href,
           _replyto: formData.emailAddress,
-          _cc: 'q9g8moh@gmail.com'
+          _cc: 'podiumracing-me@pmigroup.me'
         })
       });
 
@@ -780,7 +780,7 @@ function Subscription() {
             <form 
               className="subscription-form" 
               onSubmit={handleSubmit}
-              action="https://formsubmit.co/q9g8moh@gmail.com"
+              action="https://formsubmit.co/podiumracing-me@pmigroup.me"
               method="POST"
             >
               

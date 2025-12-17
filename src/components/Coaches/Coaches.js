@@ -30,7 +30,7 @@ function Coaches() {
       name: seifeldeen?.name || "Seifeldeen Ismail",
       image: "https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152330_p96vpw.png",
       title: seifeldeen?.title || "Triathlon Coach & Professional Athlete",
-      description: seifeldeen?.description || "Seifeldeen Ismail – Triathlon Coach & Professional Athlete. I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting. As a Coach: Coached athletes to qualify for Ironman 70.3 World Championships. Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines. Work with all levels, from beginners to elites (including Olympian pentathlete Malak Ismail, 2028 LA medalist hopeful). As an Athlete: 2024 Elite African Games (4th place), 2024 Elite Asian Triathlon Cup Champion, 2022 Elite Arab Triathlon Champion, World Triathlon Ranking (Best): #85, African Triathlon Ranking (Best): #2, 2x Ironman 70.3 Age-Group Podiums. Certifications & Expertise: USA Triathlon Level I & Long Course Certified, TrainingPeaks Level 1, Basic Life Support & First Aid. My Philosophy: Data-informed, not data-dependent – Use data wisely but trust your feel. Health first – No shortcuts that risk long-term well-being. Your goal, your plan – No generic programs. Let's make your next finish line your best one.",
+      description: seifeldeen?.description || "I help triathletes of all levels reach their goals faster, stay injury-free, and enjoy the process. My coaching is built on smart training, not just hard work. My approach blends science, experience, and personalized planning—because progress should be sustainable, not exhausting.",
       asCoach: [
         "Coached athletes to qualify for Ironman 70.3 World Championships.",
         "Guided a leukemia survivor to complete 4×70.3 races and a full Ironman within two years—with new personal bests in all disciplines",
@@ -364,9 +364,9 @@ function Coaches() {
                 <p className="coach-modal-title">{selectedCoach.title}</p>
                 <p className="coach-modal-description">{selectedCoach.description}</p>
                 
-                {selectedCoach.id !== 1 && selectedCoach.id !== 2 && selectedCoach.id !== 3 && selectedCoach.id !== 4 && selectedCoach.asCoach && (
+                {selectedCoach.asCoach && selectedCoach.asCoach.length > 0 && (
                   <div className="coach-modal-section">
-                    <h4>{getTranslation('coaches.asACoach', language)}</h4>
+                    <h4>As a Coach:</h4>
                     <ul>
                       {selectedCoach.asCoach.map((item, index) => (
                         <li key={index}>
@@ -378,9 +378,9 @@ function Coaches() {
                   </div>
                 )}
 
-                {selectedCoach.id !== 1 && selectedCoach.id !== 2 && selectedCoach.id !== 3 && selectedCoach.id !== 4 && selectedCoach.asAthlete && (
+                {selectedCoach.asAthlete && selectedCoach.asAthlete.length > 0 && (
                   <div className="coach-modal-section">
-                    <h4>{getTranslation('coaches.asAnAthlete', language)}</h4>
+                    <h4>As an Athlete:</h4>
                     <ul>
                       {selectedCoach.asAthlete.map((item, index) => (
                         <li key={index}>
@@ -448,9 +448,9 @@ function Coaches() {
                   </div>
                 )}
 
-                {selectedCoach.id !== 1 && selectedCoach.id !== 2 && selectedCoach.id !== 3 && selectedCoach.id !== 4 && selectedCoach.certifications && (
+                {selectedCoach.certifications && selectedCoach.certifications.length > 0 && (
                   <div className="coach-modal-section">
-                    <h4>{getTranslation('coaches.certifications', language)}</h4>
+                    <h4>Certifications & Expertise:</h4>
                     <ul>
                       {selectedCoach.certifications.map((item, index) => (
                         <li key={index}>
@@ -462,9 +462,9 @@ function Coaches() {
                   </div>
                 )}
 
-                {selectedCoach.id !== 1 && selectedCoach.id !== 2 && selectedCoach.id !== 3 && selectedCoach.id !== 4 && selectedCoach.philosophy && (
+                {selectedCoach.philosophy && (
                   <div className="coach-modal-section">
-                    <h4>{getTranslation('coaches.myPhilosophy', language)}</h4>
+                    <h4>My Philosophy:</h4>
                     <p className="coach-modal-description">{selectedCoach.philosophy}</p>
                   </div>
                 )}
