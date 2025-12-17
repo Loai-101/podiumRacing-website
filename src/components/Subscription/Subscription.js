@@ -6,6 +6,11 @@ import { getSEOConfig } from '../SEO/seoConfig';
 import { countries } from '../../data/countries';
 import './Subscription.css';
 
+/**
+ * Subscription Form Component
+ * This form is publicly accessible - no login or authentication required.
+ * Anyone can fill out and submit the application form.
+ */
 function Subscription() {
   const { language, isRTL } = useLanguage();
   const [formData, setFormData] = useState({
@@ -120,6 +125,10 @@ function Subscription() {
 
   // Validate positive numbers
   const validatePositiveNumber = (value, fieldName) => {
+    // Don't validate if field is empty (empty check is handled separately)
+    if (!value || value.trim() === '') {
+      return null;
+    }
     const num = parseFloat(value);
     if (isNaN(num) || num <= 0) {
       const fieldTranslation = getTranslation(`subscription.${fieldName.toLowerCase()}`, language) || fieldName;
@@ -130,6 +139,10 @@ function Subscription() {
 
   // Validate email format
   const validateEmail = (email) => {
+    // Don't validate if field is empty (empty check is handled separately)
+    if (!email || email.trim() === '') {
+      return null;
+    }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return getTranslation('subscription.validEmail', language);
@@ -205,29 +218,23 @@ function Subscription() {
         setAgeDisplay(age > 0 ? getTranslation('subscription.ageDisplay', language).replace('{age}', age) : '');
         
         const error = validateDateOfBirth(value);
-        if (error) {
-          setValidationErrors(prev => ({
-            ...prev,
-            [name]: error
-          }));
-        }
+        setValidationErrors(prev => ({
+          ...prev,
+          [name]: error || null
+        }));
       } else if (name === 'height' || name === 'weight' || name === 'idealWeight') {
         const fieldName = name === 'height' ? getTranslation('subscription.fieldHeight', language) : name === 'weight' ? getTranslation('subscription.fieldWeight', language) : getTranslation('subscription.fieldIdealWeight', language);
         const error = validatePositiveNumber(value, fieldName);
-        if (error) {
-          setValidationErrors(prev => ({
-            ...prev,
-            [name]: error
-          }));
-        }
+        setValidationErrors(prev => ({
+          ...prev,
+          [name]: error || null
+        }));
       } else if (name === 'emailAddress') {
         const error = validateEmail(value);
-        if (error) {
-          setValidationErrors(prev => ({
-            ...prev,
-            [name]: error
-          }));
-        }
+        setValidationErrors(prev => ({
+          ...prev,
+          [name]: error || null
+        }));
       }
     }
   };
@@ -279,13 +286,6 @@ function Subscription() {
   const validateCurrentSection = () => {
     const currentRequiredFields = requiredFields[currentSection] || [];
     
-    // Check for validation errors first - only for current section fields
-    for (const field of currentRequiredFields) {
-      if (validationErrors[field]) {
-        return false;
-      }
-    }
-    
     for (const field of currentRequiredFields) {
       const value = formData[field];
       
@@ -304,6 +304,12 @@ function Subscription() {
         if (field === 'heartRateMonitorDetails' && formData.heartRateMonitor !== 'yes') continue;
         if (field === 'otherSpecify' && (!Array.isArray(formData.whatLimiting) || !formData.whatLimiting.includes('other'))) continue;
         
+        return false;
+      }
+      
+      // Check for validation errors only if field is not empty
+      // This prevents blocking on format errors when field is empty (empty is already checked above)
+      if (validationErrors[field]) {
         return false;
       }
     }
