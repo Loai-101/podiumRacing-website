@@ -508,9 +508,23 @@ export const translations = {
            submitting: "Submitting...",
            successMessage: "Thank you! Your application has been submitted successfully.",
            errorMessage: "Sorry, there was an error submitting your application. Please try again.",
-           validationRequired: "Validation Required",
-           completeCurrentSection: "Please complete the current section before proceeding to the next section.",
-           ok: "OK"
+      validationRequired: "Validation Required",
+      completeCurrentSection: "Please complete the current section before proceeding to the next section.",
+      fillRequiredFields: "Please fill in all required fields in the current section before proceeding.",
+      ageDisplay: "Age: {age} years old",
+      selected: "Selected:",
+      notImportant: "Not Important",
+      moderatelyImportant: "Moderately Important",
+      low: "Low",
+      moderate: "Moderate",
+      veryHigh: "Very High",
+      fieldHeight: "Height",
+      fieldWeight: "Weight",
+      fieldIdealWeight: "Ideal Weight",
+      mustBePositive: "{field} must be a positive number",
+      validEmail: "Please enter a valid email address",
+      mustBe15: "You must be at least 15 years old to apply",
+      ok: "OK"
     },
     
     // Footer
@@ -1036,9 +1050,23 @@ export const translations = {
            submitting: "جاري الإرسال...",
            successMessage: "شكراً لك! تم إرسال طلبك بنجاح.",
            errorMessage: "عذراً، حدث خطأ في إرسال طلبك. يرجى المحاولة مرة أخرى.",
-           validationRequired: "التحقق مطلوب",
-           completeCurrentSection: "يرجى إكمال القسم الحالي قبل الانتقال إلى القسم التالي.",
-           ok: "موافق"
+      validationRequired: "التحقق مطلوب",
+      completeCurrentSection: "يرجى إكمال القسم الحالي قبل الانتقال إلى القسم التالي.",
+      fillRequiredFields: "يرجى ملء جميع الحقول المطلوبة في القسم الحالي قبل المتابعة.",
+      ageDisplay: "العمر: {age} سنة",
+      selected: "المحدد:",
+      notImportant: "غير مهم",
+      moderatelyImportant: "متوسط الأهمية",
+      low: "منخفض",
+      moderate: "متوسط",
+      veryHigh: "عالي جداً",
+      fieldHeight: "الطول",
+      fieldWeight: "الوزن",
+      fieldIdealWeight: "الوزن المثالي",
+      mustBePositive: "{field} يجب أن يكون رقماً موجباً",
+      validEmail: "يرجى إدخال عنوان بريد إلكتروني صحيح",
+      mustBe15: "يجب أن يكون عمرك 15 سنة على الأقل للتقديم",
+      ok: "موافق"
     },
     
     // Footer

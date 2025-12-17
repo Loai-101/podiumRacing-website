@@ -122,7 +122,8 @@ function Subscription() {
   const validatePositiveNumber = (value, fieldName) => {
     const num = parseFloat(value);
     if (isNaN(num) || num <= 0) {
-      return `${fieldName} must be a positive number`;
+      const fieldTranslation = getTranslation(`subscription.${fieldName.toLowerCase()}`, language) || fieldName;
+      return getTranslation('subscription.mustBePositive', language).replace('{field}', fieldTranslation);
     }
     return null;
   };
@@ -131,7 +132,7 @@ function Subscription() {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return 'Please enter a valid email address';
+      return getTranslation('subscription.validEmail', language);
     }
     return null;
   };
@@ -141,7 +142,7 @@ function Subscription() {
     if (!dateOfBirth) return null;
     const age = calculateAge(dateOfBirth);
     if (age < 15) {
-      return 'You must be at least 15 years old to apply';
+      return getTranslation('subscription.mustBe15', language);
     }
     return null;
   };
@@ -201,7 +202,7 @@ function Subscription() {
       // Handle special validations
       if (name === 'dateOfBirth') {
         const age = calculateAge(value);
-        setAgeDisplay(age > 0 ? `Age: ${age} years old` : '');
+        setAgeDisplay(age > 0 ? getTranslation('subscription.ageDisplay', language).replace('{age}', age) : '');
         
         const error = validateDateOfBirth(value);
         if (error) {
@@ -211,7 +212,7 @@ function Subscription() {
           }));
         }
       } else if (name === 'height' || name === 'weight' || name === 'idealWeight') {
-        const fieldName = name === 'height' ? 'Height' : name === 'weight' ? 'Weight' : 'Ideal Weight';
+        const fieldName = name === 'height' ? getTranslation('subscription.fieldHeight', language) : name === 'weight' ? getTranslation('subscription.fieldWeight', language) : getTranslation('subscription.fieldIdealWeight', language);
         const error = validatePositiveNumber(value, fieldName);
         if (error) {
           setValidationErrors(prev => ({
@@ -231,20 +232,51 @@ function Subscription() {
     }
   };
 
-  const validateCurrentSection = () => {
-    const requiredFields = {
-      1: ['fullName', 'dateOfBirth', 'height', 'weight', 'idealWeight', 'phoneNumber', 'emailAddress', 'cityCountry', 'maritalStatus', 'haveChildren'],
-      2: ['ultimateGoal', 'top3Goals', 'lastSeasonGoal', 'importanceScale', 'whatToGain'],
-      3: ['whatLimiting', 'workStudyHours', 'workStressLevel', 'availableTrainingSlots', 'sleepSchedule'],
-      4: ['overallSkillLevel', 'swimmingSkillLevel', 'swimmingHistory', 'cyclingSkillLevel', 'cyclingHistory', 'runningSkillLevel', 'runningHistory'],
-      5: ['powerMeter', 'heartRateMonitor', 'trainingEquipment'],
-      6: ['longestDistances', 'vo2MaxTest'],
-      7: ['twoGreatestStrengths', 'twoBiggestLimiters', 'biggestChallenge'],
-      8: ['pastCurrentInjuries', 'seePhysicalTherapist', 'chronicInjuriesConditions', 'medicationsSupplements'],
-      9: ['typicalDayEating', 'dailyWaterIntake', 'exerciseHydration', 'foodAllergiesRestrictions'],
-      10: ['whatWantFromCoaching', 'whatMotivatesAthlete', 'biggestTechnicalPhysicalChallenges', 'handlePressureRaces', 'proudAccomplishments', 'interestedCoach', 'needCallHeadCoach']
-    };
+  const requiredFields = {
+    1: ['fullName', 'dateOfBirth', 'height', 'weight', 'idealWeight', 'phoneNumber', 'emailAddress', 'cityCountry', 'maritalStatus', 'haveChildren'],
+    2: ['ultimateGoal', 'top3Goals', 'lastSeasonGoal', 'importanceScale', 'whatToGain'],
+    3: ['whatLimiting', 'workStudyHours', 'workStressLevel', 'availableTrainingSlots', 'sleepSchedule'],
+    4: ['overallSkillLevel', 'swimmingSkillLevel', 'swimmingHistory', 'cyclingSkillLevel', 'cyclingHistory', 'runningSkillLevel', 'runningHistory'],
+    5: ['powerMeter', 'heartRateMonitor', 'trainingEquipment'],
+    6: ['longestDistances', 'vo2MaxTest'],
+    7: ['twoGreatestStrengths', 'twoBiggestLimiters', 'biggestChallenge'],
+    8: ['pastCurrentInjuries', 'seePhysicalTherapist', 'chronicInjuriesConditions', 'medicationsSupplements'],
+    9: ['typicalDayEating', 'dailyWaterIntake', 'exerciseHydration', 'foodAllergiesRestrictions'],
+    10: ['whatWantFromCoaching', 'whatMotivatesAthlete', 'biggestTechnicalPhysicalChallenges', 'handlePressureRaces', 'proudAccomplishments', 'interestedCoach', 'needCallHeadCoach']
+  };
 
+  // Helper function to check if a field should show red (required and empty)
+  const isFieldRequiredAndEmpty = (fieldName) => {
+    const currentRequiredFields = requiredFields[currentSection] || [];
+    
+    // Check if field is required in current section
+    if (!currentRequiredFields.includes(fieldName)) {
+      return false;
+    }
+    
+    const value = formData[fieldName];
+    
+    // Check if field is empty
+    const isEmpty = !value || 
+                   (typeof value === 'string' && value.trim() === '') || 
+                   (Array.isArray(value) && value.length === 0);
+    
+    if (!isEmpty) {
+      return false;
+    }
+    
+    // Check for conditional fields
+    if (fieldName === 'injuryDetails' && formData.pastCurrentInjuries !== 'yes') return false;
+    if (fieldName === 'chronicDetails' && formData.chronicInjuriesConditions !== 'yes') return false;
+    if (fieldName === 'medicationsList' && formData.medicationsSupplements !== 'yes') return false;
+    if (fieldName === 'powerMeterDetails' && formData.powerMeter !== 'yes') return false;
+    if (fieldName === 'heartRateMonitorDetails' && formData.heartRateMonitor !== 'yes') return false;
+    if (fieldName === 'otherSpecify' && (!Array.isArray(formData.whatLimiting) || !formData.whatLimiting.includes('other'))) return false;
+    
+    return true;
+  };
+
+  const validateCurrentSection = () => {
     const currentRequiredFields = requiredFields[currentSection] || [];
     
     // Check for validation errors first - only for current section fields
@@ -284,7 +316,7 @@ function Subscription() {
       if (validateCurrentSection()) {
         setCurrentSection(currentSection + 1);
       } else {
-        setModalMessage('Please fill in all required fields in the current section before proceeding.');
+        setModalMessage(getTranslation('subscription.fillRequiredFields', language));
         setShowModal(true);
       }
     }
@@ -679,7 +711,7 @@ function Subscription() {
               <div className="coach-card">
                 <div className="coach-image-container">
                   <img 
-                    src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1756988645/Screenshot_2025-09-04_152308_wstwqm.png" 
+                    src="https://res.cloudinary.com/dvybb2xnc/image/upload/v1765964719/Screenshot_2025-12-17_124029_n8mb0j.png" 
                     alt="Coach Rehab Hamdy"
                     className="coach-image offset-down no-white"
                   />
@@ -752,7 +784,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.personalInfoTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="fullName">{getTranslation('subscription.fullName', language)}</label>
+                    <label htmlFor="fullName" className={isFieldRequiredAndEmpty('fullName') ? 'required-empty' : ''}>{getTranslation('subscription.fullName', language)}</label>
                     <input
                       type="text"
                       id="fullName"
@@ -764,7 +796,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="dateOfBirth">{getTranslation('subscription.dateOfBirth', language)}</label>
+                    <label htmlFor="dateOfBirth" className={isFieldRequiredAndEmpty('dateOfBirth') ? 'required-empty' : ''}>{getTranslation('subscription.dateOfBirth', language)}</label>
                     <input
                       type="date"
                       id="dateOfBirth"
@@ -795,7 +827,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="height">{getTranslation('subscription.height', language)}</label>
+                    <label htmlFor="height" className={isFieldRequiredAndEmpty('height') ? 'required-empty' : ''}>{getTranslation('subscription.height', language)}</label>
                     <input
                       type="number"
                       id="height"
@@ -819,7 +851,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="weight">{getTranslation('subscription.weight', language)}</label>
+                    <label htmlFor="weight" className={isFieldRequiredAndEmpty('weight') ? 'required-empty' : ''}>{getTranslation('subscription.weight', language)}</label>
                     <input
                       type="number"
                       id="weight"
@@ -843,7 +875,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="idealWeight">{getTranslation('subscription.idealWeight', language)}</label>
+                    <label htmlFor="idealWeight" className={isFieldRequiredAndEmpty('idealWeight') ? 'required-empty' : ''}>{getTranslation('subscription.idealWeight', language)}</label>
                     <input
                       type="number"
                       id="idealWeight"
@@ -867,7 +899,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phoneNumber">{getTranslation('subscription.phoneNumber', language)}</label>
+                    <label htmlFor="phoneNumber" className={isFieldRequiredAndEmpty('phoneNumber') ? 'required-empty' : ''}>{getTranslation('subscription.phoneNumber', language)}</label>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <div ref={phoneCountryDropdownRef} style={{ position: 'relative', flex: '0 0 auto' }}>
                         <input
@@ -949,13 +981,13 @@ function Subscription() {
                         marginTop: '0.5rem',
                         fontWeight: '500'
                       }}>
-                        Selected: {selectedPhoneCountry.flag} {selectedPhoneCountry.name} ({selectedPhoneCountry.phone})
+                        {getTranslation('subscription.selected', language)} {selectedPhoneCountry.flag} {selectedPhoneCountry.name} ({selectedPhoneCountry.phone})
                       </div>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="emailAddress">{getTranslation('subscription.emailAddress', language)}</label>
+                    <label htmlFor="emailAddress" className={isFieldRequiredAndEmpty('emailAddress') ? 'required-empty' : ''}>{getTranslation('subscription.emailAddress', language)}</label>
                     <input
                       type="email"
                       id="emailAddress"
@@ -976,7 +1008,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="cityCountry" className="city-country-label" style={{
+                    <label htmlFor="cityCountry" className={`city-country-label ${isFieldRequiredAndEmpty('cityCountry') ? 'required-empty' : ''}`} style={{
                       color: '#2c3e50 !important',
                       fontWeight: '600 !important',
                       fontSize: '1rem !important',
@@ -1053,13 +1085,13 @@ function Subscription() {
                         marginTop: '0.5rem',
                         fontWeight: '500'
                       }}>
-                        Selected: {selectedCountry.flag} {selectedCountry.name}
+                        {getTranslation('subscription.selected', language)} {selectedCountry.flag} {selectedCountry.name}
                       </div>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="maritalStatus">{getTranslation('subscription.maritalStatus', language)}</label>
+                    <label htmlFor="maritalStatus" className={isFieldRequiredAndEmpty('maritalStatus') ? 'required-empty' : ''}>{getTranslation('subscription.maritalStatus', language)}</label>
                     <select
                       id="maritalStatus"
                       name="maritalStatus"
@@ -1076,7 +1108,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="haveChildren">{getTranslation('subscription.haveChildren', language)}</label>
+                    <label htmlFor="haveChildren" className={isFieldRequiredAndEmpty('haveChildren') ? 'required-empty' : ''}>{getTranslation('subscription.haveChildren', language)}</label>
                     <select
                       id="haveChildren"
                       name="haveChildren"
@@ -1098,7 +1130,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.athleticGoalsTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="ultimateGoal">{getTranslation('subscription.ultimateGoal', language)}</label>
+                    <label htmlFor="ultimateGoal" className={isFieldRequiredAndEmpty('ultimateGoal') ? 'required-empty' : ''}>{getTranslation('subscription.ultimateGoal', language)}</label>
                     <textarea
                       id="ultimateGoal"
                       name="ultimateGoal"
@@ -1110,7 +1142,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="top3Goals">{getTranslation('subscription.top3Goals', language)}</label>
+                    <label htmlFor="top3Goals" className={isFieldRequiredAndEmpty('top3Goals') ? 'required-empty' : ''}>{getTranslation('subscription.top3Goals', language)}</label>
                     <textarea
                       id="top3Goals"
                       name="top3Goals"
@@ -1122,7 +1154,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="lastSeasonGoal">{getTranslation('subscription.lastSeasonGoal', language)}</label>
+                    <label htmlFor="lastSeasonGoal" className={isFieldRequiredAndEmpty('lastSeasonGoal') ? 'required-empty' : ''}>{getTranslation('subscription.lastSeasonGoal', language)}</label>
                     <textarea
                       id="lastSeasonGoal"
                       name="lastSeasonGoal"
@@ -1134,7 +1166,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="importanceScale">{getTranslation('subscription.importanceScale', language)}</label>
+                    <label htmlFor="importanceScale" className={isFieldRequiredAndEmpty('importanceScale') ? 'required-empty' : ''}>{getTranslation('subscription.importanceScale', language)}</label>
                     <select
                       id="importanceScale"
                       name="importanceScale"
@@ -1143,11 +1175,11 @@ function Subscription() {
                       required
                     >
                       <option value="">{getTranslation('subscription.importanceScale', language)}</option>
-                      <option value="1">1 - Not Important</option>
+                      <option value="1">1 - {getTranslation('subscription.notImportant', language)}</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
-                      <option value="5">5 - Moderately Important</option>
+                      <option value="5">5 - {getTranslation('subscription.moderatelyImportant', language)}</option>
                       <option value="6">6</option>
                       <option value="7">7</option>
                       <option value="8">8</option>
@@ -1157,7 +1189,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="whatToGain">{getTranslation('subscription.whatToGain', language)}</label>
+                    <label htmlFor="whatToGain" className={isFieldRequiredAndEmpty('whatToGain') ? 'required-empty' : ''}>{getTranslation('subscription.whatToGain', language)}</label>
                     <textarea
                       id="whatToGain"
                       name="whatToGain"
@@ -1176,7 +1208,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.trainingLifestyleTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label>{getTranslation('subscription.whatLimiting', language)}</label>
+                    <label className={isFieldRequiredAndEmpty('whatLimiting') ? 'required-empty' : ''}>{getTranslation('subscription.whatLimiting', language)}</label>
                     <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
@@ -1271,7 +1303,7 @@ function Subscription() {
 
                   {formData.whatLimiting.includes('other') && (
                     <div className="form-group">
-                      <label htmlFor="otherSpecify">{getTranslation('subscription.otherSpecify', language)}</label>
+                      <label htmlFor="otherSpecify" className={isFieldRequiredAndEmpty('otherSpecify') ? 'required-empty' : ''}>{getTranslation('subscription.otherSpecify', language)}</label>
                       <input
                         type="text"
                         id="otherSpecify"
@@ -1284,7 +1316,7 @@ function Subscription() {
                   )}
 
                   <div className="form-group">
-                    <label htmlFor="workStudyHours">{getTranslation('subscription.workStudyHours', language)}</label>
+                    <label htmlFor="workStudyHours" className={isFieldRequiredAndEmpty('workStudyHours') ? 'required-empty' : ''}>{getTranslation('subscription.workStudyHours', language)}</label>
                     <input
                       type="number"
                       id="workStudyHours"
@@ -1297,7 +1329,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="workStressLevel">{getTranslation('subscription.workStressLevel', language)}</label>
+                    <label htmlFor="workStressLevel" className={isFieldRequiredAndEmpty('workStressLevel') ? 'required-empty' : ''}>{getTranslation('subscription.workStressLevel', language)}</label>
                     <select
                       id="workStressLevel"
                       name="workStressLevel"
@@ -1306,21 +1338,21 @@ function Subscription() {
                       required
                     >
                       <option value="">{getTranslation('subscription.workStressLevel', language)}</option>
-                      <option value="1">1 - Low</option>
+                      <option value="1">1 - {getTranslation('subscription.low', language)}</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
-                      <option value="5">5 - Moderate</option>
+                      <option value="5">5 - {getTranslation('subscription.moderate', language)}</option>
                       <option value="6">6</option>
                       <option value="7">7</option>
                       <option value="8">8</option>
                       <option value="9">9</option>
-                      <option value="10">10 - Very High</option>
+                      <option value="10">10 - {getTranslation('subscription.veryHigh', language)}</option>
                     </select>
                   </div>
 
                   <div className="form-group">
-                    <label>{getTranslation('subscription.availableTrainingSlots', language)}</label>
+                    <label className={isFieldRequiredAndEmpty('availableTrainingSlots') ? 'required-empty' : ''}>{getTranslation('subscription.availableTrainingSlots', language)}</label>
                     <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
@@ -1414,7 +1446,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="sleepSchedule">{getTranslation('subscription.sleepSchedule', language)}</label>
+                    <label htmlFor="sleepSchedule" className={isFieldRequiredAndEmpty('sleepSchedule') ? 'required-empty' : ''}>{getTranslation('subscription.sleepSchedule', language)}</label>
                     <input
                       type="text"
                       id="sleepSchedule"
@@ -1434,7 +1466,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.currentSkillExperienceTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="overallSkillLevel">{getTranslation('subscription.overallSkillLevel', language)}</label>
+                    <label htmlFor="overallSkillLevel" className={isFieldRequiredAndEmpty('overallSkillLevel') ? 'required-empty' : ''}>{getTranslation('subscription.overallSkillLevel', language)}</label>
                     <select
                       id="overallSkillLevel"
                       name="overallSkillLevel"
@@ -1452,7 +1484,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="swimmingSkillLevel">{getTranslation('subscription.swimmingSkillLevel', language)}</label>
+                    <label htmlFor="swimmingSkillLevel" className={isFieldRequiredAndEmpty('swimmingSkillLevel') ? 'required-empty' : ''}>{getTranslation('subscription.swimmingSkillLevel', language)}</label>
                     <select
                       id="swimmingSkillLevel"
                       name="swimmingSkillLevel"
@@ -1470,7 +1502,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="swimmingHistory">{getTranslation('subscription.swimmingHistory', language)}</label>
+                    <label htmlFor="swimmingHistory" className={isFieldRequiredAndEmpty('swimmingHistory') ? 'required-empty' : ''}>{getTranslation('subscription.swimmingHistory', language)}</label>
                     <textarea
                       id="swimmingHistory"
                       name="swimmingHistory"
@@ -1482,7 +1514,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="cyclingSkillLevel">{getTranslation('subscription.cyclingSkillLevel', language)}</label>
+                    <label htmlFor="cyclingSkillLevel" className={isFieldRequiredAndEmpty('cyclingSkillLevel') ? 'required-empty' : ''}>{getTranslation('subscription.cyclingSkillLevel', language)}</label>
                     <select
                       id="cyclingSkillLevel"
                       name="cyclingSkillLevel"
@@ -1500,7 +1532,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="cyclingHistory">{getTranslation('subscription.cyclingHistory', language)}</label>
+                    <label htmlFor="cyclingHistory" className={isFieldRequiredAndEmpty('cyclingHistory') ? 'required-empty' : ''}>{getTranslation('subscription.cyclingHistory', language)}</label>
                     <textarea
                       id="cyclingHistory"
                       name="cyclingHistory"
@@ -1512,7 +1544,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="runningSkillLevel">{getTranslation('subscription.runningSkillLevel', language)}</label>
+                    <label htmlFor="runningSkillLevel" className={isFieldRequiredAndEmpty('runningSkillLevel') ? 'required-empty' : ''}>{getTranslation('subscription.runningSkillLevel', language)}</label>
                     <select
                       id="runningSkillLevel"
                       name="runningSkillLevel"
@@ -1530,7 +1562,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="runningHistory">{getTranslation('subscription.runningHistory', language)}</label>
+                    <label htmlFor="runningHistory" className={isFieldRequiredAndEmpty('runningHistory') ? 'required-empty' : ''}>{getTranslation('subscription.runningHistory', language)}</label>
                     <textarea
                       id="runningHistory"
                       name="runningHistory"
@@ -1549,7 +1581,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.trainingEquipmentTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="powerMeter">{getTranslation('subscription.powerMeter', language)}</label>
+                    <label htmlFor="powerMeter" className={isFieldRequiredAndEmpty('powerMeter') ? 'required-empty' : ''}>{getTranslation('subscription.powerMeter', language)}</label>
                     <select
                       id="powerMeter"
                       name="powerMeter"
@@ -1579,7 +1611,7 @@ function Subscription() {
                   )}
 
                   <div className="form-group">
-                    <label htmlFor="heartRateMonitor">{getTranslation('subscription.heartRateMonitor', language)}</label>
+                    <label htmlFor="heartRateMonitor" className={isFieldRequiredAndEmpty('heartRateMonitor') ? 'required-empty' : ''}>{getTranslation('subscription.heartRateMonitor', language)}</label>
                     <select
                       id="heartRateMonitor"
                       name="heartRateMonitor"
@@ -1609,7 +1641,7 @@ function Subscription() {
                   )}
 
                   <div className="form-group">
-                    <label htmlFor="trainingEquipment">{getTranslation('subscription.trainingEquipment', language)}</label>
+                    <label htmlFor="trainingEquipment" className={isFieldRequiredAndEmpty('trainingEquipment') ? 'required-empty' : ''}>{getTranslation('subscription.trainingEquipment', language)}</label>
                     <textarea
                       id="trainingEquipment"
                       name="trainingEquipment"
@@ -1629,7 +1661,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.performancePastRacesTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label>{getTranslation('subscription.longestDistances', language)}</label>
+                    <label className={isFieldRequiredAndEmpty('longestDistances') ? 'required-empty' : ''}>{getTranslation('subscription.longestDistances', language)}</label>
                     <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
@@ -1767,7 +1799,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="vo2MaxTest">{getTranslation('subscription.vo2MaxTest', language)}</label>
+                    <label htmlFor="vo2MaxTest" className={isFieldRequiredAndEmpty('vo2MaxTest') ? 'required-empty' : ''}>{getTranslation('subscription.vo2MaxTest', language)}</label>
                     <textarea
                       id="vo2MaxTest"
                       name="vo2MaxTest"
@@ -1787,7 +1819,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.challengesLimitersTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="twoGreatestStrengths">{getTranslation('subscription.twoGreatestStrengths', language)}</label>
+                    <label htmlFor="twoGreatestStrengths" className={isFieldRequiredAndEmpty('twoGreatestStrengths') ? 'required-empty' : ''}>{getTranslation('subscription.twoGreatestStrengths', language)}</label>
                     <textarea
                       id="twoGreatestStrengths"
                       name="twoGreatestStrengths"
@@ -1800,7 +1832,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="twoBiggestLimiters">{getTranslation('subscription.twoBiggestLimiters', language)}</label>
+                    <label htmlFor="twoBiggestLimiters" className={isFieldRequiredAndEmpty('twoBiggestLimiters') ? 'required-empty' : ''}>{getTranslation('subscription.twoBiggestLimiters', language)}</label>
                     <textarea
                       id="twoBiggestLimiters"
                       name="twoBiggestLimiters"
@@ -1813,7 +1845,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label>{getTranslation('subscription.biggestChallenge', language)}</label>
+                    <label className={isFieldRequiredAndEmpty('biggestChallenge') ? 'required-empty' : ''}>{getTranslation('subscription.biggestChallenge', language)}</label>
                     <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
@@ -1914,7 +1946,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.medicalInjuryHistoryTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="pastCurrentInjuries">{getTranslation('subscription.pastCurrentInjuries', language)}</label>
+                    <label htmlFor="pastCurrentInjuries" className={isFieldRequiredAndEmpty('pastCurrentInjuries') ? 'required-empty' : ''}>{getTranslation('subscription.pastCurrentInjuries', language)}</label>
                     <select
                       id="pastCurrentInjuries"
                       name="pastCurrentInjuries"
@@ -1944,7 +1976,7 @@ function Subscription() {
                   )}
 
                   <div className="form-group">
-                    <label htmlFor="seePhysicalTherapist">{getTranslation('subscription.seePhysicalTherapist', language)}</label>
+                    <label htmlFor="seePhysicalTherapist" className={isFieldRequiredAndEmpty('seePhysicalTherapist') ? 'required-empty' : ''}>{getTranslation('subscription.seePhysicalTherapist', language)}</label>
                     <select
                       id="seePhysicalTherapist"
                       name="seePhysicalTherapist"
@@ -1959,7 +1991,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="chronicInjuriesConditions">{getTranslation('subscription.chronicInjuriesConditions', language)}</label>
+                    <label htmlFor="chronicInjuriesConditions" className={isFieldRequiredAndEmpty('chronicInjuriesConditions') ? 'required-empty' : ''}>{getTranslation('subscription.chronicInjuriesConditions', language)}</label>
                     <select
                       id="chronicInjuriesConditions"
                       name="chronicInjuriesConditions"
@@ -1989,7 +2021,7 @@ function Subscription() {
                   )}
 
                   <div className="form-group">
-                    <label htmlFor="medicationsSupplements">{getTranslation('subscription.medicationsSupplements', language)}</label>
+                    <label htmlFor="medicationsSupplements" className={isFieldRequiredAndEmpty('medicationsSupplements') ? 'required-empty' : ''}>{getTranslation('subscription.medicationsSupplements', language)}</label>
                     <select
                       id="medicationsSupplements"
                       name="medicationsSupplements"
@@ -2026,7 +2058,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.nutritionRecoveryTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="typicalDayEating">{getTranslation('subscription.typicalDayEating', language)}</label>
+                    <label htmlFor="typicalDayEating" className={isFieldRequiredAndEmpty('typicalDayEating') ? 'required-empty' : ''}>{getTranslation('subscription.typicalDayEating', language)}</label>
                     <textarea
                       id="typicalDayEating"
                       name="typicalDayEating"
@@ -2039,7 +2071,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="dailyWaterIntake">{getTranslation('subscription.dailyWaterIntake', language)}</label>
+                    <label htmlFor="dailyWaterIntake" className={isFieldRequiredAndEmpty('dailyWaterIntake') ? 'required-empty' : ''}>{getTranslation('subscription.dailyWaterIntake', language)}</label>
                     <input
                       type="text"
                       id="dailyWaterIntake"
@@ -2052,7 +2084,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="exerciseHydration">{getTranslation('subscription.exerciseHydration', language)}</label>
+                    <label htmlFor="exerciseHydration" className={isFieldRequiredAndEmpty('exerciseHydration') ? 'required-empty' : ''}>{getTranslation('subscription.exerciseHydration', language)}</label>
                     <input
                       type="text"
                       id="exerciseHydration"
@@ -2065,7 +2097,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="foodAllergiesRestrictions">{getTranslation('subscription.foodAllergiesRestrictions', language)}</label>
+                    <label htmlFor="foodAllergiesRestrictions" className={isFieldRequiredAndEmpty('foodAllergiesRestrictions') ? 'required-empty' : ''}>{getTranslation('subscription.foodAllergiesRestrictions', language)}</label>
                     <textarea
                       id="foodAllergiesRestrictions"
                       name="foodAllergiesRestrictions"
@@ -2085,7 +2117,7 @@ function Subscription() {
                   <h3 className="section-title">{getTranslation('subscription.finalNotesExpectationsTitle', language)}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="whatWantFromCoaching">{getTranslation('subscription.whatWantFromCoaching', language)}</label>
+                    <label htmlFor="whatWantFromCoaching" className={isFieldRequiredAndEmpty('whatWantFromCoaching') ? 'required-empty' : ''}>{getTranslation('subscription.whatWantFromCoaching', language)}</label>
                     <textarea
                       id="whatWantFromCoaching"
                       name="whatWantFromCoaching"
@@ -2098,7 +2130,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="whatMotivatesAthlete">{getTranslation('subscription.whatMotivatesAthlete', language)}</label>
+                    <label htmlFor="whatMotivatesAthlete" className={isFieldRequiredAndEmpty('whatMotivatesAthlete') ? 'required-empty' : ''}>{getTranslation('subscription.whatMotivatesAthlete', language)}</label>
                     <textarea
                       id="whatMotivatesAthlete"
                       name="whatMotivatesAthlete"
@@ -2111,7 +2143,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="biggestTechnicalPhysicalChallenges">{getTranslation('subscription.biggestTechnicalPhysicalChallenges', language)}</label>
+                    <label htmlFor="biggestTechnicalPhysicalChallenges" className={isFieldRequiredAndEmpty('biggestTechnicalPhysicalChallenges') ? 'required-empty' : ''}>{getTranslation('subscription.biggestTechnicalPhysicalChallenges', language)}</label>
                     <textarea
                       id="biggestTechnicalPhysicalChallenges"
                       name="biggestTechnicalPhysicalChallenges"
@@ -2124,7 +2156,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="handlePressureRaces">{getTranslation('subscription.handlePressureRaces', language)}</label>
+                    <label htmlFor="handlePressureRaces" className={isFieldRequiredAndEmpty('handlePressureRaces') ? 'required-empty' : ''}>{getTranslation('subscription.handlePressureRaces', language)}</label>
                     <textarea
                       id="handlePressureRaces"
                       name="handlePressureRaces"
@@ -2137,7 +2169,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="proudAccomplishments">{getTranslation('subscription.proudAccomplishments', language)}</label>
+                    <label htmlFor="proudAccomplishments" className={isFieldRequiredAndEmpty('proudAccomplishments') ? 'required-empty' : ''}>{getTranslation('subscription.proudAccomplishments', language)}</label>
                     <textarea
                       id="proudAccomplishments"
                       name="proudAccomplishments"
@@ -2150,7 +2182,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label>{getTranslation('subscription.interestedCoach', language)}</label>
+                    <label className={isFieldRequiredAndEmpty('interestedCoach') ? 'required-empty' : ''}>{getTranslation('subscription.interestedCoach', language)}</label>
                     <a 
                       href="https://podiumracing-me.com/coaches" 
                       className="btn btn-outline"
@@ -2225,7 +2257,7 @@ function Subscription() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="needCallHeadCoach">{getTranslation('subscription.needCallHeadCoach', language)}</label>
+                    <label htmlFor="needCallHeadCoach" className={isFieldRequiredAndEmpty('needCallHeadCoach') ? 'required-empty' : ''}>{getTranslation('subscription.needCallHeadCoach', language)}</label>
                     <select
                       id="needCallHeadCoach"
                       name="needCallHeadCoach"

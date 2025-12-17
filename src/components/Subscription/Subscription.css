@@ -537,6 +537,10 @@
   line-height: 1.4;
 }
 
+.form-group label.required-empty {
+  color: #e74c3c !important;
+}
+
 /* Specific styling for city country label */
 .form-group label[for="cityCountry"],
 .city-country-label {
@@ -548,6 +552,10 @@
   line-height: 1.4 !important;
   text-shadow: none !important;
   background-color: transparent !important;
+}
+
+.city-country-label.required-empty {
+  color: #e74c3c !important;
 }
 
 .form-group input,
